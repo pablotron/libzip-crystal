@@ -2,7 +2,7 @@ module Zip
   @[Flags]
   # Flags for `Zip::Archive.new`, `Zip::Archive.open`, and
   # `Zip::Archive.create`.
-  enum OpenFlags
+  enum OpenFlag
     # Create archive if it does not exist.
     CREATE         = 1
 
@@ -20,77 +20,145 @@ module Zip
 
   @[Flags]
   # zip_name_locate, zip_fopen, zip_stat, etc flags
-  enum FileFlags
-    ENC_GUESS   = 0    #  guess string encoding (is default) 
-    NOCASE      = 1    #  ignore case on name lookup 
-    NODIR       = 2    #  ignore directory component 
-    COMPRESSED  = 4    #  read compressed data 
-    UNCHANGED   = 8    #  use original data, ignoring changes 
-    RECOMPRESS  = 16   #  force recompression of data 
-    ENCRYPTED   = 32   #  read encrypted data (implies ZIP_FL_COMPRESSED) 
-    ENC_RAW     = 64   #  get unmodified string 
-    ENC_STRICT  = 128  #  follow specification strictly 
-    LOCAL       = 256  #  in local header 
-    CENTRAL     = 512  #  in central directory 
-    ENC_UTF_8   = 2048 #  string is UTF-8 encoded 
-    ENC_CP437   = 4096 #  string is CP437 encoded 
-    OVERWRITE   = 8192 #  zip_file_add: if file with name exists, overwrite (replace) it 
+  enum FileFlag
+    #  guess string encoding (default)
+    ENC_GUESS   = 0
+
+    #  ignore case on name lookup
+    NOCASE      = 1
+
+    #  ignore directory component
+    NODIR       = 2
+
+    #  read compressed data
+    COMPRESSED  = 4
+
+    #  use original data, ignoring changes
+    UNCHANGED   = 8
+
+    #  force recompression of data
+    RECOMPRESS  = 16
+
+    #  read encrypted data (implies ZIP_FL_COMPRESSED)
+    ENCRYPTED   = 32
+
+    #  get unmodified string
+    ENC_RAW     = 64
+
+    #  follow specification strictly
+    ENC_STRICT  = 128
+
+    #  in local header
+    LOCAL       = 256
+
+    #  in central directory
+    CENTRAL     = 512
+
+    #  string is UTF-8 encoded
+    ENC_UTF_8   = 2048
+
+    #  string is CP437 encoded
+    ENC_CP437   = 4096
+
+    #  zip_file_add: if file with name exists, overwrite (replace) it
+    OVERWRITE   = 8192
   end
 
-  # archive global flags flags
-  enum ArchiveFlags
-    TORRENT = 1 #  torrent zipped 
-    RDONLY =  2 #  read only -- cannot be cleared 
+  # archive global flags
+  enum ArchiveFlag
+    TORRENT = 1 #  torrent zipped
+    RDONLY =  2 #  read only -- cannot be cleared
   end
 
   # extra fields
-  enum ExtraFields : UInt16
+  enum ExtraField : UInt16
     ALL	= 65535
     NEW	= 65535
   end
 
   # compression and encryption source flags
-  enum Codecs
+  enum Codec
     DECODE = 0 # decompress/decrypt (encode flag not set)
     ENCODE = 1 # compress/encrypt
   end
 
-  enum ErrorTypes
-    NONE = 0  #  sys_err unused 
-    SYS = 1   #  sys_err is errno 
-    ZLIB = 2  #  sys_err is zlib error code 
+  enum ErrorType
+    NONE = 0  #  sys_err unused
+    SYS = 1   #  sys_err is errno
+    ZLIB = 2  #  sys_err is zlib error code
   end
 
   @[Flags]
   # compression methods
-  enum CompressionMethods
-    DEFAULT = -1          #  better of deflate or store
-    STORE = 0             #  stored (uncompressed) 
-    SHRINK = 1            #  shrunk 
-    REDUCE_1 = 2          #  reduced with factor 1 
-    REDUCE_2 = 3          #  reduced with factor 2 
-    REDUCE_3 = 4          #  reduced with factor 3 
-    REDUCE_4 = 5          #  reduced with factor 4 
-    IMPLODE = 6           #  imploded 
+  enum CompressionMethod
+    #  better of deflate or store
+    DEFAULT = -1
+
+    #  stored (uncompressed)
+    STORE = 0
+
+    #  shrunk
+    SHRINK = 1
+
+    #  reduced with factor 1
+    REDUCE_1 = 2
+
+    #  reduced with factor 2
+    REDUCE_2 = 3
+
+    #  reduced with factor 3
+    REDUCE_3 = 4
+
+    #  reduced with factor 4
+    REDUCE_4 = 5
+
+    #  imploded
+    IMPLODE = 6
+
     # 7 - Reserved for Tokenizing compression algorithm
-    DEFLATE = 8           #  deflated 
-    DEFLATE64 = 9         #  deflate64 
-    PKWARE_IMPLODE = 10   #  PKWARE imploding 
+
+    #  deflated
+    DEFLATE = 8
+
+    #  deflate64
+    DEFLATE64 = 9
+
+    #  PKWARE imploding
+    PKWARE_IMPLODE = 10
+
     # 11 - Reserved by PKWARE
-    BZIP2 = 12            #  compressed using BZIP2 algorithm 
+
+    #  compressed using BZIP2 algorithm
+    BZIP2 = 12
+
     # 13 - Reserved by PKWARE
-    LZMA = 14             #  LZMA (EFS) 
+
+    #  LZMA (EFS)
+    LZMA = 14
+
     # 15-17 - Reserved by PKWARE
-    TERSE = 18            #  compressed using IBM TERSE (new) 
-    LZ77 = 19             # IBM LZ77 z Architecture (PFS) 
-    WAVPACK = 97          #  WavPack compressed data 
-    PPMD = 98             #  PPMd version I, Rev 1 
+
+    #  compressed using IBM TERSE (new)
+    TERSE = 18
+
+    # IBM LZ77 z Architecture (PFS)
+    LZ77 = 19
+
+    #  WavPack compressed data
+    WAVPACK = 97
+
+    #  PPMd version I, Rev 1
+    PPMD = 98
   end
 
   @[Flags]
-  enum EncryptionMethods
-    NONE = 0            # not encrypted
-    TRAD_PKWARE = 1     # traditional PKWARE encryption
+  enum EncryptionMethod
+    # not encrypted
+    NONE = 0
+
+    # traditional PKWARE encryption
+    TRAD_PKWARE = 1
+
     # # Strong Encryption Header not parsed yet
     # DES = 0x6601        # strong encryption: DES
     # RC2_OLD = 0x6602    # strong encryption: RC2, version < 5.2
@@ -101,7 +169,9 @@ module Zip
     # AES_256 = 0x6610
     # RC2 = 0x6702        # strong encryption: RC2, version >= 5.2
     # RC4 = 0x6801
-    UNKNOWN = 0xffff    # unknown algorithm
+
+    # unknown algorithm
+    UNKNOWN = 0xffff
   end
 
   @[Flags]
@@ -130,13 +200,24 @@ module Zip
     DEFAULT       = 0x03 # UNIX
   end
 
-  enum SourceCommands
-    OPEN    # prepare for reading
-    READ    # read data
-    CLOSE   # reading is done
-    STAT    # get meta information
-    ERROR   # get error information
-    FREE    # cleanup and free resources
+  enum SourceCommand
+    # prepare for reading
+    OPEN
+
+    # read data
+    READ
+
+    # reading is done
+    CLOSE
+
+    # get meta information
+    STAT
+
+    # get error information
+    ERROR
+
+    # cleanup and free resources
+    FREE
   end
 
   enum SourceError
@@ -144,7 +225,7 @@ module Zip
   end
 
   @[Flags]
-  enum StatFlags
+  enum StatFlag
     NAME = 0x0001
     INDEX = 0x0002
     SIZE = 0x0004

@@ -1,4 +1,4 @@
-require "./flags"
+require "./constants"
 
 module Zip
   class Archive
@@ -30,7 +30,7 @@ module Zip
     end
 
     # Default flags for `Archive#create`
-    CREATE_FLAGS = (OpenFlags::CREATE | OpenFlags::EXCL).value
+    CREATE_FLAGS = (OpenFlag::CREATE | OpenFlag::EXCL).value
 
     # Create `Archive` instance from file *path*, pass the instance to
     # the given block *block*, then close the archive when the block

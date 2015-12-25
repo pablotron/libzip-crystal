@@ -218,7 +218,7 @@ module Zip
 
     fun zip_source_function(
       zip:          ZipArchive,
-      cb:           (Void*, Void*, UInt64, Flags::SourceCommand) -> Int64,
+      cb:           (Void*, Void*, UInt64, Int32) -> Int64,
       data:         Void*
     ): ZipSource
 
@@ -335,6 +335,6 @@ module Zip
 
     fun zip_error_get_sys_type(
       ze:           ZipError
-    ): Flags::ErrorType
+    ): ErrorType
   end
 end
