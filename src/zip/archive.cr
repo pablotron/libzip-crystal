@@ -387,6 +387,10 @@ module Zip
       password
     end
 
+    ########################
+    # file comment methods #
+    ########################
+
     # Returns comment of file at index *index*.
     def get_file_comment(index : UInt64, flags = 0 : Int32)
       assert_open
@@ -438,15 +442,51 @@ module Zip
       r
     end
 
+    ################
+    # each methods #
+    ################
+
     def each(flags = 0 : Int32, &block)
-      get_num_entries(flags).times do |i|
+      assert_open
+
+      num_entries(flags).times do |i|
         yield get_name(i, flags)
       end
     end
 
     def each(flags = 0 : Int32)
+      assert_open
+
+      # create and return iterator
       ArchiveIterator.new(self, flags)
     end
+
+    ################
+    # stat methods #
+    ################
+
+    def stat(path : String, flags = 0 : Int32) : LibZip::Stat
+      assert_open
+
+      # call stat, check for error
+      err = LibZip.zip_stat(@zip, path, flags, out r)
+      raise Error.new(error) if err == -1
+
+      # return result
+      r
+    end
+
+    def stat(index : LibC::Int, flags = 0 : Int32) : LibZip::Stat
+      assert_open
+
+      # call stat, check for error
+      err = LibZip.zip_stat_index(@zip, index, flags, out r)
+      raise Error.new(error) if err == -1
+
+      # return result
+      r
+    end
+
 
     # private methods
 

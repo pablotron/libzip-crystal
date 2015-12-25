@@ -121,5 +121,28 @@ describe "Zip" do
         end
       end
     end
+
+    it "can stat files from an archive" do
+      # remove test zip
+      File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+
+      # populate zip with test files
+      Zip::Archive.create(ZIP_PATH) do |zip|
+        TEST_FILES.each do |file| 
+          zip.add(file, file)
+        end
+      end
+
+      # read test files from zip
+      Zip::Archive.open(ZIP_PATH) do |zip|
+        # create buffer
+        buf = Slice(UInt8).new(1024)
+
+        TEST_FILES.each do |path|
+          st = zip.stat(path)
+          zip.stat(path).size.should eq path.bytesize
+        end
+      end
+    end
   end
 end
