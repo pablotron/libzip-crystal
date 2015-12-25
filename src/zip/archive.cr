@@ -169,6 +169,18 @@ module Zip
       add(name, Source.from_buffer(self, body))
     end
 
+    # Add directory to archive at path *path*.
+    def add_dir(path : String, flags : Int32)
+      assert_open
+
+      # add dir, check for error
+      r = LibZip.zip_dir_add(@zip, path)
+      raise Error.new(r) if r == -1
+
+      # return index
+      r
+    end
+
     # Replace entry at index *index* with `Source` *source*.
     #
     # See also: 
@@ -219,12 +231,49 @@ module Zip
       replace(path, Source.from_buffer(self, body), flags)
     end
 
+    # Rename file at *index* to path *new_path*.
+    def rename(index : UInt64, new_path : String, flags = 0 : Int32)
+      assert_open
+
+      err = LibZip.zip_file_rename(@zip, index, new_path, flags)
+      raise Error.new(err) if err == -1
+
+      nil
+    end
+
+    # Rename file named *old_path* to new path *new_path*.
+    def rename(old_path : String, new_path : String, flags = 0 : Int32)
+      rename(name_locate(old_path), new_path, flags)
+    end
+
+    # Delete file at given index *index*.
+    def delete(index : UInt64)
+      assert_open
+
+      err = LibZip.zip_delete(@zip, index)
+      raise Error.new(error) if err == -1
+
+      nil
+    end
+
+    # Delete file at given path *path*.
+    def delete(path : String)
+      assert_open
+      delete(name_locate(path))
+    end
+
     # Returns index of given *path*, or -1 if the given path could not
     # be found.
     def name_locate(path : String, flags = 0 : Int32)
       assert_open
 
       LibZip.zip_name_locate(@zip, path, flags)
+    end
+
+    # Returns path of given *index*, or nil if there was an error or the
+    # given index could not be found.
+    def get_name(index : UInt64, flags : Int32) : String
+      LibZip.zip_get_name(@zip, index, flags)
     end
 
     # Returns `File` instance of given *path* in `Archive`.
