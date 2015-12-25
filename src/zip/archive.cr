@@ -190,7 +190,7 @@ module Zip
     end
 
     # Add directory to archive at path *path*.
-    def add_dir(path : String, flags : Int32)
+    def add_dir(path : String, flags = 0 : Int32)
       assert_open
 
       # add dir, check for error
