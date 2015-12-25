@@ -1,5 +1,3 @@
-require "./stat.cr"
-
 module Zip
   #
   # Bindings for native libzip calls
