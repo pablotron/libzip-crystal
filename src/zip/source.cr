@@ -1,4 +1,3 @@
-
 module Zip
   # Abstract base source for a `Archive#add` or `Archive#replace`.
   class Source
