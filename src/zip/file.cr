@@ -58,7 +58,7 @@ module Zip
 
 
     private def assert_open
-      raise "archive closed" unless zip.open?
+      raise "archive closed" unless @zip.open?
       raise "file closed" unless open?
     end
   end

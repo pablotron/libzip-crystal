@@ -2,6 +2,9 @@ require "./flags"
 
 module Zip
   class Archive
+    include Enumerable(String)
+    include Iterable
+
     protected getter zip
 
     # Create `Archive` instance from file *path*, pass instance to the
@@ -413,6 +416,12 @@ module Zip
 
       # return result
       r
+    end
+
+    def each(flags = 0 : Int32, &block)
+      get_num_entries(flags).times do |i|
+        yield get_name(i, flags)
+      end
     end
 
     # private methods
