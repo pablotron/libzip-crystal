@@ -168,8 +168,25 @@ module Zip
     # Add archive entry *path* with content *body*.
     #
     # See also: `#add(String, Source, Int32)`.
-    def add(name : String, body : String)
-      add(name, Source.from_buffer(self, body))
+    def add(path : String, body : String, flags = 0 : Int32)
+      add(path, StringSource.new(self, body), flags)
+    end
+
+    # Add archive entry *path* with content *body*.
+    #
+    # See also: `#add(String, Source, Int32)`.
+    def add(path : String, slice : Slice, flags = 0 : Int32)
+      add(path, SliceSource.new(self, slice), flags)
+    end
+
+    def add_file(
+      dst_path : String,
+      src_path : String,
+      start = 0 : UInt64,
+      len = -1 : Int64,
+      flags = 0 : Int32
+    )
+      add(src_path, FileSource.new(self, dst_path, start, len), flags)
     end
 
     # Add directory to archive at path *path*.
@@ -221,7 +238,7 @@ module Zip
     # * `#replace(String, Source, Int32)`
     # * `#replace(String, String, Int32)`
     def replace(index : UInt64, body : String, flags = 0 : Int32)
-      replace(index, Source.from_buffer(self, body), flags)
+      replace(index, StringSource.new(self, body), flags)
     end
 
     # Replace entry at path *path* with contents *body*.
@@ -231,7 +248,7 @@ module Zip
     # * `#replace(String, Source, Int32)`
     # * `#replace(UInt64, String, Int32)`
     def replace(path : String, body : String, flags  = 0 : Int32)
-      replace(path, Source.from_buffer(self, body), flags)
+      replace(path, StringSource.new(self, body), flags)
     end
 
     # Rename file at *index* to path *new_path*.
