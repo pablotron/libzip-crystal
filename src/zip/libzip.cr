@@ -1,3 +1,5 @@
+require "./stat.cr"
+
 module Zip
   #
   # Bindings for native libzip calls
@@ -9,17 +11,36 @@ module Zip
     type ZipSource  = UInt8*
     alias ZipError  = Int32
 
-    struct ZipStat
-      valid:        UInt64      # which fields have valid values
-      name:         UInt8*      # name of the file
-      index:        UInt64      # index within archive
-      size:         UInt64      # size of file (uncompressed)
-      comp_size:    UInt64      # size of file (compressed)
-      mtime:        LibC::TimeT # modification time
-      crc:          UInt32      # crc of file data
-      comp_method:  UInt16      # compression method used
-      enc_method:   UInt16      # encryption method used
-      flags:        UInt32      # reserved for future use
+    struct Stat
+      # which fields have valid values
+      valid:        UInt64
+
+      # name of the file
+      name:         UInt8*
+
+      # index within archive
+      index:        UInt64
+
+      # size of file (uncompressed)
+      size:         UInt64
+
+      # size of file (compressed)
+      comp_size:    UInt64
+
+      # modification time
+      mtime:        LibC::TimeT
+
+      # crc of file data
+      crc:          UInt32
+
+      # compression method used
+      comp_method:  UInt16
+
+      # encryption method used
+      enc_method:   UInt16
+
+      # reserved for future use
+      flags:        UInt32
     end
 
     #
@@ -103,14 +124,14 @@ module Zip
       zip:          ZipArchive,
       path:         UInt8*,
       flags:        UInt32,
-      stats:        ZipStat*
+      stats:        Stat*
     ): ZipError
 
     fun zip_stat_index(
       zip:          ZipArchive,
       index:        LibC::Int,
       flags:        UInt32,
-      stats:        ZipStat*
+      stats:        Stat*
     ): ZipError
 
     # comments
