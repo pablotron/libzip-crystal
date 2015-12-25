@@ -228,11 +228,17 @@ module Zip
     end
 
     # Returns `File` instance of given *path* in `Archive`.
-    def open(path : String, flags = 0 : Int32) : File
+    def open(path : String, flags = 0 : Int32, password = nil : String?) : File
       assert_open
 
       # open file
-      r = LibZip.zip_fopen(@zip, path, flags)
+      r = if password != nil
+        LibZip.zip_fopen_encrypted(@zip, path, flags, password)
+      else
+        LibZip.zip_fopen(@zip, path, flags)
+      end
+
+      # check for error
       raise Error.new(error) if r == nil
 
       # return result
@@ -241,11 +247,11 @@ module Zip
 
     # Opens given *path* in `Archive` as a `File` instance, passes it to
     # block *block*, and closes the file when the block exits.
-    def open(path : String, flags = 0 : Int32, &block)
+    def open(path : String, flags = 0 : Int32, password = nil : String?, &block)
       assert_open
 
       # open file
-      f = open(path, flags)
+      f = open(path, flags, password)
 
       r = nil
       begin
@@ -261,11 +267,17 @@ module Zip
     end
 
     # Returns `File` instance of given index *index* in `Archive`.
-    def open(index : UInt64, flags = 0 : Int32)
+    def open(index : UInt64, flags = 0 : Int32, password = nil : String?)
       assert_open
 
       # open file
-      r = LibZip.zip_fopen_index(@zip, index, flags)
+      r = if password != nil
+        LibZip.zip_fopen_index_encrypted(@zip, index, flags, password)
+      else
+        LibZip.zip_fopen_index(@zip, index, flags)
+      end
+
+      # check for error
       raise Error.new(error) if r == nil
 
       # return result
@@ -274,7 +286,7 @@ module Zip
 
     # Opens index *index* in `Archive` as a `File` instance, passes it
     # to block *block*, and closes the file when the block exits.
-    def open(index : UInt64, flags = 0 : Int32, &block)
+    def open(index : UInt64, flags = 0 : Int32, password = nil : String?, &block)
       assert_open
 
       # open file
@@ -291,6 +303,14 @@ module Zip
         
       # return result
       r
+    end
+
+    # Set the default password used when accessing encrypted files, or
+    # nil for no password.
+    def default_password=(password : String?)
+      r = LibZip.zip_set_default_password(@zip, password)
+      raise Error.new(error) if r == -1
+      password
     end
 
     # private methods
