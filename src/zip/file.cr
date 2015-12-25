@@ -42,8 +42,24 @@ module Zip
       raise "cannot write to Zip::File instances"
     end
 
+    # Return last archive error as an `ErrorCode` instance.
+    def error : ErrorCode
+      assert_open
+
+      LibZip.zip_file_error_get(@file, out err, out sys)
+
+      if err != 0 && sys != 0
+        # TODO: do something with sys error?
+        # puts "sys: #{sys}"
+      end
+
+      ErrorCode.new(err)
+    end
+
+
     private def assert_open
-      raise "file already closed" unless open?
+      raise "archive closed" unless zip.open?
+      raise "file closed" unless open?
     end
   end
 end
