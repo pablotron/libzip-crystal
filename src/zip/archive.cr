@@ -30,7 +30,7 @@ module Zip
     end
 
     # Default flags for `Archive#create`
-    CREATE_FLAGS = (Flags::Open::CREATE | Flags::Open::EXCL).value
+    CREATE_FLAGS = (OpenFlags::CREATE | OpenFlags::EXCL).value
 
     # Create `Archive` instance from file *path*, pass the instance to
     # the given block *block*, then close the archive when the block
@@ -179,6 +179,8 @@ module Zip
       add(path, SliceSource.new(self, slice), flags)
     end
 
+    # Add source file *src_file* to archive at destination path
+    # *dst_path*.
     def add_file(
       dst_path : String,
       src_path : String,
@@ -424,6 +426,7 @@ module Zip
       set_file_comment(name_locate(path), comment, flags)
     end
 
+    # Get the number of files in this archive.
     def num_entries(flags = 0 : Int32)
       assert_open
 
@@ -439,6 +442,10 @@ module Zip
       get_num_entries(flags).times do |i|
         yield get_name(i, flags)
       end
+    end
+
+    def each(flags = 0 : Int32)
+      ArchiveIterator.new(self, flags)
     end
 
     # private methods
