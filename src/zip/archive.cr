@@ -147,15 +147,19 @@ module Zip
       String.new(ptr, len)
     end
 
-    # Add archive entry *path* from given `Source` *source*.
+    # Add entry *path* to archive from given `Source` *source* and
+    # return index of new entry.
     #
     # See also: `#add(String, String, Int32)`.
     def add(path : String, source : Source, flags = 0 : Int32)
       assert_open
 
-      if LibZip.zip_file_add(@zip, path, source.source, flags) == -1
-        raise Error.new(error)
-      end
+      # add file
+      r = LibZip.zip_file_add(@zip, path, source.source, flags) == -1
+      raise Error.new(error) if r == -1
+
+      # return result
+      r
     end
 
     # Add archive entry *path* with content *body*.
