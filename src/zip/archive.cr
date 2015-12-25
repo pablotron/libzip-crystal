@@ -3,7 +3,7 @@ require "./flags"
 module Zip
   class Archive
     protected getter zip
-     
+
     # Create `Archive` instance from file *path*, pass instance to the
     # given block *block*, then close the archive when the block exits.
     #
@@ -110,7 +110,7 @@ module Zip
         LibZip.zip_discard(@zip)
       else
         # close archive
-        err = LibZip.zip_close(@zip) 
+        err = LibZip.zip_close(@zip)
         raise Error.new(err) unless ok?(err)
       end
 
@@ -134,7 +134,7 @@ module Zip
       if LibZip.zip_set_archive_comment(@zip, s, s.bytesize) == -1
         raise Error.new(error)
       end
-      
+
       # retain and return
       @comment = s
     end
@@ -183,7 +183,7 @@ module Zip
 
     # Replace entry at index *index* with `Source` *source*.
     #
-    # See also: 
+    # See also:
     # * `#replace(UInt64, String, Int32)`
     # * `#replace(String, Source, Int32)`
     # * `#replace(String, String, Int32)`
@@ -197,7 +197,7 @@ module Zip
 
     # Replace entry at path *path* with `Source` *source*.
     #
-    # See also: 
+    # See also:
     # * `#replace(UInt64, Source, Int32)`
     # * `#replace(String, Source, Int32)`
     # * `#replace(String, String, Int32)`
@@ -213,7 +213,7 @@ module Zip
 
     # Replace entry at index *index* with contents *body*.
     #
-    # See also: 
+    # See also:
     # * `#replace(UInt64, Source, Int32)`
     # * `#replace(String, Source, Int32)`
     # * `#replace(String, String, Int32)`
@@ -223,7 +223,7 @@ module Zip
 
     # Replace entry at path *path* with contents *body*.
     #
-    # See also: 
+    # See also:
     # * `#replace(UInt64, Source, Int32)`
     # * `#replace(String, Source, Int32)`
     # * `#replace(UInt64, String, Int32)`
@@ -310,7 +310,7 @@ module Zip
         # close file if it is open
         f.close if f.open?
       end
-        
+
       # return result
       r
     end
@@ -349,7 +349,7 @@ module Zip
         # close file if it is open
         f.close if f.open?
       end
-        
+
       # return result
       r
     end
@@ -357,9 +357,62 @@ module Zip
     # Set the default password used when accessing encrypted files, or
     # nil for no password.
     def default_password=(password : String?)
+      assert_open
+
       r = LibZip.zip_set_default_password(@zip, password)
       raise Error.new(error) if r == -1
+
       password
+    end
+
+    # Returns comment of file at index *index*.
+    def get_file_comment(index : UInt64, flags = 0 : Int32)
+      assert_open
+
+      ptr = LibZip.zip_file_get_comment(@zip, index, out len, flags)
+      raise Error.new(error) if ptr == nil
+
+      # return new string
+      String.new(ptr, len)
+    end
+
+    # Returns comment of file at path *path*.
+    def get_file_comment(path : String, flags = 0 : Int32)
+      get_file_comment(name_locate(path), flags)
+    end
+
+    # Set comment of file at *index* to string *comment*.
+    def set_file_comment(index : UInt64, comment : String?, flags = 0 : Int32)
+      assert_open
+
+      # set comment
+      err = if comment != nil
+        LibZip.zip_file_set_comment(@zip, index, comment, comment.bytesize, flags)
+      else
+        LibZip.zip_file_set_comment(@zip, index, nil, 0, flags)
+      end
+
+      # check for error
+      raise Error.new(err) if err == -1
+
+      # return nil
+      nil
+    end
+
+    # Set comment of file path *path* to string *comment*.
+    def set_file_comment(path : String, comment : String?, flags = 0 : Int32)
+      set_file_comment(name_locate(path), comment, flags)
+    end
+
+    def num_entries(flags = 0 : Int32)
+      assert_open
+
+      # get count, check for error
+      r = LibZip.zip_get_num_entries(@zip, flags)
+      raise Error.new(error) if r == -1
+
+      # return result
+      r
     end
 
     # private methods
