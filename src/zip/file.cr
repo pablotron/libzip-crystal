@@ -22,7 +22,7 @@ module Zip
       
       # close file, check for error
       err = LibZip.zip_fclose(@file) 
-      raise Error.new(err) if err != 0
+      raise Zip::Error.new(err) if err != 0
 
       # flag instance as closed
       @open = false

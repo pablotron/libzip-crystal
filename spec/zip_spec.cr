@@ -107,14 +107,17 @@ describe "Zip" do
 
       # read test files from zip
       Zip::Archive.open(ZIP_PATH) do |zip|
+        # create buffer
         buf = Slice(UInt8).new(1024)
 
-        TEST_FILES.each do |file|
-          # open file and read it into buffer
-          len = zip.open(file).read(buf)
-
-          # check file contents
-          String.new(buf[0, len]).should eq file
+        TEST_FILES.each do |path|
+          zip.open(path) do |fh|
+            String.build do |b|
+              while ((len = fh.read(buf)) > 0)
+                b.write(buf[0, len])
+              end
+            end.should eq path
+          end
         end
       end
     end
