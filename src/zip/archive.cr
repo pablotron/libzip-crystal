@@ -398,7 +398,8 @@ module Zip
 
     # Add directory to archive at path *path*.
     #
-    # Raises an exception if this `Archive` is not open.
+    # Raises an exception if this `Archive` is not open, or if dir could
+    # not be added.
     #
     # ### Example
     #
@@ -418,7 +419,8 @@ module Zip
 
     # Replace entry at index *index* with `Source` *source*.
     #
-    # Raises an exception if this `Archive` is not open.
+    # Raises an exception if this `Archive` is not open, or if file
+    # could not be replaced.
     #
     # ### Example
     #
@@ -435,7 +437,8 @@ module Zip
 
     # Replace entry at path *path* with `Source` *source*.
     #
-    # Raises an exception if this `Archive` is not open.
+    # Raises an exception if this `Archive` is not open, or if file
+    # could not be replaced.
     #
     # ### Example
     #
@@ -450,7 +453,8 @@ module Zip
 
     # Replace entry at index *index* with contents *body*.
     #
-    # Raises an exception if this `Archive` is not open.
+    # Raises an exception if this `Archive` is not open, or if file
+    # could not be replaced.
     #
     # ### Example
     #
@@ -463,7 +467,8 @@ module Zip
 
     # Replace entry at path *path* with contents *body*.
     #
-    # Raises an exception if this `Archive` is not open.
+    # Raises an exception if this `Archive` is not open, or if file
+    # could not be replaced.
     #
     # ### Example
     #
@@ -475,6 +480,15 @@ module Zip
     end
 
     # Rename file at *index* to path *new_path*.
+    #
+    # Raises an exception if this `Archive` is not open, or if file
+    # could not be renamed.
+    #
+    # ### Example
+    #
+    #     # rename first file to "new-file.txt"
+    #     zip.rename(0, "new-file.txt")
+    #
     def rename(index : UInt64, new_path : String, flags = 0 : Int32)
       assert_open
 
@@ -485,6 +499,15 @@ module Zip
     end
 
     # Rename file named *old_path* to new path *new_path*.
+    #
+    # Raises an exception if this `Archive` is not open, or if file
+    # could not be renamed.
+    #
+    # ### Example
+    #
+    #     # rename "foo.txt" to "new-file.txt"
+    #     zip.rename("foo.txt", "new-file.txt")
+    #
     def rename(old_path : String, new_path : String, flags = 0 : Int32)
       rename(name_locate_throws(old_path), new_path, flags)
     end
