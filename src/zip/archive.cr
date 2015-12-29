@@ -208,14 +208,29 @@ module Zip
     def error : ErrorCode
       assert_open
 
-      LibZip.zip_error_get(@zip, out err, out sys)
+      LibZip.zip_error_get(@zip, out err, out unused)
 
-      if err != 0 && sys != 0
-        # TODO: do something with sys error?
-        # puts "sys: #{sys}"
-      end
-
+      # wrap and return result
       ErrorCode.new(err)
+    end
+
+    # Return last system error.
+    #
+    # Raises an exception if this `Archive` is not open.
+    #
+    # ### Example
+    #
+    #     # get and print last system error
+    #     puts zip.system_error
+    #
+    def system_error : LibC::Int
+      assert_open
+
+      # get system error
+      LibZip.zip_error_get(@zip, out unused, out r)
+
+      # return result
+      r
     end
 
     # Clear last archive error code.

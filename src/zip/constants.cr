@@ -7,7 +7,7 @@ module Zip
   # example:
   #
   #     # set CREATE and EXCL flags
-  #     flags = (Zip::OpenFlag::CREATE | Zip::OpenFlag::EXCL).value
+  #     flags = Zip::OpenFlag.flags(CREATE, EXCL).value
   #
   #     # open archive with specified flags
   #     Zip::Archive.open("foo.zip", flags) do |zip|
@@ -77,28 +77,34 @@ module Zip
     OVERWRITE   = 8192
   end
 
-  # Archive global flags.  libzip-crystal does not currently use these
-  # constants.
-  enum ArchiveFlag
-    # torrent zipped
-    TORRENT = 1
+# 
+#   # Archive global flags.  libzip-crystal does not currently use these
+#   # constants.
+#   enum ArchiveFlag
+#     # torrent zipped
+#     TORRENT = 1
+# 
+#     #  read only -- cannot be cleared
+#     RDONLY =  2
+#   end
+# 
 
-    #  read only -- cannot be cleared
-    RDONLY =  2
-  end
+# 
+#   # Extra fields.  libzip-crystal does not currently use these constants.
+#   enum ExtraField : UInt16
+#     ALL	= 65535
+#     NEW	= 65535
+#   end
+# 
 
-  # Extra fields.  libzip-crystal does not currently use these constants.
-  enum ExtraField : UInt16
-    ALL	= 65535
-    NEW	= 65535
-  end
-
-  # Compression and encryption source flags.  libzip-crystal does not
-  # currently use these constants.
-  enum Codec
-    DECODE = 0 # decompress/decrypt (encode flag not set)
-    ENCODE = 1 # compress/encrypt
-  end
+# 
+#   # Compression and encryption source flags.  libzip-crystal does not
+#   # currently use these constants.
+#   enum Codec
+#     DECODE = 0 # decompress/decrypt (encode flag not set)
+#     ENCODE = 1 # compress/encrypt
+#   end
+# 
 
   # Type of error.
   enum ErrorType
@@ -201,31 +207,32 @@ module Zip
     UNKNOWN = 0xffff
   end
 
-  @[Flags]
-  enum OpSys
-    DOS           = 0x00
-    AMIGA         = 0x01
-    OPENVMS       = 0x02
-    UNIX          = 0x03
-    VM_CMS        = 0x04
-    ATARI_ST      = 0x05
-    OS_2          = 0x06
-    MACINTOSH     = 0x07
-    Z_SYSTEM      = 0x08
-    CPM           = 0x09
-    WINDOWS_NTFS  = 0x0a
-    MVS           = 0x0b
-    VSE           = 0x0c
-    ACORN_RISC    = 0x0d
-    VFAT          = 0x0e
-    ALTERNATE_MVS = 0x0f
-    BEOS          = 0x10
-    TANDEM        = 0x11
-    OS_400        = 0x12
-    OS_X          = 0x13
-
-    DEFAULT       = 0x03 # UNIX
-  end
+# 
+#   enum OS
+#     DOS           = 0x00
+#     AMIGA         = 0x01
+#     OPENVMS       = 0x02
+#     UNIX          = 0x03
+#     VM_CMS        = 0x04
+#     ATARI_ST      = 0x05
+#     OS_2          = 0x06
+#     MACINTOSH     = 0x07
+#     Z_SYSTEM      = 0x08
+#     CPM           = 0x09
+#     WINDOWS_NTFS  = 0x0a
+#     MVS           = 0x0b
+#     VSE           = 0x0c
+#     ACORN_RISC    = 0x0d
+#     VFAT          = 0x0e
+#     ALTERNATE_MVS = 0x0f
+#     BEOS          = 0x10
+#     TANDEM        = 0x11
+#     OS_400        = 0x12
+#     OS_X          = 0x13
+# 
+#     DEFAULT       = 0x03 # UNIX
+#   end
+# 
 
   # Constants passed to user-provided `ProcSource` proc.  See
   # `ProcSource` for usage.
@@ -249,9 +256,11 @@ module Zip
     FREE
   end
 
-  enum SourceError
-    LOWER = -2
-  end
+# 
+#   enum SourceError
+#     LOWER = -2
+#   end
+# 
 
   @[Flags]
   # Flags used to indicate which fields are valid in a `LibZip::Stat`
