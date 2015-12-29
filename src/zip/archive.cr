@@ -428,6 +428,24 @@ module Zip
       add(dst_path, FileSource.new(self, src_path, start, len), flags)
     end
 
+    # Add file *path* to archive as *path*.
+    #
+    # Raises an exception if this `Archive` is not open.
+    #
+    # ### Example
+    #
+    #     # add "/path/to/file.txt" to archive
+    #     zip.add_file("/path/to/file.txt")
+    #
+    def add_file(
+      path      : String,
+      start = 0 : UInt64,
+      len = -1  : Int64,
+      flags = 0 : Int32
+    )
+      add_file(path, path, start, len, flags)
+    end
+
     # Add directory to archive at path *path*.
     #
     # Raises an exception if this `Archive` is not open, or if dir could
