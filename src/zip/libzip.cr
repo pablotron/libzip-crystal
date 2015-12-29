@@ -1,4 +1,12 @@
 module Zip
+  @[Link("c")]
+  lib C
+    fun fdopen(
+      fd    : LibC::Int,
+      mode  : UInt8*
+    ) : Void*
+  end
+
   #
   # Bindings for native libzip calls
   #
