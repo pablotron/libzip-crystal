@@ -222,74 +222,31 @@ module Zip
     STAT_SIZE = sizeof(LibZip::Stat)
     ERRS_SIZE = Int64.new(sizeof(LibC::Int) * 2)
 
-    def self.handle(
-      user_data : Void*,
-      data      : Void*,
-      len       : UInt64,
-      action    : Int32
-    ) : Int64
-      source = Pointer(CustomSource).new(user_data.address) as CustomSource
+    getter proc
+    getter user_data
 
-      # wrap action
-      a = CustomSourceAction.new(action)
+    def initialize(
+      zip         : Archive,
+      @proc       : Action, Slice(UInt8), Void* -> Int64,
+      @user_data  : Void*
+    )
+      super(zip, LibZip.zip_source_function(zip.zip, wrap_proc, self as Void*))
+    end
 
-      0_i64 + if a.open?
-        source.source_open
-      elsif a.read?
-        source.source_read(Slice(UInt8).new(data, len))
-      elsif a.close?
-        source.source_close
-        0 # always return 0
-      elsif a.stat?
-        source.source_stat(Pointer(LibZip::Stat).new(data.address))
-        STAT_SIZE
-      elsif a.error?
-        slice = Slice(LibC::Int).new(Pointer(LibC::Int).new(data.address), 2)
-        source.source_error(slice)
-        ERRS_SIZE
-      elsif a.free?
-        source.source_free
-        0_i64 # always return 0
-      else
-        # unknown action, return error
-        -1
+    private def wrap_proc
+      ->(
+        user_data     : Void*,
+        data          : UInt8*,
+        len           : UInt64,
+        action_value  : Int32) do
+        # get source, action, and slice
+        source = user_data as ProcSource
+        action = Action.new(action_value)
+        slice = Slice(UInt8).new(data, len)
+
+        # call real proc with action, slice, and data
+        source.proc.call(action, slice, source.user_data)
       end
     end
-
-
-    # FIXME: this is almost certainly broken
-    def initialize(
-      zip       : Archive,
-      proc      : Void*, UInt8*, UInt64, Int32 -> Int64,
-      user_data : Void*
-    )
-      super(zip, LibZip.zip_source_function(zip.zip, proc, user_data))
-    end
-#
-#
-#     def source_open
-#       0
-#     end
-#
-#     def source_close()
-#       # stub, do nothing
-#     end
-#
-#     def source_read(slice : Slice(UInt8))
-#       puts "in CustomSource#source_read"
-#       0
-#     end
-#
-#     def source_stat(ptr : Pointer(LibZip::Stat))
-#       0
-#     end
-#
-#     def source_error(errs : Slice(LibC::Int))
-#       0
-#     end
-#
-#     def source_free
-#     end
-#
   end
 end

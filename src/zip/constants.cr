@@ -215,7 +215,7 @@ module Zip
     DEFAULT       = 0x03 # UNIX
   end
 
-  enum SourceAction
+  enum Action
     # prepare for reading
     OPEN
 

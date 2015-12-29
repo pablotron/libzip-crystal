@@ -3,54 +3,66 @@ require "./spec_helper"
 ZIP_PATH = "spec/out/test.zip"
 BAD_PATH = "/dev/null/bad.zip"
 TEST_FILES = %w{foo.txt bar.png baz.jpeg blum.html}
+TEST_STRING = "This is a test string."
 
-class TestCustomSource
-  DATA = "This is a test string."
+class TestProcSource < Zip::ProcSource
+  property pos
+  property data
 
-  def initialize(zip)
-    @data = DATA.to_slice
+  def initialize(zip, data)
     @pos = 0
+    @data = data.to_slice
 
     super(zip, ->(
-      user_data     : Void*, 
-      data          : UInt8*, 
-      len           : UInt64, 
-      action_value  : Int32) do
-      source = user_data as TestCustomSource
-      action = Zip::SourceAction.new(action_value)
+      action    : Zip::Action,
+      slice     : Slice(UInt8),
+      user_data : Void*) {
+      me = user_data as TestProcSource
 
-      if action.open?
-        source.source_open
-      elsif action.read?
-        source.source_read(Slice.new(data, len))
+      # coerce result to i64
+      0_i64 + case action
+      when .open?
+        # puts "open"
+        # reset position
+        me.pos = 0
+
+        0
+      when .read?
+        if me.pos < data.bytesize
+          # get shortest length
+          len = me.data.bytesize - me.pos
+          len = slice.bytesize if slice.bytesize < len
+          # puts "read: len = #{len}"
+
+          if len > 0
+            slice.copy_from(me.data[me.pos, len].to_unsafe, len)
+            # puts "slice: " + String.new(slice[0, len])
+            me.pos += len
+          end
+
+          # return length
+          len
+        else
+          # puts "read: done"
+          0
+        end
+      when .stat?
+        st_size = sizeof(Zip::LibZip::Stat)
+
+        st = Zip::LibZip::Stat.new(
+          valid:  Zip::StatFlag::SIZE.value,
+          size:   me.data.bytesize
+        )
+
+        slice.copy_from(pointerof(st) as Pointer(UInt8), st_size)
+
+        # return sizeof stat
+        st_size
       else
+        # do nothing
         0
       end
-    end, Pointer(Void).new(self.object_id))
-  end
-
-  def source_open
-    @pos = 0
-  end
-
-  def source_read(slice : Slice(UInt8))
-    puts "in TestCustomSource#source_read"
-    if @pos < @data.bytesize
-      # get shortest length
-      len = @data.bytesize - @pos
-      len = slice.bytesize if slice.bytesize < len
-
-      # get data pointer
-      ptr = Pointer(UInt8).new(@data.to_unsafe.address) + @pos
-
-      slice.copy_from(ptr, len)
-      @pos += len
-
-      # return length
-      len
-    else
-      0
-    end
+    }, self as Pointer(Void))
   end
 end
 
@@ -150,7 +162,7 @@ describe "Zip" do
 
       # populate zip with test files
       Zip::Archive.create(ZIP_PATH) do |zip|
-        TEST_FILES.each do |file| 
+        TEST_FILES.each do |file|
           zip.add(file, file)
         end
       end
@@ -178,7 +190,7 @@ describe "Zip" do
 
       # populate zip with test files
       Zip::Archive.create(ZIP_PATH) do |zip|
-        TEST_FILES.each do |file| 
+        TEST_FILES.each do |file|
           zip.add(file, file)
         end
       end
@@ -196,17 +208,30 @@ describe "Zip" do
     end
 
     it "can read files from a custom source" do
-
       # remove test zip
       File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
       # populate zip with test files
       Zip::Archive.create(ZIP_PATH) do |zip|
-        TEST_FILES.each do |file| 
-          zip.add(file, file)
-        end
+        # add "text.txt" from custom Zip::ProcSource
+        zip.add("test.txt", TestProcSource.new(zip, TEST_STRING))
+      end
 
-        zip.add("test.txt", TestCustomSource.new(zip))
+      # open zip file for reading
+      Zip::Archive.open(ZIP_PATH) do |zip|
+        # create buffer
+        size = zip.stat("test.txt").size
+        buf = Slice(UInt8).new(1024)
+
+        # read "test.txt" into string buffer, then compare buffer to
+        # TEST_STRING
+        zip.open("test.txt") do |fh|
+          String.build do |b|
+            while ((len = fh.read(buf)) > 0)
+              b.write(buf[0, len])
+            end
+          end
+        end.should eq TEST_STRING
       end
     end
   end
