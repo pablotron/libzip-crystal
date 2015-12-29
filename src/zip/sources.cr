@@ -135,7 +135,7 @@ module Zip
   #         source = ArchiveSource.new(dst_zip, src_zip, "some-file.txt")
   #
   #         # add to destination archive as "foo.txt"
-  #         zip.add("foo.txt", source)
+  #         dst_zip.add("foo.txt", source)
   #       end
   #     end
   #
