@@ -174,7 +174,7 @@ describe "Zip" do
     end
 
     describe "#open" do
-      it "can read a file from an archive" do
+      it "can open and read files" do
         # remove test zip
         File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
@@ -204,7 +204,7 @@ describe "Zip" do
     end
 
     describe "#read" do
-      it "can read chunks of a file from an archive" do
+      it "can read chunks of a file" do
         # remove test zip
         File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
@@ -229,7 +229,7 @@ describe "Zip" do
     end
 
     describe "#stat" do
-      it "can stat files in an archive" do
+      it "can stat files" do
         # remove test zip
         File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
@@ -251,7 +251,7 @@ describe "Zip" do
     end
 
     describe "#replace" do
-      it "can replace files in an archive" do
+      it "can replace files" do
         # remove test zip
         File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
@@ -281,7 +281,7 @@ describe "Zip" do
     end
 
     describe "#rename" do
-      it "can rename files in an archive" do
+      it "can rename files" do
         # remove test zip
         File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
@@ -309,7 +309,7 @@ describe "Zip" do
     end
 
     describe "#delete" do
-      it "can delete files from an archive" do
+      it "can delete files" do
         # remove test zip
         File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
@@ -334,6 +334,84 @@ describe "Zip" do
         Zip::Archive.open(ZIP_PATH) do |zip|
           TEST_FILES.each do |path|
             zip.name_locate(path).should eq -1
+          end
+        end
+      end
+    end
+
+    describe "#set_file_comment" do
+      it "can set and get file comments" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+
+        # populate zip with test files
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          TEST_FILES.each do |file|
+            # add file
+            zip.add(file, file)
+
+            # set comment
+            zip.set_file_comment(file, file + "fdsa")
+          end
+        end
+
+        # open zip file and check file comments
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          TEST_FILES.each do |path|
+            zip.get_file_comment(path).should eq path + "fdsa"
+          end
+        end
+      end
+    end
+
+    describe "#each(&block)" do
+      it "can iterate over files" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+
+        # populate zip with test files
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          TEST_FILES.each do |file|
+            # add file
+            zip.add(file, file)
+
+            # add file
+            zip.set_file_comment(file, file + "fdsa")
+          end
+        end
+
+        # open zip file and enumerate names
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          zip.each do |path|
+            TEST_FILES.includes?(path).should eq true
+          end
+        end
+      end
+    end
+
+    describe "#each" do
+      it "can iterate lazily over files" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+
+        # populate zip with test files
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          TEST_FILES.each do |file|
+            # add file
+            zip.add(file, file)
+
+            # add file
+            zip.set_file_comment(file, file + "fdsa")
+          end
+        end
+
+        # open zip file and iterate names lazily
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          # create iterator
+          names = zip.each
+
+          names.take(2).to_a.each do |name|
+            TEST_FILES.includes?(name).should eq true
           end
         end
       end
