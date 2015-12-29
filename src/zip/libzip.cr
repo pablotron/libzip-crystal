@@ -195,15 +195,22 @@ module Zip
       zip:          ZipArchive,
       path:         UInt8*,
       source:       ZipSource,
-      flags: UInt32
+      flags:        UInt32
     ): UInt64
 
     fun zip_file_replace(
       zip:          ZipArchive,
       index:        UInt64,
       source:       ZipSource,
-      flags: UInt32
+      flags:        UInt32
     ): UInt64
+
+    fun zip_file_rename(
+      zip:          ZipArchive,
+      index:        UInt64,
+      new_name:     UInt8*,
+      flags:        UInt32
+    ): LibC::Int
 
     # compression method
     fun zip_set_file_compression(

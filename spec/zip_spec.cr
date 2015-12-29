@@ -279,6 +279,34 @@ describe "Zip" do
         end
       end
     end
+
+    describe "#rename" do
+      it "can rename files in an archive" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+
+        # populate zip with test files
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          TEST_FILES.each do |file|
+            zip.add(file, file)
+          end
+        end
+
+        # open zip file and rename test files
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          TEST_FILES.each do |path|
+            zip.rename(path, "foo#{path}")
+          end
+        end
+
+        # open zip file and check for renamed files
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          TEST_FILES.each do |path|
+            zip.stat("foo#{path}").size.should eq path.bytesize
+          end
+        end
+      end
+    end
   end
 
   describe "ProcSource" do
