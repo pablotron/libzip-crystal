@@ -237,7 +237,7 @@ module Zip
 
     fun zip_source_function(
       zip:          ZipArchive,
-      cb:           (Void*, Void*, UInt64, Int32) -> Int64,
+      cb:           (Void*, UInt8*, UInt64, Int32) -> Int64,
       data:         Void*
     ): ZipSource
 

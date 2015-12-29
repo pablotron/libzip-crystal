@@ -1,7 +1,19 @@
 module Zip
   @[Flags]
-  # Flags for `Zip::Archive.new`, `Zip::Archive.open`, and
-  # `Zip::Archive.create`.
+  # Flags for `Archive` class methods that open archives, such as
+  # `Zip::Archive#new`, `Zip::Archive#open`, and `Zip::Archive#create`.
+  #
+  # You can pass more than one flag by by ORing them together.  For
+  # example:
+  #
+  #     # set CREATE and EXCL flags
+  #     flags = (Zip::OpenFlag::CREATE | Zip::OpenFlag::EXCL).value
+  #
+  #     # open archive with specified flags
+  #     Zip::Archive.open("foo.zip", flags) do |zip|
+  #       # do stuff with zip here
+  #       zip.add("bar.txt", "hello")
+  #     end
   enum OpenFlag
     # Create archive if it does not exist.
     CREATE         = 1
@@ -66,8 +78,11 @@ module Zip
 
   # archive global flags
   enum ArchiveFlag
-    TORRENT = 1 #  torrent zipped
-    RDONLY =  2 #  read only -- cannot be cleared
+    # torrent zipped
+    TORRENT = 1
+
+    #  read only -- cannot be cleared
+    RDONLY =  2
   end
 
   # extra fields
@@ -200,7 +215,7 @@ module Zip
     DEFAULT       = 0x03 # UNIX
   end
 
-  enum SourceCommand
+  enum SourceAction
     # prepare for reading
     OPEN
 

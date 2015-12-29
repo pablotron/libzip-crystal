@@ -1,6 +1,52 @@
 require "./constants"
 
 module Zip
+  # Main zip archive class.  Use the `Archive.create` and `Archive.open`
+  # class methods to create a new archive or open an existing archive,
+  # respectively.
+  #
+  # Examples:
+  #
+  #     # create a new archive named foo.zip and populate it
+  #     Zip::Archive.create("foo.zip") do |zip|
+  #       # add file "/path/to/foo.txt" to archive as "bar.txt"
+  #       zip.add_file("bar.txt", "/path/to/foo.txt")
+  #
+  #       # add file "baz.txt" with contents "hello world!"
+  #       zip.add("baz.txt", "hello world!")
+  #     end
+  #
+  #     # open existing archive "foo.zip" and extract "bar.txt" from it
+  #     Zip::Archive.open("foo.zip") do |zip|
+  #       # create slice buffer
+  #       buf = new Slice(UInt8).new(1024)
+  #
+  #       # create string builder
+  #       str = String.build do |b|
+  #         # open file from zip
+  #         zip.open("bar.txt") do |file|
+  #           # read file in chunks
+  #           while ((len = file.read(buf)) > 0)
+  #             b.write(buf[0, len])
+  #           end
+  #         end
+  #       end
+  #
+  #       # print contents of bar.txt
+  #       puts "contents of bar.txt: #{str}"
+  #     end
+  #
+  # You can also use `Zip::Archive` imperatively, like this:
+  #
+  #     # create foo.zip
+  #     zip = Zip::Archive.create("foo.zip")
+  #
+  #     # add bar.txt
+  #     zip.add("bar.txt", "sample contents of bar.txt")
+  #
+  #     # close and write zip file
+  #     zip.close
+  #
   class Archive
     include Enumerable(String)
     include Iterable
@@ -9,6 +55,30 @@ module Zip
 
     # Create `Archive` instance from file *path*, pass instance to the
     # given block *block*, then close the archive when the block exits.
+    #
+    # Raises an exception if `Archive` could not be opened.
+    #
+    # Example:
+    #
+    #     # open existing archive "foo.zip" and extract "bar.txt" from it
+    #     Zip::Archive.open("foo.zip") do |zip|
+    #       # create slice buffer
+    #       buf = new Slice(UInt8).new(1024)
+    #
+    #       # create string builder
+    #       str = String.build do |b|
+    #         # open file from zip
+    #         zip.open("bar.txt") do |file|
+    #           # read file in chunks
+    #           while ((len = file.read(buf)) > 0)
+    #             b.write(buf[0, len])
+    #           end
+    #         end
+    #       end
+    #
+    #       # print contents of bar.txt
+    #       puts "contents of bar.txt: #{str}"
+    #     end
     #
     # See Also:
     # * `#create(String, Int32)`
@@ -36,6 +106,19 @@ module Zip
     # the given block *block*, then close the archive when the block
     # exits.
     #
+    # Raises an exception if `Archive` could not be opened.
+    #
+    # Example:
+    #
+    #     # create a new archive named foo.zip and populate it
+    #     Zip::Archive.create("foo.zip") do |zip|
+    #       # add file "/path/to/foo.txt" to archive as "bar.txt"
+    #       zip.add_file("bar.txt", "/path/to/foo.txt")
+    #
+    #       # add file "baz.txt" with contents "hello world!"
+    #       zip.add("baz.txt", "hello world!")
+    #     end
+    #
     # See Also:
     # * `#open(String, Int32)`
     def self.create(path : String, flags = CREATE_FLAGS : Int32, &block)
@@ -45,6 +128,19 @@ module Zip
     end
 
     # Create `Archive` instance from file *path*.
+    #
+    # Raises an exception if `Archive` could not be opened.
+    #
+    # Example:
+    #
+    #     # create foo.zip
+    #     zip = Zip::Archive.create("foo.zip")
+    #
+    #     # add bar.txt
+    #     zip.add("bar.txt", "sample contents of bar.txt")
+    #
+    #     # close and write zip file
+    #     zip.close
     #
     # See Also:
     # * `#open(String, Int32)`
@@ -61,6 +157,20 @@ module Zip
     end
 
     # Create a `Archive` instance from the file *path*.
+    #
+    # Raises an exception if `Archive` could not be opened.
+    #
+    # Example:
+    #
+    #     # create foo.zip
+    #     zip = Zip::Archive.new("foo.zip", Zip::OpenFlags::CREATE.value)
+    #
+    #     # add bar.txt
+    #     zip.add("bar.txt", "sample contents of bar.txt")
+    #
+    #     # close and write zip file
+    #     zip.close
+    #
     def initialize(path : String, flags = 0 : Int32)
       # open from path
       zip = LibZip.zip_open(path, flags, out err)
@@ -68,6 +178,10 @@ module Zip
     end
 
     # Returns `Archive` instance from `IO::FileDescriptor` *fd*.
+    #
+    # Raises an exception if `Archive` could not be opened.
+    # 
+    # TODO
     def initialize(fd : IO::FileDescriptor, flags = 0 : Int32)
       # open from fd
       zip = LibZip.zip_fdopen(fd.fd, flags, out err)
@@ -75,6 +189,14 @@ module Zip
     end
 
     # Return last archive error as an `ErrorCode` instance.
+    #
+    # Raises an exception if this `Archive` is not open.
+    #
+    # Example:
+    #
+    #     # get and print last error
+    #     puts zip.error
+    #
     def error : ErrorCode
       assert_open
 
@@ -89,6 +211,14 @@ module Zip
     end
 
     # Clear last archive error code.
+    #
+    # Raises an exception if this `Archive` is not open.
+    #
+    # Example:
+    #
+    #     # clear last error
+    #     zip.clear_error
+    #
     def clear_error
       assert_open
 
@@ -97,12 +227,26 @@ module Zip
     end
 
     # Returns *true* if this `Archive` is open, or *false* otherwise.
+    #
+    # Example:
+    #
+    #     # clear last error
+    #     puts "zip is %s" % [zip.open? ? "open" : "closed"]
+    #
     def open?
       @open
     end
 
     # Close this `Archive`.  If *discard* is true, then discard any
     # changes.
+    #
+    # Raises an exception if this `Archive` is not open or if the
+    # archive could not be closed.
+    #
+    # Example:
+    #
+    #     # close zip file
+    #     zip.close
     #
     # See also: `#discard`.
     def close(discard = false : Bool)
@@ -124,13 +268,30 @@ module Zip
     # Discard any changes and close this `Archive`.  Equivalent to
     # `#close(true)`.
     #
+    # Raises an exception if this `Archive` is not open or if the
+    # archive could not be closed.
+    #
+    # Example:
+    #
+    #     # close zip file and discard changes
+    #     zip.discard
+    #
     # See also: `#close`.
     def discard
       close(true)
     end
 
-    # Set the comment for the entire archive.  Comment must be encoded
-    # in ASCII or UTF-8.  Returns comment string.
+    # Set and return the comment for the entire archive.  Comment must
+    # be encoded in ASCII or UTF-8.  Returns comment string.
+    #
+    # Raises an exception if this `Archive` is not open or if the
+    # comment could not be set.
+    #
+    # Example:
+    #
+    #     # set archive comment
+    #     zip.comment = "this is a test comment"
+    #
     def comment=(s : String) : String
       assert_open
 
@@ -142,16 +303,38 @@ module Zip
       @comment = s
     end
 
-    # Returns comment for the entire archive.
-    def comment(flags = 0 : Int32) : String
+    # Returns comment for the entire archive, or nil if there is no
+    # comment set.
+    #
+    # Raises an exception if this `Archive` is not open.
+    #
+    # Example:
+    #
+    #     # get archive comment and print it
+    #     if comment = zip.comment
+    #       puts comment
+    #     end
+    #
+    def comment(flags = 0 : Int32) : String?
       assert_open
 
       ptr = LibZip.zip_get_archive_comment(@zip, out len, flags)
-      String.new(ptr, len)
+      (ptr != nil) ? String.new(ptr, len) : nil
     end
 
-    # Add entry *path* to archive from given `Source` *source* and
-    # return index of new entry.
+    # Add given `Zip::Source` *source* to archive as *path* and return
+    # index of new entry.
+    #
+    # Raises an exception if this `Archive` is not open or if *source*
+    # could not be added.
+    #
+    # Example:
+    #
+    #     # create a new string source
+    #     src = Zip::StringSource.new("test string")
+    #
+    #     # add to archive as "foo.txt"
+    #     zip.add("foo.txt", src)
     #
     # See also: `#add(String, String, Int32)`.
     def add(path : String, source : Source, flags = 0 : Int32)
@@ -167,20 +350,42 @@ module Zip
 
     # Add archive entry *path* with content *body*.
     #
-    # See also: `#add(String, Source, Int32)`.
+    # Raises an exception if this `Archive` is not open.
+    #
+    # Example:
+    #
+    #     # add "foo.txt" to archive with body "hello from foo.txt"
+    #     zip.add("foo.txt", "hello from foo.txt")
+    #
     def add(path : String, body : String, flags = 0 : Int32)
       add(path, StringSource.new(self, body), flags)
     end
 
     # Add archive entry *path* with content *body*.
     #
-    # See also: `#add(String, Source, Int32)`.
+    # Raises an exception if this `Archive` is not open.
+    #
+    # Example:
+    #
+    #     # create slice
+    #     slice = Slice.new(10) { |i| i + 10 }
+    #
+    #     # add slice to archive as "foo.txt"
+    #     zip.add("foo.txt", slice)
+    #
     def add(path : String, slice : Slice, flags = 0 : Int32)
       add(path, SliceSource.new(self, slice), flags)
     end
 
-    # Add source file *src_file* to archive at destination path
-    # *dst_path*.
+    # Add file *src_path* to archive as *dst_path*.
+    #
+    # Raises an exception if this `Archive` is not open.
+    #
+    # Example:
+    #
+    #     # add "/path/to/file.txt" to archive as "foo.txt"
+    #     zip.add("foo.txt", "/path/to/file.txt")
+    #
     def add_file(
       dst_path : String,
       src_path : String,
@@ -188,10 +393,18 @@ module Zip
       len = -1 : Int64,
       flags = 0 : Int32
     )
-      add(src_path, FileSource.new(self, dst_path, start, len), flags)
+      add(dst_path, FileSource.new(self, src_path, start, len), flags)
     end
 
     # Add directory to archive at path *path*.
+    #
+    # Raises an exception if this `Archive` is not open.
+    #
+    # Example:
+    #
+    #     # add directory "some-dir" to archive
+    #     zip.add_dir("some-dir")
+    #
     def add_dir(path : String, flags = 0 : Int32)
       assert_open
 
