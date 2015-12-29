@@ -215,23 +215,25 @@ module Zip
     DEFAULT       = 0x03 # UNIX
   end
 
+  # Constants passed to user-provided `ProcSource` proc.  See
+  # `ProcSource` for usage.
   enum Action
-    # prepare for reading
+    # Open source and prepare it for reading.
     OPEN
 
-    # read data
+    # Read data.
     READ
 
-    # reading is done
+    # Reading is done.
     CLOSE
 
-    # get meta information
+    # Get meta information.
     STAT
 
-    # get error information
+    # Get error information.
     ERROR
 
-    # cleanup and free resources
+    # Clean up and free resources.
     FREE
   end
 

@@ -216,10 +216,28 @@ module Zip
     end
   end
 
-  # Use arbitrary proc as source for an `Archive#add` or
-  # `Archive#replace`.
+  # Use arbitrary proc as data source for an `Archive#add` or
+  # `Archive#replace`.  The `ProcSource#new` takes the following
+  # arguments:
   #
-  # Example:
+  # * *zip*: Destination `Archive`.
+  # * *proc*: Proc used for file operations.  See below for arguments.
+  # * *user_data*: `Void*` pointer for user data passed to proc.
+  #
+  # ### Proc Arguments
+  # * *action*: `Action` indicating which action the proc should perform (see "Actions" below).
+  # * *slice*: Data slice used by the _READ_, _STAT_, and _ERROR_ `Action`s.
+  # * *user_data*: *user_data* from above.  Used to pass data to proc.
+  #
+  # ### Actions
+  # * `Action::OPEN`: Prepare for reading.  Return 0 on succes, or -1 on error.
+  # * `Action::READ`: Read data into `slice`.  Return the number of bytes read, or -1 on error.
+  # * `Action::CLOSE`: Reading is done.  Return 0.
+  # * `Action::STAT`: Get meta information for input data.  `slice` points to an allocated `LibZip::Stat` structure.  Return ```sizeof(Zip::LibZip::Stat)``` on success, or -1 on error.
+  # * `Action::ERROR`: Get error information.  `slice` points to an array of `LibC::Int` values which should be filled in with the corresponding `ErrorCode` and (if applicable) system error code.  Return ```2 * sizeof(LibC::Int)```.
+  # * `Action::FREE`: Clean up resources.  Return 0.
+  #
+  # ### Example
   #
   #     # sample string data
   #     TEST_STRING = "This is a test string."
