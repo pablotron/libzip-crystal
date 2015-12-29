@@ -358,9 +358,9 @@ module Zip
     #     zip.add("foo.txt", src)
     #
     def add(
-      path      : String,
-      source    : Source,
-      flags = 0 : Int32
+      path          : String,
+      source        : Source,
+      flags = 0_u32 : UInt32
     )
       assert_open
 
@@ -382,9 +382,9 @@ module Zip
     #     zip.add("foo.txt", "hello from foo.txt")
     #
     def add(
-      path      : String,
-      body      : String,
-      flags = 0 : Int32
+      path          : String,
+      body          : String,
+      flags = 0_u32 : UInt32
     )
       add(path, StringSource.new(self, body), flags)
     end
@@ -402,9 +402,9 @@ module Zip
     #     zip.add("foo.txt", slice)
     #
     def add(
-      path      : String,
-      slice     : Slice,
-      flags = 0 : Int32
+      path          : String,
+      slice         : Slice,
+      flags = 0_u32 : UInt32
     )
       add(path, SliceSource.new(self, slice), flags)
     end
@@ -419,11 +419,11 @@ module Zip
     #     zip.add("foo.txt", "/path/to/file.txt")
     #
     def add_file(
-      dst_path  : String,
-      src_path  : String,
-      start = 0 : UInt64,
-      len = -1  : Int64,
-      flags = 0 : Int32
+      dst_path      : String,
+      src_path      : String,
+      start = 0_u64 : UInt64,
+      len = -1_i64  : Int64,
+      flags = 0_u32 : UInt32
     )
       add(dst_path, FileSource.new(self, src_path, start, len), flags)
     end
@@ -438,10 +438,10 @@ module Zip
     #     zip.add_file("/path/to/file.txt")
     #
     def add_file(
-      path      : String,
-      start = 0 : UInt64,
-      len = -1  : Int64,
-      flags = 0 : Int32
+      path          : String,
+      start = 0_u64 : UInt64,
+      len = -1_i64  : Int64,
+      flags = 0_u32 : UInt32
     )
       add_file(path, path, start, len, flags)
     end
