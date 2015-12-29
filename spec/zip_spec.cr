@@ -307,6 +307,37 @@ describe "Zip" do
         end
       end
     end
+
+    describe "#delete" do
+      it "can delete files from an archive" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+
+        # populate zip with test files
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          TEST_FILES.each do |file|
+            zip.add(file, file)
+          end
+
+          # add one more file (so there is at least one)
+          zip.add("random.txt", "random")
+        end
+
+        # open zip file and delete test files
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          TEST_FILES.each do |path|
+            zip.delete(path)
+          end
+        end
+
+        # open zip file and check for deleted files
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          TEST_FILES.each do |path|
+            zip.name_locate(path).should eq -1
+          end
+        end
+      end
+    end
   end
 
   describe "ProcSource" do
