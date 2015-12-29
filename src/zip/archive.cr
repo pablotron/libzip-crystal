@@ -248,7 +248,6 @@ module Zip
     #     # close zip file
     #     zip.close
     #
-    # See also: `#discard`.
     def close(discard = false : Bool)
       assert_open
 
@@ -276,7 +275,6 @@ module Zip
     #     # close zip file and discard changes
     #     zip.discard
     #
-    # See also: `#close`.
     def discard
       close(true)
     end
@@ -336,7 +334,6 @@ module Zip
     #     # add to archive as "foo.txt"
     #     zip.add("foo.txt", src)
     #
-    # See also: `#add(String, String, Int32)`.
     def add(path : String, source : Source, flags = 0 : Int32)
       assert_open
 
