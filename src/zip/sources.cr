@@ -230,12 +230,12 @@ module Zip
   # * *user_data*: *user_data* from above.  Used to pass data to proc.
   #
   # ### Actions
-  # * `Action::OPEN`: Prepare for reading.  Return 0 on succes, or -1 on error.
-  # * `Action::READ`: Read data into `slice`.  Return the number of bytes read, or -1 on error.
-  # * `Action::CLOSE`: Reading is done.  Return 0.
-  # * `Action::STAT`: Get meta information for input data.  `slice` points to an allocated `LibZip::Stat` structure.  Return ```sizeof(Zip::LibZip::Stat)``` on success, or -1 on error.
-  # * `Action::ERROR`: Get error information.  `slice` points to an array of `LibC::Int` values which should be filled in with the corresponding `ErrorCode` and (if applicable) system error code.  Return ```2 * sizeof(LibC::Int)```.
-  # * `Action::FREE`: Clean up resources.  Return 0.
+  # * `OPEN`: Prepare for reading.  Return 0 on succes, or -1 on error.
+  # * `READ`: Read data into `slice`.  Return the number of bytes read, or -1 on error.
+  # * `CLOSE`: Reading is done.  Return 0.
+  # * `STAT`: Get meta information for input data.  `slice` points to an allocated `LibZip::Stat` structure.  Return ```sizeof(Zip::LibZip::Stat)``` on success, or -1 on error.
+  # * `ERROR`: Get error information.  `slice` points to an array of `LibC::Int` values which should be filled in with the corresponding `ErrorCode` and (if applicable) system error code.  Return ```2 * sizeof(LibC::Int)```.
+  # * `FREE`: Clean up resources.  Return 0.
   #
   # ### Example
   #

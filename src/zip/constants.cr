@@ -14,6 +14,7 @@ module Zip
   #       # do stuff with zip here
   #       zip.add("bar.txt", "hello")
   #     end
+  #
   enum OpenFlag
     # Create archive if it does not exist.
     CREATE         = 1
@@ -31,7 +32,7 @@ module Zip
   end
 
   @[Flags]
-  # zip_name_locate, zip_fopen, zip_stat, etc flags
+  # Flags used by `Archive#name_locate`, `Archive#stat`, `Archive#open`, etc.
   enum FileFlag
     #  guess string encoding (default)
     ENC_GUESS   = 0
@@ -76,7 +77,8 @@ module Zip
     OVERWRITE   = 8192
   end
 
-  # archive global flags
+  # Archive global flags.  libzip-crystal does not currently use these
+  # constants.
   enum ArchiveFlag
     # torrent zipped
     TORRENT = 1
@@ -85,26 +87,34 @@ module Zip
     RDONLY =  2
   end
 
-  # extra fields
+  # Extra fields.  libzip-crystal does not currently use these constants.
   enum ExtraField : UInt16
     ALL	= 65535
     NEW	= 65535
   end
 
-  # compression and encryption source flags
+  # Compression and encryption source flags.  libzip-crystal does not
+  # currently use these constants.
   enum Codec
     DECODE = 0 # decompress/decrypt (encode flag not set)
     ENCODE = 1 # compress/encrypt
   end
 
+  # Type of error.
   enum ErrorType
-    NONE = 0  #  sys_err unused
-    SYS = 1   #  sys_err is errno
-    ZLIB = 2  #  sys_err is zlib error code
+    #  Normal error: sys_err value unused
+    NONE = 0
+
+    #  System Error: sys_err is errno value
+    SYS = 1
+
+    #  ZLib Error: sys_err is zlib error code
+    ZLIB = 2
   end
 
   @[Flags]
-  # compression methods
+  # Compression method used by file.  Used to interpret `comp_method`
+  # field of `LibZip::Stat` structure.
   enum CompressionMethod
     #  better of deflate or store
     DEFAULT = -1
@@ -167,6 +177,8 @@ module Zip
   end
 
   @[Flags]
+  # Encryption method used by file.  Used to interpret `enc_method` field
+  # of `LibZip::Stat` structure.
   enum EncryptionMethod
     # not encrypted
     NONE = 0
@@ -242,15 +254,35 @@ module Zip
   end
 
   @[Flags]
+  # Flags used to indicate which fields are valid in a `LibZip::Stat`
+  # structure.  Check the _valid_ field after a call to `Archive#stat`
+  # before accessing a given field.
   enum StatFlag
+    # name: name of the file
     NAME = 0x0001
+
+    # index: index within archive
     INDEX = 0x0002
+
+    # size: size of the file (uncompressed)
     SIZE = 0x0004
+
+    # comp_size: size of the file (compressed)
     COMP_SIZE = 0x0008
+
+    # mtime: modification time
     MTIME = 0x0010
+
+    # crc: crc of file data
     CRC = 0x0020
+
+    # comp_method: compression method used
     COMP_METHOD = 0x0040
+
+    # enc_method: encryption method used
     ENCRYPTION_METHOD = 0x0080
+
+    # reserved for future use
     FLAGS = 0x0100
   end
 end
