@@ -18,17 +18,11 @@ module Zip
   #
   #     # open existing archive "foo.zip" and extract "bar.txt" from it
   #     Zip::Archive.open("foo.zip") do |zip|
-  #       # create slice buffer
-  #       buf = new Slice(UInt8).new(1024)
-  #
-  #       # create string builder
+  #       # build string
   #       str = String.build do |b|
-  #         # open file from zip
-  #         zip.open("bar.txt") do |file|
-  #           # read file in chunks
-  #           while ((len = file.read(buf)) > 0)
-  #             b.write(buf[0, len])
-  #           end
+  #         # read file in chunks
+  #         zip.read("bar.txt") do |buf, len|
+  #           b.write(buf[0, len])
   #         end
   #       end
   #
@@ -62,17 +56,11 @@ module Zip
     #
     #     # open existing archive "foo.zip" and extract "bar.txt" from it
     #     Zip::Archive.open("foo.zip") do |zip|
-    #       # create slice buffer
-    #       buf = new Slice(UInt8).new(1024)
-    #
     #       # create string builder
     #       str = String.build do |b|
     #         # open file from zip
-    #         zip.open("bar.txt") do |file|
-    #           # read file in chunks
-    #           while ((len = file.read(buf)) > 0)
-    #             b.write(buf[0, len])
-    #           end
+    #         zip.read("bar.txt") do |buf, len|
+    #           b.write(buf[0, len])
     #         end
     #       end
     #
@@ -1046,6 +1034,18 @@ module Zip
     # stat methods #
     ################
 
+    # Return stat information about `path` as a `LibZip::Stat`
+    # structure.
+    #
+    # Raises an exception if this `Archive` is not open or if file could
+    # not be statted.
+    #
+    # ### Example
+    #
+    #     # get size of "foo.txt"
+    #     st = zip.stat("foo.txt")
+    #     puts "file size = #{st.size}"
+    #
     def stat(
       path      : String,
       flags = 0 : Int32
@@ -1060,6 +1060,18 @@ module Zip
       r
     end
 
+    # Return stat information about file at index *index* as a
+    # `LibZip::Stat` structure.
+    #
+    # Raises an exception if this `Archive` is not open or if file could
+    # not be statted.
+    #
+    # ### Example
+    #
+    #     # get size of first file in archive
+    #     st = zip.stat(0)
+    #     puts "file size = #{st.size}"
+    #
     def stat(
       index     : LibC::Int,
       flags = 0 : Int32
@@ -1075,12 +1087,16 @@ module Zip
     end
 
 
-    # private methods
+    ###################
+    # private methods #
+    ###################
 
+    # Raise exception if archive is closed
     private def assert_open
       raise "Archive already closed" unless open?
     end
 
+    # Return true if error indicates success.
     private def ok?(err : Int32)
       err == ErrorCode::OK.value
     end
