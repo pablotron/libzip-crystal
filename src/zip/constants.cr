@@ -257,6 +257,19 @@ module Zip
   # Flags used to indicate which fields are valid in a `LibZip::Stat`
   # structure.  Check the _valid_ field after a call to `Archive#stat`
   # before accessing a given field.
+  #
+  # ### Example
+  #
+  #     # get file stats and wrap valid field
+  #     st = zip.stat("foo.txt")
+  #     valid = Zip::StatFlag.new(st.valid)
+  #
+  #     # is file size valid?
+  #     if valid.size?
+  #       # print file size
+  #       puts "file size: #{st.size}"
+  #     end
+  #
   enum StatFlag
     # name: name of the file
     NAME = 0x0001
