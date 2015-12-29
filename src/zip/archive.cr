@@ -1027,8 +1027,13 @@ module Zip
     #
     # ### Example
     #
-    #     # get file iterator
-    #     name_iterator = zip.each
+    #     # create name iterator
+    #     names = zip.each
+    #
+    #     # iterate names 2 at a time
+    #     names.take(2).each do |name|
+    #       puts name
+    #     end
     #
     def each(flags = 0 : Int32)
       assert_open

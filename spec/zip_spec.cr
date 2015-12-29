@@ -410,7 +410,8 @@ describe "Zip" do
           # create iterator
           names = zip.each
 
-          names.take(2).to_a.each do |name|
+          # iterate names 2 at a time
+          names.take(2).each do |name|
             TEST_FILES.includes?(name).should eq true
           end
         end
