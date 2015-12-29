@@ -513,6 +513,15 @@ module Zip
     end
 
     # Delete file at given index *index*.
+    #
+    # Raises an exception if this `Archive` is not open, or if file
+    # could not be deleted.
+    #
+    # ### Example
+    #
+    #     # delete first file in archive
+    #     zip.delete(0)
+    #
     def delete(index : UInt64)
       assert_open
 
@@ -523,6 +532,15 @@ module Zip
     end
 
     # Delete file at given path *path*.
+    #
+    # Raises an exception if this `Archive` is not open, or if file
+    # could not be deleted.
+    #
+    # ### Example
+    #
+    #     # delete "foo.txt" from archive
+    #     zip.delete("foo.txt")
+    #
     def delete(path : String)
       assert_open
       delete(name_locate_throws(path))
