@@ -15,7 +15,7 @@ module Zip
 
   # Use string as a source for `Archive#add` or `Archive#replace`.
   #
-  # Example:
+  # ### Example
   #
   #     # create a new string source
   #     src = Zip::StringSource.new(zip, "test string")
@@ -26,7 +26,7 @@ module Zip
   class StringSource < Source
     # Create a new `StringSource` from the given *string*.
     #
-    # Example:
+    # ### Example
     #
     #     # create a new string source
     #     src = Zip::StringSource.new(zip, "test string")
@@ -41,7 +41,7 @@ module Zip
 
   # Use slice as a source for `Archive#add` or `Archive#replace`.
   #
-  # Example:
+  # ### Example
   #
   #     # create slice
   #     slice = Slice.new(10) { |i| i + 10 }
@@ -57,7 +57,7 @@ module Zip
     #
     # Raises an exception if this `SliceSource` could not be created.
     #
-    # Example:
+    # ### Example
     #
     #     # create slice
     #     slice = Slice.new(10) { |i| i + 10 }
@@ -91,7 +91,7 @@ module Zip
 
   # Use file as a source for an `Archive#add` or `Archive#replace`.
   #
-  # Example:
+  # ### Example
   #
   #     # create file source
   #     source = FileSource.new(zip, "/path/to/file.txt")
@@ -104,7 +104,7 @@ module Zip
     #
     # Raises an exception if `FileSource` could not be created.
     #
-    # Example:
+    # ### Example
     #
     #     # create file source
     #     source = FileSource.new(zip, "/path/to/file.txt")
@@ -125,7 +125,7 @@ module Zip
   # Use file from another `Archive` as a source for an `Archive#add` or
   # `Archive#replace`.
   #
-  # Example:
+  # ### Example
   #
   #     # open source archive
   #     Zip::Archive.open("foo.zip") do |src_zip|
@@ -144,7 +144,7 @@ module Zip
     #
     # Raises an exception if `ArchiveSource` could not be created.
     #
-    # Example:
+    # ### Example
     #
     #     # open source archive
     #     Zip::Archive.open("foo.zip") do |src_zip|
@@ -183,7 +183,7 @@ module Zip
     #
     # Raises an exception if `ArchiveSource` could not be created.
     #
-    # Example:
+    # ### Example
     #
     #     # open source archive
     #     Zip::Archive.open("foo.zip") do |src_zip|

@@ -1,12 +1,11 @@
 module Zip
-  # Thin `IO` wrapper for files in archives.
+  # Thin `IO` wrapper for reading files from archives.  Use
+  # `Archive#open` to get an instance.
   class File
     include IO
 
-    # Internal method to create a `File` instance.
-    #
-    # See Also:
-    # * `Archive#open`
+    # Internal method to create a `File` instance.  Use `Archive#open`
+    # instead.
     protected def initialize(@zip : Archive, @file : LibZip::ZipFile)
       @open = true
     end
@@ -38,6 +37,7 @@ module Zip
       LibZip.zip_fread(@file, slice, slice.bytesize)
     end
 
+    # Unconditionally throws an `Exception`.
     def write(slice : Slice(UInt8))
       raise "cannot write to Zip::File instances"
     end

@@ -17,7 +17,8 @@ class TestProcSource < Zip::ProcSource
     super(zip, ->(
       action    : Zip::Action,
       slice     : Slice(UInt8),
-      user_data : Void*) {
+      user_data : Void* \
+    ) {
       # cast data pointer back to "self"
       me = user_data as TestProcSource
 
@@ -79,107 +80,146 @@ describe "Zip" do
   end
 
   describe "Archive" do
-    it "can create a new archive imperatively" do
-      # remove test zip
-      File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+    describe ".create(path)" do
+      it "can create a new archive imperatively" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
-      # create archive, then close it
-      zip = Zip::Archive.create(ZIP_PATH).close
+        # create archive, then close it
+        zip = Zip::Archive.create(ZIP_PATH).close
+      end
     end
 
-    it "can create a new archive with a block" do
-      # remove test zip
-      File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+    describe ".create(path, &block)" do
+      it "can create a new archive with a block" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
-      Zip::Archive.create(ZIP_PATH) do |zip|
-        zip.add("foo.txt", "bar")
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          zip.add("foo.txt", "bar")
+        end
+
+        # return success
+        true
       end
 
-      # return success
-      true
-    end
-
-    it "can throw an error message when creating a new archive" do
-      expect_raises(Zip::Error) do
-        Zip::Archive.create(BAD_PATH) do |zip|
-          zip.add("foo", "bar")
+      it "can throw an error message when creating a new archive" do
+        expect_raises(Zip::Error) do
+          Zip::Archive.create(BAD_PATH) do |zip|
+            zip.add("foo", "bar")
+          end
         end
       end
     end
 
-    it "can get the last archive error" do
-      # remove test zip
-      File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+    describe "#error" do
+      it "can get the last archive error" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
-      Zip::Archive.create(ZIP_PATH) do |zip|
-        zip.error
-      end
-    end
-
-    it "can add a file from a string" do
-      # remove test zip
-      File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
-
-      # create archive
-      Zip::Archive.create(ZIP_PATH) do |zip|
-        zip.add("foo.txt", "bar")
-      end
-    end
-
-    it "can set an archive comment" do
-      # remove test zip
-      File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
-
-      Zip::Archive.create(ZIP_PATH) do |zip|
-        # set comment
-        zip.comment = "foo"
-
-        # add at least one file
-        zip.add("foo.txt", "bar")
-      end
-
-      Zip::Archive.open(ZIP_PATH) do |zip|
-        zip.comment.should eq "foo"
-      end
-
-      # return success
-      true
-    end
-
-    it "can find a file by name" do
-      # remove test zip
-      File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
-
-      Zip::Archive.create(ZIP_PATH) do |zip|
-        # add at least one file
-        zip.add("foo.txt", "bar")
-      end
-
-      Zip::Archive.open(ZIP_PATH) do |zip|
-        zip.name_locate("foo.txt").should eq 0
-      end
-    end
-
-    it "can read a file from an archive" do
-      # remove test zip
-      File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
-
-      # populate zip with test files
-      Zip::Archive.create(ZIP_PATH) do |zip|
-        TEST_FILES.each do |file|
-          zip.add(file, file)
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          zip.error
         end
       end
+    end
 
-      # read test files from zip
-      Zip::Archive.open(ZIP_PATH) do |zip|
-        # create buffer
-        buf = Slice(UInt8).new(1024)
+    describe "#add(path, string)" do
+      it "can add a file from a string" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
-        TEST_FILES.each do |path|
-          zip.open(path) do |fh|
+        # create archive
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          zip.add("foo.txt", "bar")
+        end
+      end
+    end
+
+    describe "#comment" do
+      it "can set an archive comment" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          # set comment
+          zip.comment = "foo"
+
+          # add at least one file
+          zip.add("foo.txt", "bar")
+        end
+
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          zip.comment.should eq "foo"
+        end
+
+        # return success
+        true
+      end
+    end
+
+    describe "#name_locate" do
+      it "can find a file by name" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          # add at least one file
+          zip.add("foo.txt", "bar")
+        end
+
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          zip.name_locate("foo.txt").should eq 0
+        end
+      end
+    end
+
+    describe "#open" do
+      it "can read a file from an archive" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+
+        # populate zip with test files
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          TEST_FILES.each do |file|
+            zip.add(file, file)
+          end
+        end
+
+        # read test files from zip
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          # create buffer
+          buf = Slice(UInt8).new(1024)
+
+          TEST_FILES.each do |path|
+            zip.open(path) do |fh|
+              String.build do |b|
+                while ((len = fh.read(buf)) > 0)
+                  b.write(buf[0, len])
+                end
+              end.should eq path
+            end
+          end
+        end
+      end
+    end
+
+    describe "#read" do
+      it "can read chunks of a file from an archive" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+
+        # populate zip with test files
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          TEST_FILES.each do |file|
+            zip.add(file, file)
+          end
+        end
+
+        # read test files from zip
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          TEST_FILES.each do |path|
             String.build do |b|
-              while ((len = fh.read(buf)) > 0)
+              zip.read(path) do |buf, len|
                 b.write(buf[0, len])
               end
             end.should eq path
@@ -188,34 +228,65 @@ describe "Zip" do
       end
     end
 
-    it "can stat files from an archive" do
-      # remove test zip
-      File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+    describe "#stat" do
+      it "can stat files in an archive" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
-      # populate zip with test files
-      Zip::Archive.create(ZIP_PATH) do |zip|
-        TEST_FILES.each do |file|
-          zip.add(file, file)
+        # populate zip with test files
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          TEST_FILES.each do |file|
+            zip.add(file, file)
+          end
         end
-      end
 
-      # read test files from zip
-      Zip::Archive.open(ZIP_PATH) do |zip|
-        # create buffer
-        buf = Slice(UInt8).new(1024)
-
-        TEST_FILES.each do |path|
-          st = zip.stat(path)
-          zip.stat(path).size.should eq path.bytesize
+        # open zip file and check file sizes
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          TEST_FILES.each do |path|
+            st = zip.stat(path)
+            zip.stat(path).size.should eq path.bytesize
+          end
         end
       end
     end
 
+    describe "#replace" do
+      it "can replace files in an archive" do
+        # remove test zip
+        File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+
+        # populate zip with test files
+        Zip::Archive.create(ZIP_PATH) do |zip|
+          TEST_FILES.each do |file|
+            zip.add(file, file)
+          end
+        end
+
+        # open zip file and replace test files' contents
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          TEST_FILES.each do |path|
+            zip.replace(path, TEST_STRING)
+          end
+        end
+
+        # open zip file
+        Zip::Archive.open(ZIP_PATH) do |zip|
+          # check test files sizes
+          TEST_FILES.each do |path|
+            st = zip.stat(path)
+            zip.stat(path).size.should eq TEST_STRING.bytesize
+          end
+        end
+      end
+    end
+  end
+
+  describe "ProcSource" do
     it "can read files from a custom source" do
       # remove test zip
       File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
 
-      # populate zip with test files
+      # populate zip with test file
       Zip::Archive.create(ZIP_PATH) do |zip|
         # add "text.txt" from custom Zip::ProcSource
         zip.add("test.txt", TestProcSource.new(zip, TEST_STRING))
@@ -223,17 +294,10 @@ describe "Zip" do
 
       # open zip file for reading
       Zip::Archive.open(ZIP_PATH) do |zip|
-        # create buffer
-        size = zip.stat("test.txt").size
-        buf = Slice(UInt8).new(1024)
-
-        # read "test.txt" into string buffer, then compare buffer to
-        # TEST_STRING
-        zip.open("test.txt") do |fh|
-          String.build do |b|
-            while ((len = fh.read(buf)) > 0)
-              b.write(buf[0, len])
-            end
+        # read "test.txt", then compare it to TEST_STRING
+        String.build do |b|
+          zip.read("test.txt") do |buf, len|
+            b.write(buf[0, len])
           end
         end.should eq TEST_STRING
       end
