@@ -548,6 +548,14 @@ module Zip
 
     # Returns index of given *path*, or -1 if the given path could not
     # be found.
+    #
+    # Raises an exception if this `Archive` is not open.
+    #
+    # ### Example
+    #
+    #     # get index of "foo.txt"
+    #     index = zip.name_locate("foo.txt")
+    #
     def name_locate(path : String, flags = 0 : Int32)
       assert_open
 
@@ -556,6 +564,15 @@ module Zip
 
     # Returns index of given *path* or raises an exception if the given
     # path could not be found.
+    #
+    # Raises an exception if this `Archive` is not open.
+    #
+    # ### Example
+    #
+    #     # get index of "foo.txt" or raise exception if "foo.txt" could
+    #     # not be found
+    #     index = zip.name_locate_throws("foo.txt")
+    #
     def name_locate_throws(path : String, flags = 0 : Int32) : UInt64
       ofs = name_locate(path, flags)
       raise "unknown name: #{path}" if ofs == -1
@@ -564,11 +581,37 @@ module Zip
 
     # Returns path of given *index*, or nil if there was an error or the
     # given index could not be found.
+    #
+    # Raises an exception if this `Archive` is not open.
+    #
+    # ### Example
+    #
+    #     # get name of first file in archive
+    #     path = zip.get_name(0)
+    #
     def get_name(index : UInt64, flags : Int32) : String
       LibZip.zip_get_name(@zip, index, flags)
     end
 
-    # Returns `File` instance of given *path* in `Archive`.
+    # Open *path* in `Archive` and return it as `File` instance.
+    #
+    # Raises an exception if this `Archive` is not open, or if file
+    # could not be opened.
+    #
+    # ### Example
+    #
+    #     # declare buffer
+    #     buf = Slice(UInt8).new(10)
+    #
+    #     # open "foo.txt"
+    #     file = zip.open("foo.txt")
+    #
+    #     # read up to 10 bytes of contents
+    #     len = file.read(buf)
+    #
+    #     # close "foo.txt"
+    #     file.close
+    #
     def open(path : String, flags = 0 : Int32, password = nil : String?) : File
       assert_open
 
@@ -588,6 +631,24 @@ module Zip
 
     # Opens given *path* in `Archive` as a `File` instance, passes it to
     # block *block*, and closes the file when the block exits.
+    #
+    # Raises an exception if this `Archive` is not open, or if file
+    # could not be opened.
+    #
+    # ### Example
+    #
+    #     # read up to 10 bytes from "foo.txt"
+    #     zip.open("foo.txt") do |file|
+    #       # declare buffer
+    #       buf = Slice(UInt8).new(10)
+    #
+    #       # read up to 10 bytes of contents
+    #       len = file.read(buf)
+    #
+    #       # return buffer
+    #       buf[0, len]
+    #     end
+    #
     def open(path : String, flags = 0 : Int32, password = nil : String?, &block)
       assert_open
 
@@ -608,6 +669,24 @@ module Zip
     end
 
     # Returns `File` instance of given index *index* in `Archive`.
+    #
+    # Raises an exception if this `Archive` is not open, or if file
+    # could not be opened.
+    #
+    # ### Example
+    #
+    #     # declare buffer
+    #     buf = Slice(UInt8).new(10)
+    #
+    #     # open first file in archive
+    #     file = zip.open(0)
+    #
+    #     # read up to 10 bytes of contents
+    #     len = file.read(buf)
+    #
+    #     # close "foo.txt"
+    #     file.close
+    #
     def open(index : UInt64, flags = 0 : Int32, password = nil : String?)
       assert_open
 
@@ -627,6 +706,24 @@ module Zip
 
     # Opens index *index* in `Archive` as a `File` instance, passes it
     # to block *block*, and closes the file when the block exits.
+    #
+    # Raises an exception if this `Archive` is not open, or if file
+    # could not be opened.
+    #
+    # ### Example
+    #
+    #     # open first file in archive
+    #     zip.open(0) do |file|
+    #       # declare buffer
+    #       buf = Slice(UInt8).new(10)
+    #
+    #       # read up to 10 bytes of contents
+    #       len = file.read(buf)
+    #
+    #       # return buffer
+    #       buf[0, len]
+    #     end
+    #
     def open(index : UInt64, flags = 0 : Int32, password = nil : String?, &block)
       assert_open
 
