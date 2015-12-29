@@ -1,5 +1,5 @@
 module Zip
-  # LibZip error codes
+  # LibZip error codes.
   enum ErrorCode
     #  N No error
     OK = 0

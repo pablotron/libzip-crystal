@@ -1,7 +1,9 @@
 module Zip
+  # Lazy iterator for `Archive` instances.  Created by `Archive#each`.
   class ArchiveIterator
     include Iterator(String)
 
+    # Internal constructor.  Use `Archive#each` instead.
     protected def initialize(
       @zip        : Archive, 
       @flags = 0  : Int32
