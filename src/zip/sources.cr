@@ -162,17 +162,17 @@ module Zip
     #     end
     #
     def initialize(
-      dst_zip     : Archive,
-      src_zip     : Archive,
-      src_idx     : UInt64,
-      offset = 0  : UInt64,
-      len = -1    : Int64,
-      flags = 0   : Int32
+      dst_zip         : Archive,
+      src_zip         : Archive,
+      src_index       : UInt64,
+      offset = 0_u64  : UInt64,
+      len = -1_i64    : Int64,
+      flags = 0_i32   : Int32
     )
       super(dst_zip, LibZip.zip_source_zip(
         dst_zip.zip,
         src_zip.zip,
-        src_idx,
+        src_index,
         flags,
         offset,
         len
@@ -193,22 +193,22 @@ module Zip
     #         source = ArchiveSource.new(dst_zip, src_zip, "some-file.txt")
     #
     #         # add to destination archive as "foo.txt"
-    #         zip.add("foo.txt", source)
+    #         dst_zip.add("foo.txt", source)
     #       end
     #     end
     #
     def initialize(
-      dst_zip     : Archive,
-      src_zip     : Archive,
-      src_path    : String,
-      offset = 0  : UInt64,
-      len = -1    : Int64,
-      flags = 0   : Int32
+      dst_zip         : Archive,
+      src_zip         : Archive,
+      src_path        : String,
+      offset = 0_u64  : UInt64,
+      len = -1_i64    : Int64,
+      flags = 0_i32   : Int32
     )
       super(dst_zip, LibZip.zip_source_zip(
         dst_zip.zip,
         src_zip.zip,
-        src_zip.name_locate(path),
+        src_zip.name_locate_throws(src_path),
         flags,
         offset,
         len

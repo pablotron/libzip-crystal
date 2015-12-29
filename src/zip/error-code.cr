@@ -86,11 +86,9 @@ module Zip
     WRONGPASSWD = 27
 
     def message
-      String.build do |r|
-        buf = Slice(UInt8).new(1024)
-        len = LibZip.zip_error_to_str(buf.to_unsafe, buf.size, self.value, 0)
-        buf.to_s(r)
-      end
+      buf = Slice(UInt8).new(1024)
+      len = LibZip.zip_error_to_str(buf, buf.size, self.value, 0)
+      String.new(buf[0, len])
     end
   end
 end
