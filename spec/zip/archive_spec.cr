@@ -31,6 +31,32 @@ describe "Zip::Archive" do
     end
   end
 
+# 
+#   describe "#open(IO::Descriptor, &block)" do
+#     it "can open a zip from a file descriptor" do
+#       # remove test zip
+#       File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+# 
+#       # create zip from descriptor
+#       File.open(ZIP_PATH, "w+") do |file|
+#         Zip::Archive.open(file) do |zip|
+#           zip.add("foo.txt", "bar")
+#           # FIXME: currently we crash after this (on zip.close)
+#         end
+#       end
+# 
+#       # open generated zip
+#       Zip::Archive.open(ZIP_PATH) do |zip|
+#         String.build do |b|
+#           zip.read("foo.txt") do |buf, len|
+#             b.write(buf[0, len])
+#           end
+#         end.should eq "bar"
+#       end
+#     end
+#   end
+# 
+
   describe "#error" do
     it "can get the last archive error" do
       # remove test zip

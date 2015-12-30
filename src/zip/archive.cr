@@ -68,8 +68,6 @@ module Zip
     #       puts "contents of bar.txt: #{str}"
     #     end
     #
-    # See Also:
-    # * `#create(String, Int32)`
     def self.open(
       path      : String,
       flags = 0 : Int32,
@@ -77,6 +75,49 @@ module Zip
     )
       # create archive
       zip = new(path, flags)
+
+      r = nil
+      begin
+        # pass archive to block
+        r = yield zip
+      ensure
+        # close archive
+        zip.close if zip.open?
+      end
+
+      # return result
+      r
+    end
+
+    # Create `Archive` instance from `IO::FileDescriptor` *fd*, pass
+    # instance to the given block *block*, then close the archive when
+    # the block exits.
+    #
+    # Raises an exception if `Archive` could not be opened.
+    #
+    # ### Example
+    #
+    #     # open existing archive "foo.zip" and extract "bar.txt" from it
+    #     Zip::Archive.open("foo.zip") do |zip|
+    #       # create string builder
+    #       str = String.build do |b|
+    #         # open file from zip
+    #         zip.read("bar.txt") do |buf, len|
+    #           b.write(buf[0, len])
+    #         end
+    #       end
+    #
+    #       # print contents of bar.txt
+    #       puts "contents of bar.txt: #{str}"
+    #     end
+    #
+    def self.open(
+      fd        : IO::FileDescriptor,
+      flags = 0 : Int32,
+      &block
+    )
+      # create archive
+      zip = new(fd, flags)
 
       r = nil
       begin
@@ -111,8 +152,6 @@ module Zip
     #       zip.add("baz.txt", "hello world!")
     #     end
     #
-    # See Also:
-    # * `#open(String, Int32)`
     def self.create(
       path                  : String,
       flags = CREATE_FLAGS  : Int32,
@@ -186,13 +225,18 @@ module Zip
     #
     # Raises an exception if `Archive` could not be opened.
     #
-    # TODO
+    # FIXME: This method does not currently work (see spec for details).
     def initialize(
       fd        : IO::FileDescriptor,
       flags = 0 : Int32
     )
+      # create new fd 
+      # (attempt to work around SEGV on Archive#close, doesn't work)
+      new_fd = C.dup(fd.fd)
+      raise "couldn't dup fd" if new_fd == -1
+
       # open from fd
-      zip = LibZip.zip_fdopen(fd.fd, flags, out err)
+      zip = LibZip.zip_fdopen(new_fd, flags, out err)
       initialize(zip, err)
     end
 

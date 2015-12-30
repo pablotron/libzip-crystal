@@ -5,6 +5,10 @@ module Zip
       fd    : LibC::Int,
       mode  : UInt8*
     ) : Void*
+
+    fun dup(
+      fd    : LibC::Int
+    ) : LibC::Int
   end
 
   #
