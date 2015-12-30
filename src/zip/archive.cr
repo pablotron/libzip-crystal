@@ -16,19 +16,13 @@ module Zip
   #       zip.add("baz.txt", "hello world!")
   #     end
   #
-  #     # open existing archive "foo.zip" and extract "bar.txt" from it
-  #     Zip::Archive.open("foo.zip") do |zip|
-  #       # build string
-  #       str = String.build do |b|
-  #         # read file in chunks
-  #         zip.read("bar.txt") do |buf, len|
-  #           b.write(buf[0, len])
-  #         end
-  #       end
-  #
-  #       # print contents of bar.txt
-  #       puts "contents of bar.txt: #{str}"
+  #     # read "bar.txt" as string from "foo.zip"
+  #     str = Zip::Archive.open("foo.zip") do |zip|
+  #       String.new(zip.read("bar.txt"))
   #     end
+  #
+  #     # print contents of bar.txt
+  #     puts "contents of bar.txt: #{str}"
   #
   # You can also use `Zip::Archive` imperatively, like this:
   #
