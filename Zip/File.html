@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/pablotron/libzip-crystal">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Zip::File - github.com/pablotron/libzip-crystal</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/pablotron/libzip-crystal/Zip" data-name="zip">
+      <a href="../Zip.html">Zip</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Action" data-name="zip::action">
+      <a href="../Zip/Action.html">Action</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Archive" data-name="zip::archive">
+      <a href="../Zip/Archive.html">Archive</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveIterator" data-name="zip::archiveiterator">
+      <a href="../Zip/ArchiveIterator.html">ArchiveIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveSource" data-name="zip::archivesource">
+      <a href="../Zip/ArchiveSource.html">ArchiveSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/CompressionMethod" data-name="zip::compressionmethod">
+      <a href="../Zip/CompressionMethod.html">CompressionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/DescriptorSource" data-name="zip::descriptorsource">
+      <a href="../Zip/DescriptorSource.html">DescriptorSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/EncryptionMethod" data-name="zip::encryptionmethod">
+      <a href="../Zip/EncryptionMethod.html">EncryptionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Error" data-name="zip::error">
+      <a href="../Zip/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorCode" data-name="zip::errorcode">
+      <a href="../Zip/ErrorCode.html">ErrorCode</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorType" data-name="zip::errortype">
+      <a href="../Zip/ErrorType.html">ErrorType</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/pablotron/libzip-crystal/Zip/File" data-name="zip::file">
+      <a href="../Zip/File.html">File</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileFlag" data-name="zip::fileflag">
+      <a href="../Zip/FileFlag.html">FileFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileSource" data-name="zip::filesource">
+      <a href="../Zip/FileSource.html">FileSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/OpenFlag" data-name="zip::openflag">
+      <a href="../Zip/OpenFlag.html">OpenFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ProcSource" data-name="zip::procsource">
+      <a href="../Zip/ProcSource.html">ProcSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/SliceSource" data-name="zip::slicesource">
+      <a href="../Zip/SliceSource.html">SliceSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Source" data-name="zip::source">
+      <a href="../Zip/Source.html">Source</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StatFlag" data-name="zip::statflag">
+      <a href="../Zip/StatFlag.html">StatFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StringSource" data-name="zip::stringsource">
+      <a href="../Zip/StringSource.html">StringSource</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Zip::File
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Zip/File.html">Zip::File</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Thin <code>IO</code> wrapper for reading files from archives.  Use
+<code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method">Archive#open</a></code> to get an instance.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># open &quot;foo.txt&quot; in archive</span>
+str <span class="o">=</span> zip.open(<span class="s">&quot;foo.txt&quot;</span>) <span class="k">do</span> <span class="o">|</span>file<span class="o">|</span>
+  <span class="c"># build result string</span>
+  <span class="t">String</span>.build <span class="o">|</span>b<span class="o">|</span>
+    <span class="c"># read file in chunks</span>
+    file.read <span class="k">do</span> <span class="o">|</span>buf, len<span class="o">|</span>
+      b.write(buf[<span class="n">0</span>, len])
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c"># print file contents</span>
+puts <span class="s">&quot;file contents: </span><span class="i">#{</span></span>str<span class="s"><span class="i">}</span>&quot;</span></code></pre>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type">IO</li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28zip%3AArchive%2Cfile%3ALibZip%3A%3AZipFile%29-class-method" class="signature"><strong>.new</strong>(zip : Archive, file : LibZip::ZipFile)</a>
+        
+          <div class="summary"><p>Internal method to create a <code><a href="../Zip/File.html">File</a></code> instance.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
+        
+          <div class="summary"><p>Close this <code><a href="../Zip/File.html">File</a></code> instance.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error%3AErrorCode-instance-method" class="signature"><strong>#error</strong> : ErrorCode</a>
+        
+          <div class="summary"><p>Return last archive error as an <code><a href="../Zip/ErrorCode.html">ErrorCode</a></code> instance.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%3F-instance-method" class="signature"><strong>#open?</strong></a>
+        
+          <div class="summary"><p>Returns true if this <code><a href="../Zip/File.html">File</a></code> is open, and false otherwise.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read%28%26block%3ASlice%28UInt8%29%2CInt32-%3ENil%29%3AUInt64-instance-method" class="signature"><strong>#read</strong>(&block : Slice(UInt8), Int32 -> Nil) : UInt64</a>
+        
+          <div class="summary"><p>Call proc with chunks of file, then return number of bytes read.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#read</strong>(slice : Slice(UInt8))</a>
+        
+          <div class="summary"><p>Read bytes into <code>Slice</code> <em>slice</em> and return number of bytes read (or -1 on error).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#system_error%3ALibC%3A%3AInt-instance-method" class="signature"><strong>#system_error</strong> : LibC::Int</a>
+        
+          <div class="summary"><p>Return last system error for this file.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#write%28slice%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#write</strong>(slice : Slice(UInt8))</a>
+        
+          <div class="summary"><p><code><a href="../Zip/File.html">File</a></code> instances are read-only so this method unconditionally throws an <code>Exception</code>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new(zip:Archive,file:LibZip::ZipFile)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(zip : <a href="../Zip/Archive.html">Archive</a>, file : LibZip::ZipFile)
+
+        <a class="method-permalink" href="#new%28zip%3AArchive%2Cfile%3ALibZip%3A%3AZipFile%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Internal method to create a <code><a href="../Zip/File.html">File</a></code> instance.  Use <code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method">Archive#open</a></code>
+instead.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="close-instance-method">
+      <div class="signature">
+        
+        def <strong>close</strong>
+
+        <a class="method-permalink" href="#close-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Close this <code><a href="../Zip/File.html">File</a></code> instance.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/File.html">File</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># close file</span>
+file.close</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error:ErrorCode-instance-method">
+      <div class="signature">
+        
+        def <strong>error</strong> : <a href="../Zip/ErrorCode.html">ErrorCode</a>
+
+        <a class="method-permalink" href="#error%3AErrorCode-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Return last archive error as an <code><a href="../Zip/ErrorCode.html">ErrorCode</a></code> instance.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/File.html">File</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get and print last error</span>
+puts file.error</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open?-instance-method">
+      <div class="signature">
+        
+        def <strong>open?</strong>
+
+        <a class="method-permalink" href="#open%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns true if this <code><a href="../Zip/File.html">File</a></code> is open, and false otherwise.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># is this file open?</span>
+puts <span class="s">&quot;file is open&quot;</span> <span class="k">if</span> file.open?</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read(&amp;block:Slice(UInt8),Int32-&gt;Nil):UInt64-instance-method">
+      <div class="signature">
+        
+        def <strong>read</strong>(&block : Slice(UInt8), Int32 -> Nil) : UInt64
+
+        <a class="method-permalink" href="#read%28%26block%3ASlice%28UInt8%29%2CInt32-%3ENil%29%3AUInt64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Call proc with chunks of file, then return number of bytes read.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/File.html">File</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># number of bytes read</span>
+num_bytes <span class="o">=</span> <span class="n">0</span>
+
+<span class="c"># create string builder</span>
+str <span class="o">=</span> <span class="t">String</span>.build <span class="k">do</span> <span class="o">|</span>b<span class="o">|</span>
+  <span class="c"># read chunks</span>
+  num_bytes <span class="o">=</span> file.read <span class="k">do</span> <span class="o">|</span>buf, len<span class="o">|</span>
+    <span class="c"># add chunk to builder</span>
+    str.write(buf[<span class="n">0</span>, len])
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read(slice:Slice(UInt8))-instance-method">
+      <div class="signature">
+        
+        def <strong>read</strong>(slice : Slice(UInt8))
+
+        <a class="method-permalink" href="#read%28slice%3ASlice%28UInt8%29%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Read bytes into <code>Slice</code> <em>slice</em> and return number of bytes read
+(or -1 on error).</p>
+
+<p>Raises an exception if this <code><a href="../Zip/File.html">File</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># create slice buffer</span>
+buf <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">new</span>(<span class="n">10</span>)
+
+<span class="c"># read up to 10 bytes into buf and return number of bytes read</span>
+len <span class="o">=</span> file.read(buf)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="system_error:LibC::Int-instance-method">
+      <div class="signature">
+        
+        def <strong>system_error</strong> : LibC::Int
+
+        <a class="method-permalink" href="#system_error%3ALibC%3A%3AInt-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Return last system error for this file.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/File.html">File</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get and print last system error</span>
+puts file.system_error</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="write(slice:Slice(UInt8))-instance-method">
+      <div class="signature">
+        
+        def <strong>write</strong>(slice : Slice(UInt8))
+
+        <a class="method-permalink" href="#write%28slice%3ASlice%28UInt8%29%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p><code><a href="../Zip/File.html">File</a></code> instances are read-only so this method unconditionally
+throws an <code>Exception</code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/pablotron/libzip-crystal">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>Zip - github.com/pablotron/libzip-crystal</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent current" data-id="github.com/pablotron/libzip-crystal/Zip" data-name="zip">
+      <a href="Zip.html">Zip</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Action" data-name="zip::action">
+      <a href="Zip/Action.html">Action</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Archive" data-name="zip::archive">
+      <a href="Zip/Archive.html">Archive</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveIterator" data-name="zip::archiveiterator">
+      <a href="Zip/ArchiveIterator.html">ArchiveIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveSource" data-name="zip::archivesource">
+      <a href="Zip/ArchiveSource.html">ArchiveSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/CompressionMethod" data-name="zip::compressionmethod">
+      <a href="Zip/CompressionMethod.html">CompressionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/DescriptorSource" data-name="zip::descriptorsource">
+      <a href="Zip/DescriptorSource.html">DescriptorSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/EncryptionMethod" data-name="zip::encryptionmethod">
+      <a href="Zip/EncryptionMethod.html">EncryptionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Error" data-name="zip::error">
+      <a href="Zip/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorCode" data-name="zip::errorcode">
+      <a href="Zip/ErrorCode.html">ErrorCode</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorType" data-name="zip::errortype">
+      <a href="Zip/ErrorType.html">ErrorType</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/File" data-name="zip::file">
+      <a href="Zip/File.html">File</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileFlag" data-name="zip::fileflag">
+      <a href="Zip/FileFlag.html">FileFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileSource" data-name="zip::filesource">
+      <a href="Zip/FileSource.html">FileSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/OpenFlag" data-name="zip::openflag">
+      <a href="Zip/OpenFlag.html">OpenFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ProcSource" data-name="zip::procsource">
+      <a href="Zip/ProcSource.html">ProcSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/SliceSource" data-name="zip::slicesource">
+      <a href="Zip/SliceSource.html">SliceSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Source" data-name="zip::source">
+      <a href="Zip/Source.html">Source</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StatFlag" data-name="zip::statflag">
+      <a href="Zip/StatFlag.html">StatFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StringSource" data-name="zip::stringsource">
+      <a href="Zip/StringSource.html">StringSource</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Zip
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Crystal bindings for <a href="http://www.nih.at/libzip/" target="_blank">libzip</a>, which allows
+you to create and modify Zip archives.  Below are a couple of simple
+examples.  See <code><a href="Zip/Archive.html">Zip::Archive</a></code> for additional documentation.</p>
+
+<h3>Examples</h3>
+
+<pre><code><span class="c"># create a new archive named foo.zip and populate it</span>
+<span class="t">Zip</span><span class="t">::</span><span class="t">Archive</span>.create(<span class="s">&quot;foo.zip&quot;</span>) <span class="k">do</span> <span class="o">|</span>zip<span class="o">|</span>
+  <span class="c"># add file &quot;/path/to/foo.png&quot; to archive as &quot;bar.png&quot;</span>
+  zip.add_file(<span class="s">&quot;bar.png&quot;</span>, <span class="s">&quot;/path/to/foo.png&quot;</span>)
+
+  <span class="c"># add file &quot;baz.txt&quot; with contents &quot;hello world!&quot;</span>
+  zip.add(<span class="s">&quot;baz.txt&quot;</span>, <span class="s">&quot;hello world!&quot;</span>)
+<span class="k">end</span>
+
+<span class="c"># read &quot;bar.txt&quot; as string from &quot;foo.zip&quot;</span>
+<span class="t">Zip</span><span class="t">::</span><span class="t">Archive</span>.open(<span class="s">&quot;foo.zip&quot;</span>) <span class="k">do</span> <span class="o">|</span>zip<span class="o">|</span>
+  <span class="c"># read contents of &quot;bar.txt&quot; as string</span>
+  str <span class="o">=</span> <span class="t">String</span>.<span class="k">new</span>(zip.read(<span class="s">&quot;bar.txt&quot;</span>))
+
+  <span class="c"># print contents of bar.txt</span>
+  puts <span class="s">&quot;contents of bar.txt: </span><span class="i">#{</span></span>str<span class="s"><span class="i">}</span>&quot;</span>
+<span class="k">end</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const">
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.0&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

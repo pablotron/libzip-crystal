@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/pablotron/libzip-crystal">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Zip::StatFlag - github.com/pablotron/libzip-crystal</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/pablotron/libzip-crystal/Zip" data-name="zip">
+      <a href="../Zip.html">Zip</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Action" data-name="zip::action">
+      <a href="../Zip/Action.html">Action</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Archive" data-name="zip::archive">
+      <a href="../Zip/Archive.html">Archive</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveIterator" data-name="zip::archiveiterator">
+      <a href="../Zip/ArchiveIterator.html">ArchiveIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveSource" data-name="zip::archivesource">
+      <a href="../Zip/ArchiveSource.html">ArchiveSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/CompressionMethod" data-name="zip::compressionmethod">
+      <a href="../Zip/CompressionMethod.html">CompressionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/DescriptorSource" data-name="zip::descriptorsource">
+      <a href="../Zip/DescriptorSource.html">DescriptorSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/EncryptionMethod" data-name="zip::encryptionmethod">
+      <a href="../Zip/EncryptionMethod.html">EncryptionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Error" data-name="zip::error">
+      <a href="../Zip/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorCode" data-name="zip::errorcode">
+      <a href="../Zip/ErrorCode.html">ErrorCode</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorType" data-name="zip::errortype">
+      <a href="../Zip/ErrorType.html">ErrorType</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/File" data-name="zip::file">
+      <a href="../Zip/File.html">File</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileFlag" data-name="zip::fileflag">
+      <a href="../Zip/FileFlag.html">FileFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileSource" data-name="zip::filesource">
+      <a href="../Zip/FileSource.html">FileSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/OpenFlag" data-name="zip::openflag">
+      <a href="../Zip/OpenFlag.html">OpenFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ProcSource" data-name="zip::procsource">
+      <a href="../Zip/ProcSource.html">ProcSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/SliceSource" data-name="zip::slicesource">
+      <a href="../Zip/SliceSource.html">SliceSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Source" data-name="zip::source">
+      <a href="../Zip/Source.html">Source</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/pablotron/libzip-crystal/Zip/StatFlag" data-name="zip::statflag">
+      <a href="../Zip/StatFlag.html">StatFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StringSource" data-name="zip::stringsource">
+      <a href="../Zip/StringSource.html">StringSource</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">enum</span> Zip::StatFlag
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Flags used to indicate which fields are valid in a <code>LibZip::Stat</code>
+structure.  Check the <em>valid</em> field after a call to <code><a href="../Zip/Archive.html#stat%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3ALibZip%3A%3AStat-instance-method">Archive#stat</a></code>
+before accessing a given field.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get file stats and wrap valid field</span>
+st <span class="o">=</span> zip.stat(<span class="s">&quot;foo.txt&quot;</span>)
+valid <span class="o">=</span> <span class="t">Zip</span><span class="t">::</span><span class="t">StatFlag</span>.<span class="k">new</span>(st.valid)
+
+<span class="c"># is file size valid?</span>
+<span class="k">if</span> valid.size?
+  <span class="c"># print file size</span>
+  puts <span class="s">&quot;file size: </span><span class="i">#{</span></span>st.size<span class="s"><span class="i">}</span>&quot;</span>
+<span class="k">end</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+  
+    <h2>Enum Members</h2>
+  
+  <dl>
+    
+      <dt class="entry-const">
+        <strong>NAME</strong> = <code><span class="n">1</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>name: name of the file</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>INDEX</strong> = <code><span class="n">2</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>index: index within archive</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>SIZE</strong> = <code><span class="n">4</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>size: size of the file (uncompressed)</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>COMP_SIZE</strong> = <code><span class="n">8</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>comp_size: size of the file (compressed)</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>MTIME</strong> = <code><span class="n">16</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>mtime: modification time</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>CRC</strong> = <code><span class="n">32</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>crc: crc of file data</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>COMP_METHOD</strong> = <code><span class="n">64</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>comp_method: compression method used</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>ENCRYPTION_METHOD</strong> = <code><span class="n">128</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>enc_method: encryption method used</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>FLAGS</strong> = <code><span class="n">256</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>reserved for future use</p>
+      </dd>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#comp_method%3F-instance-method" class="signature"><strong>#comp_method?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#comp_size%3F-instance-method" class="signature"><strong>#comp_size?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#crc%3F-instance-method" class="signature"><strong>#crc?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encryption_method%3F-instance-method" class="signature"><strong>#encryption_method?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#flags%3F-instance-method" class="signature"><strong>#flags?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#index%3F-instance-method" class="signature"><strong>#index?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mtime%3F-instance-method" class="signature"><strong>#mtime?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#name%3F-instance-method" class="signature"><strong>#name?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size%3F-instance-method" class="signature"><strong>#size?</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="comp_method?-instance-method">
+      <div class="signature">
+        
+        def <strong>comp_method?</strong>
+
+        <a class="method-permalink" href="#comp_method%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="comp_size?-instance-method">
+      <div class="signature">
+        
+        def <strong>comp_size?</strong>
+
+        <a class="method-permalink" href="#comp_size%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="crc?-instance-method">
+      <div class="signature">
+        
+        def <strong>crc?</strong>
+
+        <a class="method-permalink" href="#crc%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encryption_method?-instance-method">
+      <div class="signature">
+        
+        def <strong>encryption_method?</strong>
+
+        <a class="method-permalink" href="#encryption_method%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="flags?-instance-method">
+      <div class="signature">
+        
+        def <strong>flags?</strong>
+
+        <a class="method-permalink" href="#flags%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="index?-instance-method">
+      <div class="signature">
+        
+        def <strong>index?</strong>
+
+        <a class="method-permalink" href="#index%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mtime?-instance-method">
+      <div class="signature">
+        
+        def <strong>mtime?</strong>
+
+        <a class="method-permalink" href="#mtime%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="name?-instance-method">
+      <div class="signature">
+        
+        def <strong>name?</strong>
+
+        <a class="method-permalink" href="#name%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size?-instance-method">
+      <div class="signature">
+        
+        def <strong>size?</strong>
+
+        <a class="method-permalink" href="#size%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

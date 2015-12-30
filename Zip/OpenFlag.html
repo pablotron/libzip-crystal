@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/pablotron/libzip-crystal">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Zip::OpenFlag - github.com/pablotron/libzip-crystal</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/pablotron/libzip-crystal/Zip" data-name="zip">
+      <a href="../Zip.html">Zip</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Action" data-name="zip::action">
+      <a href="../Zip/Action.html">Action</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Archive" data-name="zip::archive">
+      <a href="../Zip/Archive.html">Archive</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveIterator" data-name="zip::archiveiterator">
+      <a href="../Zip/ArchiveIterator.html">ArchiveIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveSource" data-name="zip::archivesource">
+      <a href="../Zip/ArchiveSource.html">ArchiveSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/CompressionMethod" data-name="zip::compressionmethod">
+      <a href="../Zip/CompressionMethod.html">CompressionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/DescriptorSource" data-name="zip::descriptorsource">
+      <a href="../Zip/DescriptorSource.html">DescriptorSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/EncryptionMethod" data-name="zip::encryptionmethod">
+      <a href="../Zip/EncryptionMethod.html">EncryptionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Error" data-name="zip::error">
+      <a href="../Zip/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorCode" data-name="zip::errorcode">
+      <a href="../Zip/ErrorCode.html">ErrorCode</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorType" data-name="zip::errortype">
+      <a href="../Zip/ErrorType.html">ErrorType</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/File" data-name="zip::file">
+      <a href="../Zip/File.html">File</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileFlag" data-name="zip::fileflag">
+      <a href="../Zip/FileFlag.html">FileFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileSource" data-name="zip::filesource">
+      <a href="../Zip/FileSource.html">FileSource</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/pablotron/libzip-crystal/Zip/OpenFlag" data-name="zip::openflag">
+      <a href="../Zip/OpenFlag.html">OpenFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ProcSource" data-name="zip::procsource">
+      <a href="../Zip/ProcSource.html">ProcSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/SliceSource" data-name="zip::slicesource">
+      <a href="../Zip/SliceSource.html">SliceSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Source" data-name="zip::source">
+      <a href="../Zip/Source.html">Source</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StatFlag" data-name="zip::statflag">
+      <a href="../Zip/StatFlag.html">StatFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StringSource" data-name="zip::stringsource">
+      <a href="../Zip/StringSource.html">StringSource</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">enum</span> Zip::OpenFlag
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Flags for <code><a href="../Zip/Archive.html">Archive</a></code> class methods that open archives, such as
+<code><a href="../Zip/Archive.html#new%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-class-method">Zip::Archive#new</a></code>, <code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method">Zip::Archive#open</a></code>, and <code><a href="../Zip/Archive.html#create%28path%3AString%2Cflags%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method">Zip::Archive#create</a></code>.</p>
+
+<p>You can pass more than one flag by by ORing them together.  For
+example:</p>
+
+<pre><code><span class="c"># set CREATE and EXCL flags</span>
+flags <span class="o">=</span> <span class="t">Zip</span><span class="t">::</span><span class="t">OpenFlag</span>.flags(<span class="t">CREATE</span>, <span class="t">EXCL</span>).value
+
+<span class="c"># open archive with specified flags</span>
+<span class="t">Zip</span><span class="t">::</span><span class="t">Archive</span>.open(<span class="s">&quot;foo.zip&quot;</span>, flags) <span class="k">do</span> <span class="o">|</span>zip<span class="o">|</span>
+  <span class="c"># do stuff with zip here</span>
+  zip.add(<span class="s">&quot;bar.txt&quot;</span>, <span class="s">&quot;hello&quot;</span>)
+<span class="k">end</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+  
+    <h2>Enum Members</h2>
+  
+  <dl>
+    
+      <dt class="entry-const">
+        <strong>CREATE</strong> = <code><span class="n">1</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Create archive if it does not exist.</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>EXCL</strong> = <code><span class="n">2</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Raise error if archive already exists.</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>CHECKCONS</strong> = <code><span class="n">4</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Perform additional stricter consistency checks on the archive,
+and error if they fail.</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>TRUNCATE</strong> = <code><span class="n">8</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>If archive exists, ignore its current conents.  In other words,
+handle it in the same way as an empty archive.</p>
+      </dd>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#checkcons%3F-instance-method" class="signature"><strong>#checkcons?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#create%3F-instance-method" class="signature"><strong>#create?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#excl%3F-instance-method" class="signature"><strong>#excl?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#truncate%3F-instance-method" class="signature"><strong>#truncate?</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="checkcons?-instance-method">
+      <div class="signature">
+        
+        def <strong>checkcons?</strong>
+
+        <a class="method-permalink" href="#checkcons%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="create?-instance-method">
+      <div class="signature">
+        
+        def <strong>create?</strong>
+
+        <a class="method-permalink" href="#create%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="excl?-instance-method">
+      <div class="signature">
+        
+        def <strong>excl?</strong>
+
+        <a class="method-permalink" href="#excl%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="truncate?-instance-method">
+      <div class="signature">
+        
+        def <strong>truncate?</strong>
+
+        <a class="method-permalink" href="#truncate%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

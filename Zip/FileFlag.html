@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/pablotron/libzip-crystal">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Zip::FileFlag - github.com/pablotron/libzip-crystal</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/pablotron/libzip-crystal/Zip" data-name="zip">
+      <a href="../Zip.html">Zip</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Action" data-name="zip::action">
+      <a href="../Zip/Action.html">Action</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Archive" data-name="zip::archive">
+      <a href="../Zip/Archive.html">Archive</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveIterator" data-name="zip::archiveiterator">
+      <a href="../Zip/ArchiveIterator.html">ArchiveIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveSource" data-name="zip::archivesource">
+      <a href="../Zip/ArchiveSource.html">ArchiveSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/CompressionMethod" data-name="zip::compressionmethod">
+      <a href="../Zip/CompressionMethod.html">CompressionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/DescriptorSource" data-name="zip::descriptorsource">
+      <a href="../Zip/DescriptorSource.html">DescriptorSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/EncryptionMethod" data-name="zip::encryptionmethod">
+      <a href="../Zip/EncryptionMethod.html">EncryptionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Error" data-name="zip::error">
+      <a href="../Zip/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorCode" data-name="zip::errorcode">
+      <a href="../Zip/ErrorCode.html">ErrorCode</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorType" data-name="zip::errortype">
+      <a href="../Zip/ErrorType.html">ErrorType</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/File" data-name="zip::file">
+      <a href="../Zip/File.html">File</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/pablotron/libzip-crystal/Zip/FileFlag" data-name="zip::fileflag">
+      <a href="../Zip/FileFlag.html">FileFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileSource" data-name="zip::filesource">
+      <a href="../Zip/FileSource.html">FileSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/OpenFlag" data-name="zip::openflag">
+      <a href="../Zip/OpenFlag.html">OpenFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ProcSource" data-name="zip::procsource">
+      <a href="../Zip/ProcSource.html">ProcSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/SliceSource" data-name="zip::slicesource">
+      <a href="../Zip/SliceSource.html">SliceSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Source" data-name="zip::source">
+      <a href="../Zip/Source.html">Source</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StatFlag" data-name="zip::statflag">
+      <a href="../Zip/StatFlag.html">StatFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StringSource" data-name="zip::stringsource">
+      <a href="../Zip/StringSource.html">StringSource</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">enum</span> Zip::FileFlag
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Flags used by <code><a href="../Zip/Archive.html#name_locate%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AInt64-instance-method">Archive#name_locate</a></code>, <code><a href="../Zip/Archive.html#stat%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3ALibZip%3A%3AStat-instance-method">Archive#stat</a></code>, <code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method">Archive#open</a></code>, etc.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+  
+    <h2>Enum Members</h2>
+  
+  <dl>
+    
+      <dt class="entry-const">
+        <strong>ENC_GUESS</strong> = <code><span class="n">0</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>guess string encoding (default)</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>NOCASE</strong> = <code><span class="n">1</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>ignore case on name lookup</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>NODIR</strong> = <code><span class="n">2</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>ignore directory component</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>COMPRESSED</strong> = <code><span class="n">4</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>read compressed data</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>UNCHANGED</strong> = <code><span class="n">8</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>use original data, ignoring changes</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>RECOMPRESS</strong> = <code><span class="n">16</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>force recompression of data</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>ENCRYPTED</strong> = <code><span class="n">32</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>read encrypted data (implies ZIP_FL_COMPRESSED)</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>ENC_RAW</strong> = <code><span class="n">64</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>get unmodified string</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>ENC_STRICT</strong> = <code><span class="n">128</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>follow specification strictly</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>LOCAL</strong> = <code><span class="n">256</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>in local header</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>CENTRAL</strong> = <code><span class="n">512</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>in central directory</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>ENC_UTF_8</strong> = <code><span class="n">2048</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>string is UTF-8 encoded</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>ENC_CP437</strong> = <code><span class="n">4096</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>string is CP437 encoded</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>OVERWRITE</strong> = <code><span class="n">8192</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>zip_file_add: if file with name exists, overwrite (replace) it</p>
+      </dd>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#central%3F-instance-method" class="signature"><strong>#central?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#compressed%3F-instance-method" class="signature"><strong>#compressed?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#enc_c_p437%3F-instance-method" class="signature"><strong>#enc_c_p437?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#enc_guess%3F-instance-method" class="signature"><strong>#enc_guess?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#enc_raw%3F-instance-method" class="signature"><strong>#enc_raw?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#enc_strict%3F-instance-method" class="signature"><strong>#enc_strict?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#enc_utf_8%3F-instance-method" class="signature"><strong>#enc_utf_8?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encrypted%3F-instance-method" class="signature"><strong>#encrypted?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#local%3F-instance-method" class="signature"><strong>#local?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#nocase%3F-instance-method" class="signature"><strong>#nocase?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#nodir%3F-instance-method" class="signature"><strong>#nodir?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#overwrite%3F-instance-method" class="signature"><strong>#overwrite?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#recompress%3F-instance-method" class="signature"><strong>#recompress?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unchanged%3F-instance-method" class="signature"><strong>#unchanged?</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="central?-instance-method">
+      <div class="signature">
+        
+        def <strong>central?</strong>
+
+        <a class="method-permalink" href="#central%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="compressed?-instance-method">
+      <div class="signature">
+        
+        def <strong>compressed?</strong>
+
+        <a class="method-permalink" href="#compressed%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="enc_c_p437?-instance-method">
+      <div class="signature">
+        
+        def <strong>enc_c_p437?</strong>
+
+        <a class="method-permalink" href="#enc_c_p437%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="enc_guess?-instance-method">
+      <div class="signature">
+        
+        def <strong>enc_guess?</strong>
+
+        <a class="method-permalink" href="#enc_guess%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="enc_raw?-instance-method">
+      <div class="signature">
+        
+        def <strong>enc_raw?</strong>
+
+        <a class="method-permalink" href="#enc_raw%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="enc_strict?-instance-method">
+      <div class="signature">
+        
+        def <strong>enc_strict?</strong>
+
+        <a class="method-permalink" href="#enc_strict%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="enc_utf_8?-instance-method">
+      <div class="signature">
+        
+        def <strong>enc_utf_8?</strong>
+
+        <a class="method-permalink" href="#enc_utf_8%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encrypted?-instance-method">
+      <div class="signature">
+        
+        def <strong>encrypted?</strong>
+
+        <a class="method-permalink" href="#encrypted%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="local?-instance-method">
+      <div class="signature">
+        
+        def <strong>local?</strong>
+
+        <a class="method-permalink" href="#local%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="nocase?-instance-method">
+      <div class="signature">
+        
+        def <strong>nocase?</strong>
+
+        <a class="method-permalink" href="#nocase%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="nodir?-instance-method">
+      <div class="signature">
+        
+        def <strong>nodir?</strong>
+
+        <a class="method-permalink" href="#nodir%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="overwrite?-instance-method">
+      <div class="signature">
+        
+        def <strong>overwrite?</strong>
+
+        <a class="method-permalink" href="#overwrite%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="recompress?-instance-method">
+      <div class="signature">
+        
+        def <strong>recompress?</strong>
+
+        <a class="method-permalink" href="#recompress%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unchanged?-instance-method">
+      <div class="signature">
+        
+        def <strong>unchanged?</strong>
+
+        <a class="method-permalink" href="#unchanged%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/pablotron/libzip-crystal">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Zip::ErrorCode - github.com/pablotron/libzip-crystal</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/pablotron/libzip-crystal/Zip" data-name="zip">
+      <a href="../Zip.html">Zip</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Action" data-name="zip::action">
+      <a href="../Zip/Action.html">Action</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Archive" data-name="zip::archive">
+      <a href="../Zip/Archive.html">Archive</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveIterator" data-name="zip::archiveiterator">
+      <a href="../Zip/ArchiveIterator.html">ArchiveIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveSource" data-name="zip::archivesource">
+      <a href="../Zip/ArchiveSource.html">ArchiveSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/CompressionMethod" data-name="zip::compressionmethod">
+      <a href="../Zip/CompressionMethod.html">CompressionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/DescriptorSource" data-name="zip::descriptorsource">
+      <a href="../Zip/DescriptorSource.html">DescriptorSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/EncryptionMethod" data-name="zip::encryptionmethod">
+      <a href="../Zip/EncryptionMethod.html">EncryptionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Error" data-name="zip::error">
+      <a href="../Zip/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/pablotron/libzip-crystal/Zip/ErrorCode" data-name="zip::errorcode">
+      <a href="../Zip/ErrorCode.html">ErrorCode</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorType" data-name="zip::errortype">
+      <a href="../Zip/ErrorType.html">ErrorType</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/File" data-name="zip::file">
+      <a href="../Zip/File.html">File</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileFlag" data-name="zip::fileflag">
+      <a href="../Zip/FileFlag.html">FileFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileSource" data-name="zip::filesource">
+      <a href="../Zip/FileSource.html">FileSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/OpenFlag" data-name="zip::openflag">
+      <a href="../Zip/OpenFlag.html">OpenFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ProcSource" data-name="zip::procsource">
+      <a href="../Zip/ProcSource.html">ProcSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/SliceSource" data-name="zip::slicesource">
+      <a href="../Zip/SliceSource.html">SliceSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Source" data-name="zip::source">
+      <a href="../Zip/Source.html">Source</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StatFlag" data-name="zip::statflag">
+      <a href="../Zip/StatFlag.html">StatFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StringSource" data-name="zip::stringsource">
+      <a href="../Zip/StringSource.html">StringSource</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">enum</span> Zip::ErrorCode
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>LibZip error codes.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+  
+    <h2>Enum Members</h2>
+  
+  <dl>
+    
+      <dt class="entry-const">
+        <strong>OK</strong> = <code><span class="n">0</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N No error</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>MULTIDISK</strong> = <code><span class="n">1</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Multi-disk zip archives not supported</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>RENAME</strong> = <code><span class="n">2</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>S Renaming temporary file failed</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>CLOSE</strong> = <code><span class="n">3</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>S Closing zip archive failed</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>SEEK</strong> = <code><span class="n">4</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>S Seek error</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>READ</strong> = <code><span class="n">5</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>S Read error</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>WRITE</strong> = <code><span class="n">6</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>S Write error</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>CRC</strong> = <code><span class="n">7</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N CRC error</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>ZIPCLOSED</strong> = <code><span class="n">8</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Containing zip archive was closed</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>NOENT</strong> = <code><span class="n">9</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N No such file</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>EXISTS</strong> = <code><span class="n">10</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N File already exists</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>OPEN</strong> = <code><span class="n">11</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>S Can't open file</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>TMPOPEN</strong> = <code><span class="n">12</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>S Failure to create temporary file</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>ZLIB</strong> = <code><span class="n">13</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Z Zlib error</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>MEMORY</strong> = <code><span class="n">14</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Malloc failure</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>CHANGED</strong> = <code><span class="n">15</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Entry has been changed</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>COMPNOTSUPP</strong> = <code><span class="n">16</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Compression method not supported</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>EOF</strong> = <code><span class="n">17</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Premature EOF</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>INVAL</strong> = <code><span class="n">18</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Invalid argument</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>NOZIP</strong> = <code><span class="n">19</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Not a zip archive</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>INTERNAL</strong> = <code><span class="n">20</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Internal error</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>INCONS</strong> = <code><span class="n">21</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Zip archive inconsistent</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>REMOVE</strong> = <code><span class="n">22</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>S Can't remove file</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>DELETED</strong> = <code><span class="n">23</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Entry has been deleted</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>ENCRNOTSUPP</strong> = <code><span class="n">24</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Encryption method not supported</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>RDONLY</strong> = <code><span class="n">25</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Read-only archive</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>NOPASSWD</strong> = <code><span class="n">26</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N No password provided</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>WRONGPASSWD</strong> = <code><span class="n">27</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>N Wrong password provided</p>
+      </dd>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#changed%3F-instance-method" class="signature"><strong>#changed?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#close%3F-instance-method" class="signature"><strong>#close?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#compnotsupp%3F-instance-method" class="signature"><strong>#compnotsupp?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#crc%3F-instance-method" class="signature"><strong>#crc?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#deleted%3F-instance-method" class="signature"><strong>#deleted?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encrnotsupp%3F-instance-method" class="signature"><strong>#encrnotsupp?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#eof%3F-instance-method" class="signature"><strong>#eof?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#exists%3F-instance-method" class="signature"><strong>#exists?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#incons%3F-instance-method" class="signature"><strong>#incons?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#internal%3F-instance-method" class="signature"><strong>#internal?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inval%3F-instance-method" class="signature"><strong>#inval?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#memory%3F-instance-method" class="signature"><strong>#memory?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#multidisk%3F-instance-method" class="signature"><strong>#multidisk?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#noent%3F-instance-method" class="signature"><strong>#noent?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#nopasswd%3F-instance-method" class="signature"><strong>#nopasswd?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#nozip%3F-instance-method" class="signature"><strong>#nozip?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ok%3F-instance-method" class="signature"><strong>#ok?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%3F-instance-method" class="signature"><strong>#open?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rdonly%3F-instance-method" class="signature"><strong>#rdonly?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read%3F-instance-method" class="signature"><strong>#read?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#remove%3F-instance-method" class="signature"><strong>#remove?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rename%3F-instance-method" class="signature"><strong>#rename?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#seek%3F-instance-method" class="signature"><strong>#seek?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tmpopen%3F-instance-method" class="signature"><strong>#tmpopen?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#write%3F-instance-method" class="signature"><strong>#write?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wrongpasswd%3F-instance-method" class="signature"><strong>#wrongpasswd?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#zipclosed%3F-instance-method" class="signature"><strong>#zipclosed?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#zlib%3F-instance-method" class="signature"><strong>#zlib?</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="changed?-instance-method">
+      <div class="signature">
+        
+        def <strong>changed?</strong>
+
+        <a class="method-permalink" href="#changed%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="close?-instance-method">
+      <div class="signature">
+        
+        def <strong>close?</strong>
+
+        <a class="method-permalink" href="#close%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="compnotsupp?-instance-method">
+      <div class="signature">
+        
+        def <strong>compnotsupp?</strong>
+
+        <a class="method-permalink" href="#compnotsupp%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="crc?-instance-method">
+      <div class="signature">
+        
+        def <strong>crc?</strong>
+
+        <a class="method-permalink" href="#crc%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="deleted?-instance-method">
+      <div class="signature">
+        
+        def <strong>deleted?</strong>
+
+        <a class="method-permalink" href="#deleted%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encrnotsupp?-instance-method">
+      <div class="signature">
+        
+        def <strong>encrnotsupp?</strong>
+
+        <a class="method-permalink" href="#encrnotsupp%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="eof?-instance-method">
+      <div class="signature">
+        
+        def <strong>eof?</strong>
+
+        <a class="method-permalink" href="#eof%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="exists?-instance-method">
+      <div class="signature">
+        
+        def <strong>exists?</strong>
+
+        <a class="method-permalink" href="#exists%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="incons?-instance-method">
+      <div class="signature">
+        
+        def <strong>incons?</strong>
+
+        <a class="method-permalink" href="#incons%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="internal?-instance-method">
+      <div class="signature">
+        
+        def <strong>internal?</strong>
+
+        <a class="method-permalink" href="#internal%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inval?-instance-method">
+      <div class="signature">
+        
+        def <strong>inval?</strong>
+
+        <a class="method-permalink" href="#inval%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="memory?-instance-method">
+      <div class="signature">
+        
+        def <strong>memory?</strong>
+
+        <a class="method-permalink" href="#memory%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="multidisk?-instance-method">
+      <div class="signature">
+        
+        def <strong>multidisk?</strong>
+
+        <a class="method-permalink" href="#multidisk%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="noent?-instance-method">
+      <div class="signature">
+        
+        def <strong>noent?</strong>
+
+        <a class="method-permalink" href="#noent%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="nopasswd?-instance-method">
+      <div class="signature">
+        
+        def <strong>nopasswd?</strong>
+
+        <a class="method-permalink" href="#nopasswd%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="nozip?-instance-method">
+      <div class="signature">
+        
+        def <strong>nozip?</strong>
+
+        <a class="method-permalink" href="#nozip%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ok?-instance-method">
+      <div class="signature">
+        
+        def <strong>ok?</strong>
+
+        <a class="method-permalink" href="#ok%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open?-instance-method">
+      <div class="signature">
+        
+        def <strong>open?</strong>
+
+        <a class="method-permalink" href="#open%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rdonly?-instance-method">
+      <div class="signature">
+        
+        def <strong>rdonly?</strong>
+
+        <a class="method-permalink" href="#rdonly%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read?-instance-method">
+      <div class="signature">
+        
+        def <strong>read?</strong>
+
+        <a class="method-permalink" href="#read%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="remove?-instance-method">
+      <div class="signature">
+        
+        def <strong>remove?</strong>
+
+        <a class="method-permalink" href="#remove%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rename?-instance-method">
+      <div class="signature">
+        
+        def <strong>rename?</strong>
+
+        <a class="method-permalink" href="#rename%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="seek?-instance-method">
+      <div class="signature">
+        
+        def <strong>seek?</strong>
+
+        <a class="method-permalink" href="#seek%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tmpopen?-instance-method">
+      <div class="signature">
+        
+        def <strong>tmpopen?</strong>
+
+        <a class="method-permalink" href="#tmpopen%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="write?-instance-method">
+      <div class="signature">
+        
+        def <strong>write?</strong>
+
+        <a class="method-permalink" href="#write%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="wrongpasswd?-instance-method">
+      <div class="signature">
+        
+        def <strong>wrongpasswd?</strong>
+
+        <a class="method-permalink" href="#wrongpasswd%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="zipclosed?-instance-method">
+      <div class="signature">
+        
+        def <strong>zipclosed?</strong>
+
+        <a class="method-permalink" href="#zipclosed%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="zlib?-instance-method">
+      <div class="signature">
+        
+        def <strong>zlib?</strong>
+
+        <a class="method-permalink" href="#zlib%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

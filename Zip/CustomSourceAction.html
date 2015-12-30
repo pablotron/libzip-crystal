@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Zip::CustomSourceAction - </title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="/Zip" data-name="zip">
+      <a href="../Zip.html">Zip</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Zip/Archive" data-name="zip::archive">
+      <a href="../Zip/Archive.html">Archive</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/ArchiveFlag" data-name="zip::archiveflag">
+      <a href="../Zip/ArchiveFlag.html">ArchiveFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/ArchiveIterator" data-name="zip::archiveiterator">
+      <a href="../Zip/ArchiveIterator.html">ArchiveIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/ArchiveSource" data-name="zip::archivesource">
+      <a href="../Zip/ArchiveSource.html">ArchiveSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Codec" data-name="zip::codec">
+      <a href="../Zip/Codec.html">Codec</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/CompressionMethod" data-name="zip::compressionmethod">
+      <a href="../Zip/CompressionMethod.html">CompressionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/CustomSource" data-name="zip::customsource">
+      <a href="../Zip/CustomSource.html">CustomSource</a>
+      
+    </li>
+  
+  <li class=" current" data-id="/Zip/CustomSourceAction" data-name="zip::customsourceaction">
+      <a href="../Zip/CustomSourceAction.html">CustomSourceAction</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/DescriptorSource" data-name="zip::descriptorsource">
+      <a href="../Zip/DescriptorSource.html">DescriptorSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/EncryptionMethod" data-name="zip::encryptionmethod">
+      <a href="../Zip/EncryptionMethod.html">EncryptionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Error" data-name="zip::error">
+      <a href="../Zip/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/ErrorCode" data-name="zip::errorcode">
+      <a href="../Zip/ErrorCode.html">ErrorCode</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/ErrorType" data-name="zip::errortype">
+      <a href="../Zip/ErrorType.html">ErrorType</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/ExtraField" data-name="zip::extrafield">
+      <a href="../Zip/ExtraField.html">ExtraField</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/File" data-name="zip::file">
+      <a href="../Zip/File.html">File</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/FileFlag" data-name="zip::fileflag">
+      <a href="../Zip/FileFlag.html">FileFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/FileSource" data-name="zip::filesource">
+      <a href="../Zip/FileSource.html">FileSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/OpenFlag" data-name="zip::openflag">
+      <a href="../Zip/OpenFlag.html">OpenFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/OpSys" data-name="zip::opsys">
+      <a href="../Zip/OpSys.html">OpSys</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/SliceSource" data-name="zip::slicesource">
+      <a href="../Zip/SliceSource.html">SliceSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Source" data-name="zip::source">
+      <a href="../Zip/Source.html">Source</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/SourceError" data-name="zip::sourceerror">
+      <a href="../Zip/SourceError.html">SourceError</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/StatFlag" data-name="zip::statflag">
+      <a href="../Zip/StatFlag.html">StatFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/StringSource" data-name="zip::stringsource">
+      <a href="../Zip/StringSource.html">StringSource</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">enum</span> Zip::CustomSourceAction
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+  
+    <h2>Enum Members</h2>
+  
+  <dl>
+    
+      <dt class="entry-const">
+        <strong>OPEN</strong> = <code><span class="n">0</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>prepare for reading</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>READ</strong> = <code><span class="n">1</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>read data</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>CLOSE</strong> = <code><span class="n">2</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>reading is done</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>STAT</strong> = <code><span class="n">3</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>get meta information</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>ERROR</strong> = <code><span class="n">4</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>get error information</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>FREE</strong> = <code><span class="n">5</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>cleanup and free resources</p>
+      </dd>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#close%3F-instance-method" class="signature"><strong>#close?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error%3F-instance-method" class="signature"><strong>#error?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#free%3F-instance-method" class="signature"><strong>#free?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%3F-instance-method" class="signature"><strong>#open?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read%3F-instance-method" class="signature"><strong>#read?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#stat%3F-instance-method" class="signature"><strong>#stat?</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="close?-instance-method">
+      <div class="signature">
+        
+        def <strong>close?</strong>
+
+        <a class="method-permalink" href="#close%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error?-instance-method">
+      <div class="signature">
+        
+        def <strong>error?</strong>
+
+        <a class="method-permalink" href="#error%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="free?-instance-method">
+      <div class="signature">
+        
+        def <strong>free?</strong>
+
+        <a class="method-permalink" href="#free%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open?-instance-method">
+      <div class="signature">
+        
+        def <strong>open?</strong>
+
+        <a class="method-permalink" href="#open%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read?-instance-method">
+      <div class="signature">
+        
+        def <strong>read?</strong>
+
+        <a class="method-permalink" href="#read%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="stat?-instance-method">
+      <div class="signature">
+        
+        def <strong>stat?</strong>
+
+        <a class="method-permalink" href="#stat%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

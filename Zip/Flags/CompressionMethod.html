@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="">
+  <link href="../../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../../js/doc.js"></script>
+  <title>Zip::Flags::CompressionMethod - </title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="/Zip" data-name="zip">
+      <a href="../../Zip.html">Zip</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Zip/Archive" data-name="zip::archive">
+      <a href="../../Zip/Archive.html">Archive</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/ArchiveIterator" data-name="zip::archiveiterator">
+      <a href="../../Zip/ArchiveIterator.html">ArchiveIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/ArchiveSource" data-name="zip::archivesource">
+      <a href="../../Zip/ArchiveSource.html">ArchiveSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/DescriptorSource" data-name="zip::descriptorsource">
+      <a href="../../Zip/DescriptorSource.html">DescriptorSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Error" data-name="zip::error">
+      <a href="../../Zip/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/ErrorCode" data-name="zip::errorcode">
+      <a href="../../Zip/ErrorCode.html">ErrorCode</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/File" data-name="zip::file">
+      <a href="../../Zip/File.html">File</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/FileSource" data-name="zip::filesource">
+      <a href="../../Zip/FileSource.html">FileSource</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="/Zip/Flags" data-name="zip::flags">
+      <a href="../../Zip/Flags.html">Flags</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Zip/Flags/AFL" data-name="zip::flags::afl">
+      <a href="../../Zip/Flags/AFL.html">AFL</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Flags/Codec" data-name="zip::flags::codec">
+      <a href="../../Zip/Flags/Codec.html">Codec</a>
+      
+    </li>
+  
+  <li class=" current" data-id="/Zip/Flags/CompressionMethod" data-name="zip::flags::compressionmethod">
+      <a href="../../Zip/Flags/CompressionMethod.html">CompressionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Flags/EncryptionMethod" data-name="zip::flags::encryptionmethod">
+      <a href="../../Zip/Flags/EncryptionMethod.html">EncryptionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Flags/ErrorType" data-name="zip::flags::errortype">
+      <a href="../../Zip/Flags/ErrorType.html">ErrorType</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Flags/ExtraField" data-name="zip::flags::extrafield">
+      <a href="../../Zip/Flags/ExtraField.html">ExtraField</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Flags/FL" data-name="zip::flags::fl">
+      <a href="../../Zip/Flags/FL.html">FL</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Flags/Open" data-name="zip::flags::open">
+      <a href="../../Zip/Flags/Open.html">Open</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Flags/OpSys" data-name="zip::flags::opsys">
+      <a href="../../Zip/Flags/OpSys.html">OpSys</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Flags/SourceCommand" data-name="zip::flags::sourcecommand">
+      <a href="../../Zip/Flags/SourceCommand.html">SourceCommand</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Flags/SourceError" data-name="zip::flags::sourceerror">
+      <a href="../../Zip/Flags/SourceError.html">SourceError</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Flags/Stat" data-name="zip::flags::stat">
+      <a href="../../Zip/Flags/Stat.html">Stat</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/ProcSource" data-name="zip::procsource">
+      <a href="../../Zip/ProcSource.html">ProcSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/SliceSource" data-name="zip::slicesource">
+      <a href="../../Zip/SliceSource.html">SliceSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/Source" data-name="zip::source">
+      <a href="../../Zip/Source.html">Source</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Zip/StringSource" data-name="zip::stringsource">
+      <a href="../../Zip/StringSource.html">StringSource</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">enum</span> Zip::Flags::CompressionMethod
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>compression methods</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+  
+    <h2>Enum Members</h2>
+  
+  <dl>
+    
+      <dt class="entry-const">
+        <strong>DEFAULT</strong> = <code><span class="n">-1</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const">
+        <strong>STORE</strong> = <code><span class="n">0</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>better of deflate or store</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>SHRINK</strong> = <code><span class="n">1</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>stored (uncompressed) </p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>REDUCE_1</strong> = <code><span class="n">2</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>shrunk </p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>REDUCE_2</strong> = <code><span class="n">3</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>reduced with factor 1 </p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>REDUCE_3</strong> = <code><span class="n">4</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>reduced with factor 2 </p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>REDUCE_4</strong> = <code><span class="n">5</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>reduced with factor 3 </p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>IMPLODE</strong> = <code><span class="n">6</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>reduced with factor 4 </p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>DEFLATE</strong> = <code><span class="n">8</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>imploded 
+7 - Reserved for Tokenizing compression algorithm
+7 - Reserved for Tokenizing compression algorithm</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>DEFLATE64</strong> = <code><span class="n">9</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>deflated </p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>PKWARE_IMPLODE</strong> = <code><span class="n">10</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>deflate64 </p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>BZIP2</strong> = <code><span class="n">12</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>PKWARE imploding 
+11 - Reserved by PKWARE
+11 - Reserved by PKWARE</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>LZMA</strong> = <code><span class="n">14</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>compressed using BZIP2 algorithm 
+13 - Reserved by PKWARE
+13 - Reserved by PKWARE</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>TERSE</strong> = <code><span class="n">18</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>LZMA (EFS) 
+15-17 - Reserved by PKWARE
+15-17 - Reserved by PKWARE</p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>LZ77</strong> = <code><span class="n">19</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>compressed using IBM TERSE (new) </p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>WAVPACK</strong> = <code><span class="n">97</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>IBM LZ77 z Architecture (PFS) </p>
+      </dd>
+      
+    
+      <dt class="entry-const">
+        <strong>PPMD</strong> = <code><span class="n">98</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>WavPack compressed data </p>
+      </dd>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#bzi_p2%3F-instance-method" class="signature"><strong>#bzi_p2?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#default%3F-instance-method" class="signature"><strong>#default?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#deflat_e64%3F-instance-method" class="signature"><strong>#deflat_e64?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#deflate%3F-instance-method" class="signature"><strong>#deflate?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#implode%3F-instance-method" class="signature"><strong>#implode?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#l_z77%3F-instance-method" class="signature"><strong>#l_z77?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#lzma%3F-instance-method" class="signature"><strong>#lzma?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pkware_implode%3F-instance-method" class="signature"><strong>#pkware_implode?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ppmd%3F-instance-method" class="signature"><strong>#ppmd?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reduce_1%3F-instance-method" class="signature"><strong>#reduce_1?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reduce_2%3F-instance-method" class="signature"><strong>#reduce_2?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reduce_3%3F-instance-method" class="signature"><strong>#reduce_3?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reduce_4%3F-instance-method" class="signature"><strong>#reduce_4?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#shrink%3F-instance-method" class="signature"><strong>#shrink?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#store%3F-instance-method" class="signature"><strong>#store?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#terse%3F-instance-method" class="signature"><strong>#terse?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wavpack%3F-instance-method" class="signature"><strong>#wavpack?</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="bzi_p2?-instance-method">
+      <div class="signature">
+        
+        def <strong>bzi_p2?</strong>
+
+        <a class="method-permalink" href="#bzi_p2%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="default?-instance-method">
+      <div class="signature">
+        
+        def <strong>default?</strong>
+
+        <a class="method-permalink" href="#default%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="deflat_e64?-instance-method">
+      <div class="signature">
+        
+        def <strong>deflat_e64?</strong>
+
+        <a class="method-permalink" href="#deflat_e64%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="deflate?-instance-method">
+      <div class="signature">
+        
+        def <strong>deflate?</strong>
+
+        <a class="method-permalink" href="#deflate%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="implode?-instance-method">
+      <div class="signature">
+        
+        def <strong>implode?</strong>
+
+        <a class="method-permalink" href="#implode%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="l_z77?-instance-method">
+      <div class="signature">
+        
+        def <strong>l_z77?</strong>
+
+        <a class="method-permalink" href="#l_z77%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="lzma?-instance-method">
+      <div class="signature">
+        
+        def <strong>lzma?</strong>
+
+        <a class="method-permalink" href="#lzma%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pkware_implode?-instance-method">
+      <div class="signature">
+        
+        def <strong>pkware_implode?</strong>
+
+        <a class="method-permalink" href="#pkware_implode%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ppmd?-instance-method">
+      <div class="signature">
+        
+        def <strong>ppmd?</strong>
+
+        <a class="method-permalink" href="#ppmd%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reduce_1?-instance-method">
+      <div class="signature">
+        
+        def <strong>reduce_1?</strong>
+
+        <a class="method-permalink" href="#reduce_1%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reduce_2?-instance-method">
+      <div class="signature">
+        
+        def <strong>reduce_2?</strong>
+
+        <a class="method-permalink" href="#reduce_2%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reduce_3?-instance-method">
+      <div class="signature">
+        
+        def <strong>reduce_3?</strong>
+
+        <a class="method-permalink" href="#reduce_3%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reduce_4?-instance-method">
+      <div class="signature">
+        
+        def <strong>reduce_4?</strong>
+
+        <a class="method-permalink" href="#reduce_4%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="shrink?-instance-method">
+      <div class="signature">
+        
+        def <strong>shrink?</strong>
+
+        <a class="method-permalink" href="#shrink%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="store?-instance-method">
+      <div class="signature">
+        
+        def <strong>store?</strong>
+
+        <a class="method-permalink" href="#store%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="terse?-instance-method">
+      <div class="signature">
+        
+        def <strong>terse?</strong>
+
+        <a class="method-permalink" href="#terse%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="wavpack?-instance-method">
+      <div class="signature">
+        
+        def <strong>wavpack?</strong>
+
+        <a class="method-permalink" href="#wavpack%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

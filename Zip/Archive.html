@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/pablotron/libzip-crystal">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Zip::Archive - github.com/pablotron/libzip-crystal</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent open current" data-id="github.com/pablotron/libzip-crystal/Zip" data-name="zip">
+      <a href="../Zip.html">Zip</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Action" data-name="zip::action">
+      <a href="../Zip/Action.html">Action</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/pablotron/libzip-crystal/Zip/Archive" data-name="zip::archive">
+      <a href="../Zip/Archive.html">Archive</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveIterator" data-name="zip::archiveiterator">
+      <a href="../Zip/ArchiveIterator.html">ArchiveIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ArchiveSource" data-name="zip::archivesource">
+      <a href="../Zip/ArchiveSource.html">ArchiveSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/CompressionMethod" data-name="zip::compressionmethod">
+      <a href="../Zip/CompressionMethod.html">CompressionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/DescriptorSource" data-name="zip::descriptorsource">
+      <a href="../Zip/DescriptorSource.html">DescriptorSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/EncryptionMethod" data-name="zip::encryptionmethod">
+      <a href="../Zip/EncryptionMethod.html">EncryptionMethod</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Error" data-name="zip::error">
+      <a href="../Zip/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorCode" data-name="zip::errorcode">
+      <a href="../Zip/ErrorCode.html">ErrorCode</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ErrorType" data-name="zip::errortype">
+      <a href="../Zip/ErrorType.html">ErrorType</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/File" data-name="zip::file">
+      <a href="../Zip/File.html">File</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileFlag" data-name="zip::fileflag">
+      <a href="../Zip/FileFlag.html">FileFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/FileSource" data-name="zip::filesource">
+      <a href="../Zip/FileSource.html">FileSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/OpenFlag" data-name="zip::openflag">
+      <a href="../Zip/OpenFlag.html">OpenFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/ProcSource" data-name="zip::procsource">
+      <a href="../Zip/ProcSource.html">ProcSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/SliceSource" data-name="zip::slicesource">
+      <a href="../Zip/SliceSource.html">SliceSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/Source" data-name="zip::source">
+      <a href="../Zip/Source.html">Source</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StatFlag" data-name="zip::statflag">
+      <a href="../Zip/StatFlag.html">StatFlag</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/pablotron/libzip-crystal/Zip/StringSource" data-name="zip::stringsource">
+      <a href="../Zip/StringSource.html">StringSource</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Zip::Archive
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Zip/Archive.html">Zip::Archive</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Main zip archive class.  Use the <code><a href="../Zip/Archive.html">Archive</a>.create</code> and <code><a href="../Zip/Archive.html">Archive</a>.open</code>
+class methods to create a new archive or open an existing archive,
+respectively.</p>
+
+<h3>Examples</h3>
+
+<pre><code><span class="c"># create a new archive named foo.zip and populate it</span>
+<span class="t">Zip</span><span class="t">::</span><span class="t">Archive</span>.create(<span class="s">&quot;foo.zip&quot;</span>) <span class="k">do</span> <span class="o">|</span>zip<span class="o">|</span>
+  <span class="c"># add file &quot;/path/to/foo.txt&quot; to archive as &quot;bar.txt&quot;</span>
+  zip.add_file(<span class="s">&quot;bar.txt&quot;</span>, <span class="s">&quot;/path/to/foo.txt&quot;</span>)
+
+  <span class="c"># add file &quot;baz.txt&quot; with contents &quot;hello world!&quot;</span>
+  zip.add(<span class="s">&quot;baz.txt&quot;</span>, <span class="s">&quot;hello world!&quot;</span>)
+<span class="k">end</span>
+
+<span class="c"># read &quot;bar.txt&quot; as string from &quot;foo.zip&quot;</span>
+str <span class="o">=</span> <span class="t">Zip</span><span class="t">::</span><span class="t">Archive</span>.open(<span class="s">&quot;foo.zip&quot;</span>) <span class="k">do</span> <span class="o">|</span>zip<span class="o">|</span>
+  <span class="t">String</span>.<span class="k">new</span>(zip.read(<span class="s">&quot;bar.txt&quot;</span>))
+<span class="k">end</span>
+
+<span class="c"># print contents of bar.txt</span>
+puts <span class="s">&quot;contents of bar.txt: </span><span class="i">#{</span></span>str<span class="s"><span class="i">}</span>&quot;</span></code></pre>
+
+<p>You can also use <code><a href="../Zip/Archive.html">Zip::Archive</a></code> imperatively, like this:</p>
+
+<pre><code><span class="c"># create foo.zip</span>
+zip <span class="o">=</span> <span class="t">Zip</span><span class="t">::</span><span class="t">Archive</span>.create(<span class="s">&quot;foo.zip&quot;</span>)
+
+<span class="c"># add bar.txt</span>
+zip.add(<span class="s">&quot;bar.txt&quot;</span>, <span class="s">&quot;sample contents of bar.txt&quot;</span>)
+
+<span class="c"># close and write zip file</span>
+zip.close</code></pre>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type">Enumerable(String)</li>
+  
+    <li class="other-type">Iterable</li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const">
+        <strong>CREATE_FLAGS</strong> = <code>(<span class="t">OpenFlag</span>.flags(<span class="t">CREATE</span>, <span class="t">EXCL</span>)).value</code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Default flags for <code><a href="../Zip/Archive.html#create%28path%3AString%2Cflags%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method">Archive#create</a></code></p>
+      </dd>
+      
+    
+  </dl>
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#create%28path%3AString%2Cflags%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method" class="signature"><strong>.create</strong>(path : String, flags = <span class="t">CREATE_FLAGS</span> : Int32, &block)</a>
+        
+          <div class="summary"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from file <em>path</em>, pass the instance to the given block <em>block</em>, then close the archive when the block exits.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#create%28path%3AString%2Cflags%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%3AInt32%29-class-method" class="signature"><strong>.create</strong>(path : String, flags = <span class="t">CREATE_FLAGS</span> : Int32)</a>
+        
+          <div class="summary"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from file <em>path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method" class="signature"><strong>.open</strong>(path : String, flags = <span class="n">0</span> : Int32, &block)</a>
+        
+          <div class="summary"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from file <em>path</em>, pass instance to the given block <em>block</em>, then close the archive when the block exits.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%28fd%3AIO%3A%3AFileDescriptor%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method" class="signature"><strong>.open</strong>(fd : IO::FileDescriptor, flags = <span class="n">0</span> : Int32, &block)</a>
+        
+          <div class="summary"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from <code>IO::FileDescriptor</code> <em>fd</em>, pass instance to the given block <em>block</em>, then close the archive when the block exits.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-class-method" class="signature"><strong>.new</strong>(path : String, flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Create a <code><a href="../Zip/Archive.html">Archive</a></code> instance from the file <em>path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28fd%3AIO%3A%3AFileDescriptor%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-class-method" class="signature"><strong>.new</strong>(fd : IO::FileDescriptor, flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Returns <code><a href="../Zip/Archive.html">Archive</a></code> instance from <code>IO::FileDescriptor</code> <em>fd</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28zip%3ALibZip%3A%3AZipArchive%2Cerr%3AInt32%29-class-method" class="signature"><strong>.new</strong>(zip : LibZip::ZipArchive, err : Int32)</a>
+        
+          <div class="summary"><p>Internal constructor to create <code><a href="../Zip/Archive.html">Archive</a></code> instance from <code>LibZip::ZipArchive</code> and error code.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#add%28path%3AString%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method" class="signature"><strong>#add</strong>(path : String, source : Source, flags = <span class="n">0_u32</span> : UInt32)</a>
+        
+          <div class="summary"><p>Add given <code><a href="../Zip/Source.html">Zip::Source</a></code> <em>source</em> to archive as <em>path</em> and return index of new entry.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add%28path%3AString%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method" class="signature"><strong>#add</strong>(path : String, body : String, flags = <span class="n">0_u32</span> : UInt32)</a>
+        
+          <div class="summary"><p>Add archive entry <em>path</em> with content <em>body</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add%28path%3AString%2Cslice%3ASlice%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method" class="signature"><strong>#add</strong>(path : String, slice : Slice, flags = <span class="n">0_u32</span> : UInt32)</a>
+        
+          <div class="summary"><p>Add archive entry <em>path</em> with content <em>body</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add_dir%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#add_dir</strong>(path : String, flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Add directory to archive at path <em>path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add_file%28path%3AString%2Cstart%3D%3Cspanclass%3D%22n%22%3E0_u64%3C%2Fspan%3E%3AUInt64%2Clen%3D%3Cspanclass%3D%22n%22%3E-1_i64%3C%2Fspan%3E%3AInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method" class="signature"><strong>#add_file</strong>(path : String, start = <span class="n">0_u64</span> : UInt64, len = <span class="n">-1_i64</span> : Int64, flags = <span class="n">0_u32</span> : UInt32)</a>
+        
+          <div class="summary"><p>Add file <em>path</em> to archive as <em>path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add_file%28dst_path%3AString%2Csrc_path%3AString%2Cstart%3D%3Cspanclass%3D%22n%22%3E0_u64%3C%2Fspan%3E%3AUInt64%2Clen%3D%3Cspanclass%3D%22n%22%3E-1_i64%3C%2Fspan%3E%3AInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method" class="signature"><strong>#add_file</strong>(dst_path : String, src_path : String, start = <span class="n">0_u64</span> : UInt64, len = <span class="n">-1_i64</span> : Int64, flags = <span class="n">0_u32</span> : UInt32)</a>
+        
+          <div class="summary"><p>Add file <em>src_path</em> to archive as <em>dst_path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clear_error-instance-method" class="signature"><strong>#clear_error</strong></a>
+        
+          <div class="summary"><p>Clear last archive error code.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#close%28discard%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%3ABool%29-instance-method" class="signature"><strong>#close</strong>(discard = <span class="n">false</span> : Bool)</a>
+        
+          <div class="summary"><p>Close this <code><a href="../Zip/Archive.html">Archive</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#comment%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AString%7CNil-instance-method" class="signature"><strong>#comment</strong>(flags = <span class="n">0</span> : Int32) : String | Nil</a>
+        
+          <div class="summary"><p>Returns comment for the entire archive, or nil if there is no comment set.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#comment%3D%28s%3AString%29%3AString-instance-method" class="signature"><strong>#comment=</strong>(s : String) : String</a>
+        
+          <div class="summary"><p>Set and return the comment for the entire archive.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#default_password%3D%28password%3AString%7CNil%29-instance-method" class="signature"><strong>#default_password=</strong>(password : String | Nil)</a>
+        
+          <div class="summary"><p>Set the default password used when accessing encrypted files, or nil for no password.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete%28path%3AString%29-instance-method" class="signature"><strong>#delete</strong>(path : String)</a>
+        
+          <div class="summary"><p>Delete file at given path <em>path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete%28index%3AUInt64%29-instance-method" class="signature"><strong>#delete</strong>(index : UInt64)</a>
+        
+          <div class="summary"><p>Delete file at given index <em>index</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#discard-instance-method" class="signature"><strong>#discard</strong></a>
+        
+          <div class="summary"><p>Discard any changes and close this <code><a href="../Zip/Archive.html">Archive</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%3AString-%3E%29-instance-method" class="signature"><strong>#each</strong>(flags = <span class="n">0</span> : Int32, &block : String -> )</a>
+        
+          <div class="summary"><p>Iterate over names of files in archive.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#each</strong>(flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Return iterator over names of files in archive.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error%3AErrorCode-instance-method" class="signature"><strong>#error</strong> : ErrorCode</a>
+        
+          <div class="summary"><p>Return last archive error as an <code><a href="../Zip/ErrorCode.html">ErrorCode</a></code> instance.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_file_comment%28index%3AUInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AString%7CNil-instance-method" class="signature"><strong>#get_file_comment</strong>(index : UInt64, flags = <span class="n">0</span> : Int32) : String | Nil</a>
+        
+          <div class="summary"><p>Returns comment of file at index <em>index</em> or nil if there is no comment set.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_file_comment%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#get_file_comment</strong>(path : String, flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Returns comment of file at path <em>path</em>, or nil if there was no comment set.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_name%28index%3AUInt64%2Cflags%3AInt32%29%3AString-instance-method" class="signature"><strong>#get_name</strong>(index : UInt64, flags : Int32) : String</a>
+        
+          <div class="summary"><p>Returns path of given <em>index</em>, or nil if there was an error or the given index could not be found.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#name_locate%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AInt64-instance-method" class="signature"><strong>#name_locate</strong>(path : String, flags = <span class="n">0</span> : Int32) : Int64</a>
+        
+          <div class="summary"><p>Returns index of given <em>path</em>, or -1 if the given path could not be found.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#name_locate_throws%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AUInt64-instance-method" class="signature"><strong>#name_locate_throws</strong>(path : String, flags = <span class="n">0</span> : Int32) : UInt64</a>
+        
+          <div class="summary"><p>Returns index of given <em>path</em> or raises an exception if the given path could not be found.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#num_entries%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#num_entries</strong>(flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Get the number of files in this archive.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method" class="signature"><strong>#open</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil, &block)</a>
+        
+          <div class="summary"><p>Opens given <em>path</em> in <code><a href="../Zip/Archive.html">Archive</a></code> as a <code><a href="../Zip/File.html">File</a></code> instance, passes it to block <em>block</em>, and closes the file when the block exits.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%28index%3AUInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method" class="signature"><strong>#open</strong>(index : UInt64, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil, &block)</a>
+        
+          <div class="summary"><p>Opens index <em>index</em> in <code><a href="../Zip/Archive.html">Archive</a></code> as a <code><a href="../Zip/File.html">File</a></code> instance, passes it to block <em>block</em>, and closes the file when the block exits.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%28index%3AUInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29-instance-method" class="signature"><strong>#open</strong>(index : UInt64, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil)</a>
+        
+          <div class="summary"><p>Returns <code><a href="../Zip/File.html">File</a></code> instance of given index <em>index</em> in <code><a href="../Zip/Archive.html">Archive</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AFile-instance-method" class="signature"><strong>#open</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil) : File</a>
+        
+          <div class="summary"><p>Open <em>path</em> in <code><a href="../Zip/Archive.html">Archive</a></code> and return it as <code><a href="../Zip/File.html">File</a></code> instance.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%3F-instance-method" class="signature"><strong>#open?</strong></a>
+        
+          <div class="summary"><p>Returns <em>true</em> if this <code><a href="../Zip/Archive.html">Archive</a></code> is open, or <em>false</em> otherwise.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3ASlice%28UInt8%29-instance-method" class="signature"><strong>#read</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil) : Slice(UInt8)</a>
+        
+          <div class="summary"><p>Read contents of file <em>path</em> and return it as a <code>Slice(UInt8)</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%3ASlice%28UInt8%29%2CInt32-%3ENil%29%3AUInt64-instance-method" class="signature"><strong>#read</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil, &block : Slice(UInt8), Int32 -> Nil) : UInt64</a>
+        
+          <div class="summary"><p>Read input file in slices, pass each slice and it's length to block, and return number of bytes read.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rename%28index%3AUInt64%2Cnew_path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#rename</strong>(index : UInt64, new_path : String, flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Rename file at <em>index</em> to path <em>new_path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rename%28old_path%3AString%2Cnew_path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#rename</strong>(old_path : String, new_path : String, flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Rename file named <em>old_path</em> to new path <em>new_path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#replace%28path%3AString%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#replace</strong>(path : String, body : String, flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Replace entry at path <em>path</em> with contents <em>body</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#replace%28index%3AUInt64%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#replace</strong>(index : UInt64, source : Source, flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Replace entry at index <em>index</em> with <code><a href="../Zip/Source.html">Source</a></code> <em>source</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#replace%28index%3AUInt64%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#replace</strong>(index : UInt64, body : String, flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Replace entry at index <em>index</em> with contents <em>body</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#replace%28path%3AString%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#replace</strong>(path : String, source : Source, flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Replace entry at path <em>path</em> with <code><a href="../Zip/Source.html">Source</a></code> <em>source</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_file_comment%28path%3AString%2Ccomment%3AString%7CNil%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#set_file_comment</strong>(path : String, comment : String | Nil, flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Set comment of file path <em>path</em> to string <em>comment</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_file_comment%28index%3AUInt64%2Ccomment%3AString%7CNil%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#set_file_comment</strong>(index : UInt64, comment : String | Nil, flags = <span class="n">0</span> : Int32)</a>
+        
+          <div class="summary"><p>Set comment of file at <em>index</em> to string <em>comment</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#stat%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3ALibZip%3A%3AStat-instance-method" class="signature"><strong>#stat</strong>(path : String, flags = <span class="n">0</span> : Int32) : LibZip::Stat</a>
+        
+          <div class="summary"><p>Return stat information about <code>path</code> as a <code>LibZip::Stat</code> structure.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#stat%28index%3ALibC%3A%3AInt%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3ALibZip%3A%3AStat-instance-method" class="signature"><strong>#stat</strong>(index : LibC::Int, flags = <span class="n">0</span> : Int32) : LibZip::Stat</a>
+        
+          <div class="summary"><p>Return stat information about file at index <em>index</em> as a <code>LibZip::Stat</code> structure.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#system_error%3ALibC%3A%3AInt-instance-method" class="signature"><strong>#system_error</strong> : LibC::Int</a>
+        
+          <div class="summary"><p>Return last system error.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="create(path:String,flags=&lt;spanclass=&quot;t&quot;&gt;CREATE_FLAGS&lt;/span&gt;:Int32,&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>create</strong>(path : String, flags = <span class="t">CREATE_FLAGS</span> : Int32, &block)
+
+        <a class="method-permalink" href="#create%28path%3AString%2Cflags%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from file <em>path</em>, pass the instance to
+the given block <em>block</em>, then close the archive when the block
+exits.</p>
+
+<p>Raises an exception if <code><a href="../Zip/Archive.html">Archive</a></code> could not be opened.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># create a new archive named foo.zip and populate it</span>
+<span class="t">Zip</span><span class="t">::</span><span class="t">Archive</span>.create(<span class="s">&quot;foo.zip&quot;</span>) <span class="k">do</span> <span class="o">|</span>zip<span class="o">|</span>
+  <span class="c"># add file &quot;/path/to/foo.txt&quot; to archive as &quot;bar.txt&quot;</span>
+  zip.add_file(<span class="s">&quot;bar.txt&quot;</span>, <span class="s">&quot;/path/to/foo.txt&quot;</span>)
+
+  <span class="c"># add file &quot;baz.txt&quot; with contents &quot;hello world!&quot;</span>
+  zip.add(<span class="s">&quot;baz.txt&quot;</span>, <span class="s">&quot;hello world!&quot;</span>)
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="create(path:String,flags=&lt;spanclass=&quot;t&quot;&gt;CREATE_FLAGS&lt;/span&gt;:Int32)-class-method">
+      <div class="signature">
+        
+        def self.<strong>create</strong>(path : String, flags = <span class="t">CREATE_FLAGS</span> : Int32)
+
+        <a class="method-permalink" href="#create%28path%3AString%2Cflags%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%3AInt32%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from file <em>path</em>.</p>
+
+<p>Raises an exception if <code><a href="../Zip/Archive.html">Archive</a></code> could not be opened.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># create foo.zip</span>
+zip <span class="o">=</span> <span class="t">Zip</span><span class="t">::</span><span class="t">Archive</span>.create(<span class="s">&quot;foo.zip&quot;</span>)
+
+<span class="c"># add bar.txt</span>
+zip.add(<span class="s">&quot;bar.txt&quot;</span>, <span class="s">&quot;sample contents of bar.txt&quot;</span>)
+
+<span class="c"># close and write zip file</span>
+zip.close</code></pre>
+
+<p>See Also:</p>
+
+<ul><li><code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method">#open(String, Int32)</a></code></li></ul></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>open</strong>(path : String, flags = <span class="n">0</span> : Int32, &block)
+
+        <a class="method-permalink" href="#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from file <em>path</em>, pass instance to the
+given block <em>block</em>, then close the archive when the block exits.</p>
+
+<p>Raises an exception if <code><a href="../Zip/Archive.html">Archive</a></code> could not be opened.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># open existing archive &quot;foo.zip&quot; and extract &quot;bar.txt&quot; from it</span>
+<span class="t">Zip</span><span class="t">::</span><span class="t">Archive</span>.open(<span class="s">&quot;foo.zip&quot;</span>) <span class="k">do</span> <span class="o">|</span>zip<span class="o">|</span>
+  <span class="c"># create string builder</span>
+  str <span class="o">=</span> <span class="t">String</span>.build <span class="k">do</span> <span class="o">|</span>b<span class="o">|</span>
+    <span class="c"># open file from zip</span>
+    zip.read(<span class="s">&quot;bar.txt&quot;</span>) <span class="k">do</span> <span class="o">|</span>buf, len<span class="o">|</span>
+      b.write(buf[<span class="n">0</span>, len])
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="c"># print contents of bar.txt</span>
+  puts <span class="s">&quot;contents of bar.txt: </span><span class="i">#{</span></span>str<span class="s"><span class="i">}</span>&quot;</span>
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open(fd:IO::FileDescriptor,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>open</strong>(fd : IO::FileDescriptor, flags = <span class="n">0</span> : Int32, &block)
+
+        <a class="method-permalink" href="#open%28fd%3AIO%3A%3AFileDescriptor%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from <code>IO::FileDescriptor</code> <em>fd</em>, pass
+instance to the given block <em>block</em>, then close the archive when
+the block exits.</p>
+
+<p>Raises an exception if <code><a href="../Zip/Archive.html">Archive</a></code> could not be opened.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># open existing archive &quot;foo.zip&quot; and extract &quot;bar.txt&quot; from it</span>
+<span class="t">Zip</span><span class="t">::</span><span class="t">Archive</span>.open(<span class="s">&quot;foo.zip&quot;</span>) <span class="k">do</span> <span class="o">|</span>zip<span class="o">|</span>
+  <span class="c"># create string builder</span>
+  str <span class="o">=</span> <span class="t">String</span>.build <span class="k">do</span> <span class="o">|</span>b<span class="o">|</span>
+    <span class="c"># open file from zip</span>
+    zip.read(<span class="s">&quot;bar.txt&quot;</span>) <span class="k">do</span> <span class="o">|</span>buf, len<span class="o">|</span>
+      b.write(buf[<span class="n">0</span>, len])
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="c"># print contents of bar.txt</span>
+  puts <span class="s">&quot;contents of bar.txt: </span><span class="i">#{</span></span>str<span class="s"><span class="i">}</span>&quot;</span>
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(path : String, flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#new%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Create a <code><a href="../Zip/Archive.html">Archive</a></code> instance from the file <em>path</em>.</p>
+
+<p>Raises an exception if <code><a href="../Zip/Archive.html">Archive</a></code> could not be opened.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># create foo.zip</span>
+zip <span class="o">=</span> <span class="t">Zip</span><span class="t">::</span><span class="t">Archive</span>.<span class="k">new</span>(<span class="s">&quot;foo.zip&quot;</span>, <span class="t">Zip</span><span class="t">::</span><span class="t">OpenFlags</span><span class="t">::</span><span class="t">CREATE</span>.value)
+
+<span class="c"># add bar.txt</span>
+zip.add(<span class="s">&quot;bar.txt&quot;</span>, <span class="s">&quot;sample contents of bar.txt&quot;</span>)
+
+<span class="c"># close and write zip file</span>
+zip.close</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(fd:IO::FileDescriptor,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(fd : IO::FileDescriptor, flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#new%28fd%3AIO%3A%3AFileDescriptor%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns <code><a href="../Zip/Archive.html">Archive</a></code> instance from <code>IO::FileDescriptor</code> <em>fd</em>.</p>
+
+<p>Raises an exception if <code><a href="../Zip/Archive.html">Archive</a></code> could not be opened.</p>
+
+<p>FIXME: This method does not currently work (see spec for details).</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(zip:LibZip::ZipArchive,err:Int32)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(zip : LibZip::ZipArchive, err : Int32)
+
+        <a class="method-permalink" href="#new%28zip%3ALibZip%3A%3AZipArchive%2Cerr%3AInt32%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Internal constructor to create <code><a href="../Zip/Archive.html">Archive</a></code> instance from
+<code>LibZip::ZipArchive</code> and error code.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="add(path:String,source:Source,flags=&lt;spanclass=&quot;n&quot;&gt;0_u32&lt;/span&gt;:UInt32)-instance-method">
+      <div class="signature">
+        
+        def <strong>add</strong>(path : String, source : <a href="../Zip/Source.html">Source</a>, flags = <span class="n">0_u32</span> : UInt32)
+
+        <a class="method-permalink" href="#add%28path%3AString%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Add given <code><a href="../Zip/Source.html">Zip::Source</a></code> <em>source</em> to archive as <em>path</em> and return
+index of new entry.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open or if <em>source</em>
+could not be added.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># create a new string source</span>
+src <span class="o">=</span> <span class="t">Zip</span><span class="t">::</span><span class="t">StringSource</span>.<span class="k">new</span>(<span class="s">&quot;test string&quot;</span>)
+
+<span class="c"># add to archive as &quot;foo.txt&quot;</span>
+zip.add(<span class="s">&quot;foo.txt&quot;</span>, src)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add(path:String,body:String,flags=&lt;spanclass=&quot;n&quot;&gt;0_u32&lt;/span&gt;:UInt32)-instance-method">
+      <div class="signature">
+        
+        def <strong>add</strong>(path : String, body : String, flags = <span class="n">0_u32</span> : UInt32)
+
+        <a class="method-permalink" href="#add%28path%3AString%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Add archive entry <em>path</em> with content <em>body</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># add &quot;foo.txt&quot; to archive with body &quot;hello from foo.txt&quot;</span>
+zip.add(<span class="s">&quot;foo.txt&quot;</span>, <span class="s">&quot;hello from foo.txt&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add(path:String,slice:Slice,flags=&lt;spanclass=&quot;n&quot;&gt;0_u32&lt;/span&gt;:UInt32)-instance-method">
+      <div class="signature">
+        
+        def <strong>add</strong>(path : String, slice : Slice, flags = <span class="n">0_u32</span> : UInt32)
+
+        <a class="method-permalink" href="#add%28path%3AString%2Cslice%3ASlice%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Add archive entry <em>path</em> with content <em>body</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># create slice</span>
+slice <span class="o">=</span> <span class="t">Slice</span>.<span class="k">new</span>(<span class="n">10</span>) { <span class="o">|</span>i<span class="o">|</span> i <span class="o">+</span> <span class="n">10</span> }
+
+<span class="c"># add slice to archive as &quot;foo.txt&quot;</span>
+zip.add(<span class="s">&quot;foo.txt&quot;</span>, slice)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add_dir(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>add_dir</strong>(path : String, flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#add_dir%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Add directory to archive at path <em>path</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if dir could
+not be added.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># add directory &quot;some-dir&quot; to archive</span>
+zip.add_dir(<span class="s">&quot;some-dir&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add_file(path:String,start=&lt;spanclass=&quot;n&quot;&gt;0_u64&lt;/span&gt;:UInt64,len=&lt;spanclass=&quot;n&quot;&gt;-1_i64&lt;/span&gt;:Int64,flags=&lt;spanclass=&quot;n&quot;&gt;0_u32&lt;/span&gt;:UInt32)-instance-method">
+      <div class="signature">
+        
+        def <strong>add_file</strong>(path : String, start = <span class="n">0_u64</span> : UInt64, len = <span class="n">-1_i64</span> : Int64, flags = <span class="n">0_u32</span> : UInt32)
+
+        <a class="method-permalink" href="#add_file%28path%3AString%2Cstart%3D%3Cspanclass%3D%22n%22%3E0_u64%3C%2Fspan%3E%3AUInt64%2Clen%3D%3Cspanclass%3D%22n%22%3E-1_i64%3C%2Fspan%3E%3AInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Add file <em>path</em> to archive as <em>path</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># add &quot;/path/to/file.txt&quot; to archive</span>
+zip.add_file(<span class="s">&quot;/path/to/file.txt&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add_file(dst_path:String,src_path:String,start=&lt;spanclass=&quot;n&quot;&gt;0_u64&lt;/span&gt;:UInt64,len=&lt;spanclass=&quot;n&quot;&gt;-1_i64&lt;/span&gt;:Int64,flags=&lt;spanclass=&quot;n&quot;&gt;0_u32&lt;/span&gt;:UInt32)-instance-method">
+      <div class="signature">
+        
+        def <strong>add_file</strong>(dst_path : String, src_path : String, start = <span class="n">0_u64</span> : UInt64, len = <span class="n">-1_i64</span> : Int64, flags = <span class="n">0_u32</span> : UInt32)
+
+        <a class="method-permalink" href="#add_file%28dst_path%3AString%2Csrc_path%3AString%2Cstart%3D%3Cspanclass%3D%22n%22%3E0_u64%3C%2Fspan%3E%3AUInt64%2Clen%3D%3Cspanclass%3D%22n%22%3E-1_i64%3C%2Fspan%3E%3AInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Add file <em>src_path</em> to archive as <em>dst_path</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># add &quot;/path/to/file.txt&quot; to archive as &quot;foo.txt&quot;</span>
+zip.add(<span class="s">&quot;foo.txt&quot;</span>, <span class="s">&quot;/path/to/file.txt&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clear_error-instance-method">
+      <div class="signature">
+        
+        def <strong>clear_error</strong>
+
+        <a class="method-permalink" href="#clear_error-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Clear last archive error code.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># clear last error</span>
+zip.clear_error</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="close(discard=&lt;spanclass=&quot;n&quot;&gt;false&lt;/span&gt;:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>close</strong>(discard = <span class="n">false</span> : Bool)
+
+        <a class="method-permalink" href="#close%28discard%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%3ABool%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Close this <code><a href="../Zip/Archive.html">Archive</a></code>.  If <em>discard</em> is true, then discard any
+changes.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open or if the
+archive could not be closed.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># close zip file</span>
+zip.close</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="comment(flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32):String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>comment</strong>(flags = <span class="n">0</span> : Int32) : String | Nil
+
+        <a class="method-permalink" href="#comment%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AString%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns comment for the entire archive, or nil if there is no
+comment set.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get archive comment and print it</span>
+<span class="k">if</span> comment <span class="o">=</span> zip.comment
+  puts comment
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="comment=(s:String):String-instance-method">
+      <div class="signature">
+        
+        def <strong>comment=</strong>(s : String) : String
+
+        <a class="method-permalink" href="#comment%3D%28s%3AString%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Set and return the comment for the entire archive.  Comment must
+be encoded in ASCII or UTF-8.  Returns comment string.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open or if the
+comment could not be set.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># set archive comment</span>
+zip.comment <span class="o">=</span> <span class="s">&quot;this is a test comment&quot;</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="default_password=(password:String|Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>default_password=</strong>(password : String | Nil)
+
+        <a class="method-permalink" href="#default_password%3D%28password%3AString%7CNil%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Set the default password used when accessing encrypted files, or
+nil for no password.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if the
+default password could not be set.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># set default password to &quot;foobar&quot;</span>
+zip.default_password <span class="o">=</span> <span class="s">&quot;foobar&quot;</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(path:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(path : String)
+
+        <a class="method-permalink" href="#delete%28path%3AString%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Delete file at given path <em>path</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if file
+could not be deleted.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># delete &quot;foo.txt&quot; from archive</span>
+zip.delete(<span class="s">&quot;foo.txt&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(index:UInt64)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(index : UInt64)
+
+        <a class="method-permalink" href="#delete%28index%3AUInt64%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Delete file at given index <em>index</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if file
+could not be deleted.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># delete first file in archive</span>
+zip.delete(<span class="n">0</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="discard-instance-method">
+      <div class="signature">
+        
+        def <strong>discard</strong>
+
+        <a class="method-permalink" href="#discard-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Discard any changes and close this <code><a href="../Zip/Archive.html">Archive</a></code>.  Equivalent to
+<code><a href="../Zip/Archive.html#close%28discard%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%3ABool%29-instance-method">#close(true)</a></code>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open or if the
+archive could not be closed.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># close zip file and discard changes</span>
+zip.discard</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each(flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,&amp;block:String-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>each</strong>(flags = <span class="n">0</span> : Int32, &block : String -> )
+
+        <a class="method-permalink" href="#each%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%3AString-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Iterate over names of files in archive.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get file names</span>
+file_names <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">String</span>
+zip.each { <span class="o">|</span>name<span class="o">|</span> file_names <span class="o"><<</span> name }</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each(flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>each</strong>(flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#each%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Return iterator over names of files in archive.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># create name iterator</span>
+names <span class="o">=</span> zip.each
+
+<span class="c"># iterate names 2 at a time</span>
+names.take(<span class="n">2</span>).each <span class="k">do</span> <span class="o">|</span>name<span class="o">|</span>
+  puts name
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error:ErrorCode-instance-method">
+      <div class="signature">
+        
+        def <strong>error</strong> : <a href="../Zip/ErrorCode.html">ErrorCode</a>
+
+        <a class="method-permalink" href="#error%3AErrorCode-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Return last archive error as an <code><a href="../Zip/ErrorCode.html">ErrorCode</a></code> instance.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get and print last error</span>
+puts zip.error</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_file_comment(index:UInt64,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32):String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>get_file_comment</strong>(index : UInt64, flags = <span class="n">0</span> : Int32) : String | Nil
+
+        <a class="method-permalink" href="#get_file_comment%28index%3AUInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AString%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns comment of file at index <em>index</em> or nil if there is no
+comment set.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if there was
+an error fetching the file comment.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get comment of first file in archive</span>
+zip.get_file_comment(<span class="n">0</span>)</code></pre>
+
+</div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_file_comment(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>get_file_comment</strong>(path : String, flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#get_file_comment%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns comment of file at path <em>path</em>, or nil if there was no
+comment set.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if there was
+an error fetching the file comment.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get comment of &quot;foo.txt&quot;</span>
+zip.get_file_comment(<span class="s">&quot;foo.txt&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_name(index:UInt64,flags:Int32):String-instance-method">
+      <div class="signature">
+        
+        def <strong>get_name</strong>(index : UInt64, flags : Int32) : String
+
+        <a class="method-permalink" href="#get_name%28index%3AUInt64%2Cflags%3AInt32%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns path of given <em>index</em>, or nil if there was an error or the
+given index could not be found.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get name of first file in archive</span>
+path <span class="o">=</span> zip.get_name(<span class="n">0</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="name_locate(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32):Int64-instance-method">
+      <div class="signature">
+        
+        def <strong>name_locate</strong>(path : String, flags = <span class="n">0</span> : Int32) : Int64
+
+        <a class="method-permalink" href="#name_locate%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AInt64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns index of given <em>path</em>, or -1 if the given path could not
+be found.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get index of &quot;foo.txt&quot;</span>
+index <span class="o">=</span> zip.name_locate(<span class="s">&quot;foo.txt&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="name_locate_throws(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32):UInt64-instance-method">
+      <div class="signature">
+        
+        def <strong>name_locate_throws</strong>(path : String, flags = <span class="n">0</span> : Int32) : UInt64
+
+        <a class="method-permalink" href="#name_locate_throws%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AUInt64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns index of given <em>path</em> or raises an exception if the given
+path could not be found.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get index of &quot;foo.txt&quot; or raise exception if &quot;foo.txt&quot; could</span>
+<span class="c"># not be found</span>
+index <span class="o">=</span> zip.name_locate_throws(<span class="s">&quot;foo.txt&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="num_entries(flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>num_entries</strong>(flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#num_entries%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Get the number of files in this archive.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if there was
+an error counting the number of entries.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get number of entries</span>
+count <span class="o">=</span> zip.num_entries</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,password=&lt;spanclass=&quot;n&quot;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>open</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil, &block)
+
+        <a class="method-permalink" href="#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Opens given <em>path</em> in <code><a href="../Zip/Archive.html">Archive</a></code> as a <code><a href="../Zip/File.html">File</a></code> instance, passes it to
+block <em>block</em>, and closes the file when the block exits.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if file
+could not be opened.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># read up to 10 bytes from &quot;foo.txt&quot;</span>
+zip.open(<span class="s">&quot;foo.txt&quot;</span>) <span class="k">do</span> <span class="o">|</span>file<span class="o">|</span>
+  <span class="c"># declare buffer</span>
+  buf <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">new</span>(<span class="n">10</span>)
+
+  <span class="c"># read up to 10 bytes of contents</span>
+  len <span class="o">=</span> file.read(buf)
+
+  <span class="c"># return buffer</span>
+  buf[<span class="n">0</span>, len]
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open(index:UInt64,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,password=&lt;spanclass=&quot;n&quot;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>open</strong>(index : UInt64, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil, &block)
+
+        <a class="method-permalink" href="#open%28index%3AUInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Opens index <em>index</em> in <code><a href="../Zip/Archive.html">Archive</a></code> as a <code><a href="../Zip/File.html">File</a></code> instance, passes it
+to block <em>block</em>, and closes the file when the block exits.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if file
+could not be opened.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># open first file in archive</span>
+zip.open(<span class="n">0</span>) <span class="k">do</span> <span class="o">|</span>file<span class="o">|</span>
+  <span class="c"># declare buffer</span>
+  buf <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">new</span>(<span class="n">10</span>)
+
+  <span class="c"># read up to 10 bytes of contents</span>
+  len <span class="o">=</span> file.read(buf)
+
+  <span class="c"># return buffer</span>
+  buf[<span class="n">0</span>, len]
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open(index:UInt64,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,password=&lt;spanclass=&quot;n&quot;&gt;nil&lt;/span&gt;:String|Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>open</strong>(index : UInt64, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil)
+
+        <a class="method-permalink" href="#open%28index%3AUInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns <code><a href="../Zip/File.html">File</a></code> instance of given index <em>index</em> in <code><a href="../Zip/Archive.html">Archive</a></code>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if file
+could not be opened.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># declare buffer</span>
+buf <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">new</span>(<span class="n">10</span>)
+
+<span class="c"># open first file in archive</span>
+file <span class="o">=</span> zip.open(<span class="n">0</span>)
+
+<span class="c"># read up to 10 bytes of contents</span>
+len <span class="o">=</span> file.read(buf)
+
+<span class="c"># close &quot;foo.txt&quot;</span>
+file.close</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,password=&lt;spanclass=&quot;n&quot;&gt;nil&lt;/span&gt;:String|Nil):File-instance-method">
+      <div class="signature">
+        
+        def <strong>open</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil) : <a href="../Zip/File.html">File</a>
+
+        <a class="method-permalink" href="#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AFile-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Open <em>path</em> in <code><a href="../Zip/Archive.html">Archive</a></code> and return it as <code><a href="../Zip/File.html">File</a></code> instance.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if file
+could not be opened.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># declare buffer</span>
+buf <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">new</span>(<span class="n">10</span>)
+
+<span class="c"># open &quot;foo.txt&quot;</span>
+file <span class="o">=</span> zip.open(<span class="s">&quot;foo.txt&quot;</span>)
+
+<span class="c"># read up to 10 bytes of contents</span>
+len <span class="o">=</span> file.read(buf)
+
+<span class="c"># close &quot;foo.txt&quot;</span>
+file.close</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open?-instance-method">
+      <div class="signature">
+        
+        def <strong>open?</strong>
+
+        <a class="method-permalink" href="#open%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns <em>true</em> if this <code><a href="../Zip/Archive.html">Archive</a></code> is open, or <em>false</em> otherwise.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># clear last error</span>
+puts <span class="s">&quot;zip is %s&quot;</span> <span class="o">%</span> [zip.open? ? <span class="s">&quot;open&quot;</span> : <span class="s">&quot;closed&quot;</span>]</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,password=&lt;spanclass=&quot;n&quot;&gt;nil&lt;/span&gt;:String|Nil):Slice(UInt8)-instance-method">
+      <div class="signature">
+        
+        def <strong>read</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil) : Slice(UInt8)
+
+        <a class="method-permalink" href="#read%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3ASlice%28UInt8%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Read contents of file <em>path</em> and return it as a <code>Slice(UInt8)</code>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, if file
+could not be opened, or if the file could not be read.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># read &quot;foo.txt&quot; from zip file as string</span>
+str <span class="o">=</span> <span class="t">String</span>.<span class="k">new</span>(zip.read(<span class="s">&quot;foo.txt&quot;</span>))</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,password=&lt;spanclass=&quot;n&quot;&gt;nil&lt;/span&gt;:String|Nil,&amp;block:Slice(UInt8),Int32-&gt;Nil):UInt64-instance-method">
+      <div class="signature">
+        
+        def <strong>read</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil, &block : Slice(UInt8), Int32 -> Nil) : UInt64
+
+        <a class="method-permalink" href="#read%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%3ASlice%28UInt8%29%2CInt32-%3ENil%29%3AUInt64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Read input file in slices, pass each slice and it's length to
+block, and return number of bytes read.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, if file
+could not be opened, or if the file could not be read.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># read string from text file</span>
+str <span class="o">=</span> <span class="t">String</span>.build <span class="k">do</span> <span class="o">|</span>b<span class="o">|</span>
+  zip.read(<span class="s">&quot;foo.txt&quot;</span> <span class="k">do</span> <span class="o">|</span>buf, len<span class="o">|</span>
+    <span class="c"># write slice to string builder</span>
+    s.write(buf[<span class="n">0</span>, len])
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rename(index:UInt64,new_path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>rename</strong>(index : UInt64, new_path : String, flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#rename%28index%3AUInt64%2Cnew_path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Rename file at <em>index</em> to path <em>new_path</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if file
+could not be renamed.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># rename first file to &quot;new-file.txt&quot;</span>
+zip.rename(<span class="n">0</span>, <span class="s">&quot;new-file.txt&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rename(old_path:String,new_path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>rename</strong>(old_path : String, new_path : String, flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#rename%28old_path%3AString%2Cnew_path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Rename file named <em>old_path</em> to new path <em>new_path</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if file
+could not be renamed.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># rename &quot;foo.txt&quot; to &quot;new-file.txt&quot;</span>
+zip.rename(<span class="s">&quot;foo.txt&quot;</span>, <span class="s">&quot;new-file.txt&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="replace(path:String,body:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>replace</strong>(path : String, body : String, flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#replace%28path%3AString%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Replace entry at path <em>path</em> with contents <em>body</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if file
+could not be replaced.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># replace contents of &quot;foo.txt&quot; with &quot;new content&quot;</span>
+zip.replace(<span class="s">&quot;foo.txt&quot;</span>, <span class="s">&quot;new content&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="replace(index:UInt64,source:Source,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>replace</strong>(index : UInt64, source : <a href="../Zip/Source.html">Source</a>, flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#replace%28index%3AUInt64%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Replace entry at index <em>index</em> with <code><a href="../Zip/Source.html">Source</a></code> <em>source</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if file
+could not be replaced.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># replace contents of first file with &quot;new content&quot;</span>
+zip.replace(<span class="n">0</span>, <span class="t">StringSource</span>.<span class="k">new</span>(zip, <span class="s">&quot;new content&quot;</span>))</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="replace(index:UInt64,body:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>replace</strong>(index : UInt64, body : String, flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#replace%28index%3AUInt64%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Replace entry at index <em>index</em> with contents <em>body</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if file
+could not be replaced.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># replace contents of first file with &quot;new content&quot;</span>
+zip.replace(<span class="n">0</span>, <span class="s">&quot;new content&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="replace(path:String,source:Source,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>replace</strong>(path : String, source : <a href="../Zip/Source.html">Source</a>, flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#replace%28path%3AString%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Replace entry at path <em>path</em> with <code><a href="../Zip/Source.html">Source</a></code> <em>source</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if file
+could not be replaced.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># replace contents of &quot;foo.txt&quot; with &quot;new content&quot;</span>
+zip.replace(<span class="s">&quot;foo.txt&quot;</span>, <span class="t">StringSource</span>.<span class="k">new</span>(zip, <span class="s">&quot;new content&quot;</span>))</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_file_comment(path:String,comment:String|Nil,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_file_comment</strong>(path : String, comment : String | Nil, flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#set_file_comment%28path%3AString%2Ccomment%3AString%7CNil%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Set comment of file path <em>path</em> to string <em>comment</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if there was
+an error setting the file comment.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># set comment of &quot;foo.txt&quot; to &quot;example comment&quot;</span>
+zip.set_file_comment(<span class="s">&quot;foo.txt&quot;</span>, <span class="s">&quot;example comment&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_file_comment(index:UInt64,comment:String|Nil,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_file_comment</strong>(index : UInt64, comment : String | Nil, flags = <span class="n">0</span> : Int32)
+
+        <a class="method-permalink" href="#set_file_comment%28index%3AUInt64%2Ccomment%3AString%7CNil%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Set comment of file at <em>index</em> to string <em>comment</em>.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open, or if there was
+an error setting the file comment.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># set comment of first file to &quot;example comment&quot;</span>
+zip.set_file_comment(<span class="n">0</span>, <span class="s">&quot;example comment&quot;</span>)</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="stat(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32):LibZip::Stat-instance-method">
+      <div class="signature">
+        
+        def <strong>stat</strong>(path : String, flags = <span class="n">0</span> : Int32) : LibZip::Stat
+
+        <a class="method-permalink" href="#stat%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3ALibZip%3A%3AStat-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Return stat information about <code>path</code> as a <code>LibZip::Stat</code>
+structure.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open or if file could
+not be statted.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get size of &quot;foo.txt&quot;</span>
+st <span class="o">=</span> zip.stat(<span class="s">&quot;foo.txt&quot;</span>)
+puts <span class="s">&quot;file size = </span><span class="i">#{</span></span>st.size<span class="s"><span class="i">}</span>&quot;</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="stat(index:LibC::Int,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32):LibZip::Stat-instance-method">
+      <div class="signature">
+        
+        def <strong>stat</strong>(index : LibC::Int, flags = <span class="n">0</span> : Int32) : LibZip::Stat
+
+        <a class="method-permalink" href="#stat%28index%3ALibC%3A%3AInt%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3ALibZip%3A%3AStat-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Return stat information about file at index <em>index</em> as a
+<code>LibZip::Stat</code> structure.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open or if file could
+not be statted.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get size of first file in archive</span>
+st <span class="o">=</span> zip.stat(<span class="n">0</span>)
+puts <span class="s">&quot;file size = </span><span class="i">#{</span></span>st.size<span class="s"><span class="i">}</span>&quot;</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="system_error:LibC::Int-instance-method">
+      <div class="signature">
+        
+        def <strong>system_error</strong> : LibC::Int
+
+        <a class="method-permalink" href="#system_error%3ALibC%3A%3AInt-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Return last system error.</p>
+
+<p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open.</p>
+
+<h3>Example</h3>
+
+<pre><code><span class="c"># get and print last system error</span>
+puts zip.system_error</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
