@@ -15,6 +15,9 @@ dependencies:
 
 ## Usage
 
+Use `crystal doc` to generate API documentation and `crystal spec` to
+run the test suite.  Here is a basic example:
+
 ```crystal
 require "zip"
 
