@@ -8,8 +8,8 @@ require "./zip/*"
 #
 #     # create a new archive named foo.zip and populate it
 #     Zip::Archive.create("foo.zip") do |zip|
-#       # add file "/path/to/foo.txt" to archive as "bar.txt"
-#       zip.add_file("bar.txt", "/path/to/foo.txt")
+#       # add file "/path/to/foo.png" to archive as "bar.png"
+#       zip.add_file("bar.png", "/path/to/foo.png")
 #
 #       # add file "baz.txt" with contents "hello world!"
 #       zip.add("baz.txt", "hello world!")

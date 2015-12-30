@@ -1,9 +1,9 @@
 # libzip-crystal
 
-Crystal bindings for libzip.
+Crystal bindings for [libzip](http://www.nih.at/libzip/), which allows
+you to create and modify Zip archives.
 
 ## Installation
-
 
 Add this to your application's `shard.yml`:
 
@@ -13,40 +13,29 @@ dependencies:
     github: pablotron/libzip-crystal
 ```
 
-
 ## Usage
-
 
 ```crystal
 require "zip"
 
-# create zip file named "foo.zip" with a file "bar.txt" containng the
-# string "hello world!"
+# create a new archive named foo.zip and populate it
 Zip::Archive.create("foo.zip") do |zip|
-  zip.add("bar.txt", "hello world!")
+  # add file "/path/to/foo.png" to archive as "bar.png"
+  zip.add_file("bar.png", "/path/to/foo.png")
+
+  # add file "baz.txt" with contents "hello world!"
+  zip.add("baz.txt", "hello world!")
 end
 
-# read contents of "bar.txt" inside "foo.zip"
-str = Zip::Archive.open("foo.zip") do |zip|
-  # create slice buffer
-  buf = Slice(UInt8).new(1024)
+# read baz.txt from archive foo.zip
+Zip::Archive.open("foo.zip") do |zip|
+  # read bzr.txt as string
+  str = String.new(zip.read("baz.txt"))
 
-  # create string builder
-  String.build do |b|
-    # open "bar.txt"
-    zip.open("bar.txt") do |fh|
-      # read slices from file
-      while ((len = fh.read(buf)) > 0)
-        b.write(buf[0, len])
-      end
-    end
-  end
+  # print baz.txt
+  puts "contents of baz.txt: #{str}"
 end
-
 ```
-
-
-TODO: Write usage instructions here
 
 ## Development
 
