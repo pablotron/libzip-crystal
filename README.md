@@ -37,10 +37,6 @@ Zip::Archive.open("foo.zip") do |zip|
 end
 ```
 
-## Development
-
-TODO: Write development instructions here
-
 ## Contributing
 
 1. Fork it ( https://github.com/pablotron/libzip-crystal/fork )
