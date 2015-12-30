@@ -230,7 +230,7 @@ module Zip
       fd        : IO::FileDescriptor,
       flags = 0 : Int32
     )
-      # create new fd 
+      # create new fd
       # (attempt to work around SEGV on Archive#close, doesn't work)
       new_fd = C.dup(fd.fd)
       raise "couldn't dup fd" if new_fd == -1
@@ -920,6 +920,37 @@ module Zip
 
         # return result
         sum
+      end
+    end
+
+    # Read contents of file *path* and return it as a `Slice(UInt8)`.
+    #
+    # Raises an exception if this `Archive` is not open, if file
+    # could not be opened, or if the file could not be read.
+    #
+    # ### Example
+    #
+    #     # read "foo.txt" from zip file as string
+    #     str = String.new(zip.read("foo.txt"))
+    #
+    def read(
+      path            : String,
+      flags = 0_i32   : Int32,
+      password = nil  : String?
+    ) : Slice(UInt8)
+      io = MemoryIO.new(stat(path).size)
+
+      open(path, flags) do |file|
+        # create read buffer
+        buf = Slice(UInt8).new(1024)
+
+        # read file
+        while ((len = file.read(buf)) > 0)
+          io.write((len == 1024) ? buf : buf[0, len])
+        end
+
+        # return slice of correct size
+        io.to_slice[0, io.bytesize]
       end
     end
 

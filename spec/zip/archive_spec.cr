@@ -31,12 +31,12 @@ describe "Zip::Archive" do
     end
   end
 
-# 
+#
 #   describe "#open(IO::Descriptor, &block)" do
 #     it "can open a zip from a file descriptor" do
 #       # remove test zip
 #       File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
-# 
+#
 #       # create zip from descriptor
 #       File.open(ZIP_PATH, "w+") do |file|
 #         Zip::Archive.open(file) do |zip|
@@ -44,7 +44,7 @@ describe "Zip::Archive" do
 #           # FIXME: currently we crash after this (on zip.close)
 #         end
 #       end
-# 
+#
 #       # open generated zip
 #       Zip::Archive.open(ZIP_PATH) do |zip|
 #         String.build do |b|
@@ -55,7 +55,7 @@ describe "Zip::Archive" do
 #       end
 #     end
 #   end
-# 
+#
 
   describe "#error" do
     it "can get the last archive error" do
@@ -148,7 +148,7 @@ describe "Zip::Archive" do
     end
   end
 
-  describe "#read" do
+  describe "#read(&block)" do
     it "can read chunks of a file" do
       # remove test zip
       File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
@@ -168,6 +168,27 @@ describe "Zip::Archive" do
               b.write(buf[0, len])
             end
           end.should eq path
+        end
+      end
+    end
+  end
+
+  describe "#read" do
+    it "can read a complete file" do
+      # remove test zip
+      File.delete(ZIP_PATH) if File.exists?(ZIP_PATH)
+
+      # populate zip with test files
+      Zip::Archive.create(ZIP_PATH) do |zip|
+        TEST_FILES.each do |file|
+          zip.add(file, file)
+        end
+      end
+
+      # read test files from zip
+      Zip::Archive.open(ZIP_PATH) do |zip|
+        TEST_FILES.each do |path|
+          String.new(zip.read(path)).should eq path
         end
       end
     end
