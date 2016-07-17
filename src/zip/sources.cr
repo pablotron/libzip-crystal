@@ -78,10 +78,10 @@ module Zip
   # TODO
   class DescriptorSource < Source
     def initialize(
-      zip             : Archive,
-      fd              : IO::FileDescriptor,
-      offset = 0_u64  : UInt64,
-      len = -1_i64    : Int64
+      zip     : Archive,
+      fd      : IO::FileDescriptor,
+      offset  : UInt64 = 0_u64,
+      len     : Int64 = -1_i64
     )
       fh = C.fdopen(fd.fd, "rb")
       raise "couldn't reopen descriptor" if fh == nil
@@ -113,10 +113,10 @@ module Zip
     #     zip.add("foo.txt", source)
     #
     def initialize(
-      zip             : Archive,
-      path            : String,
-      offset = 0_u64  : UInt64,
-      len = -1_i64    : Int64
+      zip     : Archive,
+      path    : String,
+      offset  : UInt64 = 0_u64,
+      len     : Int64 = -1_i64
     )
       super(zip, LibZip.zip_source_file(zip.zip, path, offset, len))
     end
@@ -162,12 +162,12 @@ module Zip
     #     end
     #
     def initialize(
-      dst_zip         : Archive,
-      src_zip         : Archive,
-      src_index       : UInt64,
-      offset = 0_u64  : UInt64,
-      len = -1_i64    : Int64,
-      flags = 0_i32   : Int32
+      dst_zip   : Archive,
+      src_zip   : Archive,
+      src_index : UInt64,
+      offset    : UInt64 = 0_u64,
+      len       : Int64 = -1_i64,
+      flags     : Int32 = 0_i32
     )
       super(dst_zip, LibZip.zip_source_zip(
         dst_zip.zip,
@@ -198,12 +198,12 @@ module Zip
     #     end
     #
     def initialize(
-      dst_zip         : Archive,
-      src_zip         : Archive,
-      src_path        : String,
-      offset = 0_u64  : UInt64,
-      len = -1_i64    : Int64,
-      flags = 0_i32   : Int32
+      dst_zip   : Archive,
+      src_zip   : Archive,
+      src_path  : String,
+      offset    : UInt64 = 0_u64,
+      len       : Int64 = -1_i64,
+      flags     : Int32 = 0_i32
     )
       super(dst_zip, LibZip.zip_source_zip(
         dst_zip.zip,

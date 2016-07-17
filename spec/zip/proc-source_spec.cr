@@ -7,7 +7,7 @@ class TestProcSource < Zip::ProcSource
   def initialize(zip, data)
     # reset position and cache data slice
     @pos = 0
-    @data = data.to_slice
+    @data = data.to_slice as Slice(UInt8)
 
     super(zip, ->(
       action    : Zip::Action,

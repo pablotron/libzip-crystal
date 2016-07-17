@@ -377,7 +377,7 @@ describe "Zip::Archive" do
         names = zip.each
 
         # iterate names 2 at a time
-        names.take(2).each do |name|
+        names.first(2).each do |name|
           TEST_FILES.includes?(name).should eq true
         end
       end

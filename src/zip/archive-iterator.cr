@@ -3,10 +3,13 @@ module Zip
   class ArchiveIterator
     include Iterator(String)
 
+    @max : Int64
+    @pos : UInt64
+
     # Internal constructor.  Use `Archive#each` instead.
     protected def initialize(
-      @zip        : Archive, 
-      @flags = 0  : Int32
+      @zip   : Archive, 
+      @flags : Int32 = 0
     )
       @max = @zip.num_entries(@flags)
       @pos = 0_u64

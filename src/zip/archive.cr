@@ -63,8 +63,8 @@ module Zip
     #     end
     #
     def self.open(
-      path      : String,
-      flags = 0 : Int32,
+      path    : String,
+      flags   : Int32 = 0,
       &block
     )
       # create archive
@@ -106,8 +106,8 @@ module Zip
     #     end
     #
     def self.open(
-      fd        : IO::FileDescriptor,
-      flags = 0 : Int32,
+      fd      : IO::FileDescriptor,
+      flags   : Int32 = 0,
       &block
     )
       # create archive
@@ -147,8 +147,8 @@ module Zip
     #     end
     #
     def self.create(
-      path                  : String,
-      flags = CREATE_FLAGS  : Int32,
+      path   : String,
+      flags  : Int32 = CREATE_FLAGS,
       &block
     )
       self.open(path, flags) do |zip|
@@ -174,8 +174,8 @@ module Zip
     # See Also:
     # * `#open(String, Int32)`
     def self.create(
-      path                  : String,
-      flags = CREATE_FLAGS  : Int32
+      path  : String,
+      flags : Int32 = CREATE_FLAGS  
     )
       new(path, flags)
     end
@@ -207,8 +207,8 @@ module Zip
     #     zip.close
     #
     def initialize(
-      path      : String,
-      flags = 0 : Int32
+      path  : String,
+      flags : Int32 = 0
     )
       # open from path
       zip = LibZip.zip_open(path, flags, out err)
@@ -221,8 +221,8 @@ module Zip
     #
     # FIXME: This method does not currently work (see spec for details).
     def initialize(
-      fd        : IO::FileDescriptor,
-      flags = 0 : Int32
+      fd    : IO::FileDescriptor,
+      flags : Int32 = 0
     )
       # create new fd
       # (attempt to work around SEGV on Archive#close, doesn't work)
@@ -309,7 +309,7 @@ module Zip
     #     # close zip file
     #     zip.close
     #
-    def close(discard = false : Bool)
+    def close(discard : Bool = false)
       assert_open
 
       if discard
@@ -374,7 +374,7 @@ module Zip
     #       puts comment
     #     end
     #
-    def comment(flags = 0 : Int32) : String?
+    def comment(flags : Int32 = 0) : String?
       assert_open
 
       ptr = LibZip.zip_get_archive_comment(@zip, out len, flags)
@@ -396,14 +396,14 @@ module Zip
     #     zip.add("foo.txt", src)
     #
     def add(
-      path          : String,
-      source        : Source,
-      flags = 0_u32 : UInt32
+      path    : String,
+      source  : Source,
+      flags   : UInt32 = 0_u32
     )
       assert_open
 
       # add file
-      r = LibZip.zip_file_add(@zip, path, source.source, flags) == -1
+      r = LibZip.zip_file_add(@zip, path, source.source.not_nil!, flags) == -1
       raise Error.new(error) if r == -1
 
       # return result
@@ -420,9 +420,9 @@ module Zip
     #     zip.add("foo.txt", "hello from foo.txt")
     #
     def add(
-      path          : String,
-      body          : String,
-      flags = 0_u32 : UInt32
+      path  : String,
+      body  : String,
+      flags : UInt32 = 0_u32
     )
       add(path, StringSource.new(self, body), flags)
     end
@@ -440,9 +440,9 @@ module Zip
     #     zip.add("foo.txt", slice)
     #
     def add(
-      path          : String,
-      slice         : Slice,
-      flags = 0_u32 : UInt32
+      path  : String,
+      slice : Slice,
+      flags : UInt32 = 0_u32
     )
       add(path, SliceSource.new(self, slice), flags)
     end
@@ -457,11 +457,11 @@ module Zip
     #     zip.add("foo.txt", "/path/to/file.txt")
     #
     def add_file(
-      dst_path      : String,
-      src_path      : String,
-      start = 0_u64 : UInt64,
-      len = -1_i64  : Int64,
-      flags = 0_u32 : UInt32
+      dst_path  : String,
+      src_path  : String,
+      start     : UInt64 = 0_u64,
+      len       : Int64 = -1_i64,
+      flags     : UInt32 = 0_u32
     )
       add(dst_path, FileSource.new(self, src_path, start, len), flags)
     end
@@ -476,10 +476,10 @@ module Zip
     #     zip.add_file("/path/to/file.txt")
     #
     def add_file(
-      path          : String,
-      start = 0_u64 : UInt64,
-      len = -1_i64  : Int64,
-      flags = 0_u32 : UInt32
+      path  : String,
+      start : UInt64 = 0_u64,
+      len   : Int64 = -1_i64,
+      flags : UInt32 = 0_u32
     )
       add_file(path, path, start, len, flags)
     end
@@ -494,7 +494,7 @@ module Zip
     #     # add directory "some-dir" to archive
     #     zip.add_dir("some-dir")
     #
-    def add_dir(path : String, flags = 0 : Int32)
+    def add_dir(path : String, flags : Int32 = 0)
       assert_open
 
       # add dir, check for error
@@ -516,13 +516,13 @@ module Zip
     #     zip.replace(0, StringSource.new(zip, "new content"))
     #
     def replace(
-      index     : UInt64,
-      source    : Source,
-      flags = 0 : Int32
+      index   : UInt64,
+      source  : Source,
+      flags   : Int32 = 0
     )
       assert_open
 
-      if LibZip.zip_file_replace(@zip, index, source.source, flags) == -1
+      if LibZip.zip_file_replace(@zip, index, source.source.not_nil!, flags) == -1
         raise Error.new(error)
       end
     end
@@ -538,9 +538,9 @@ module Zip
     #     zip.replace("foo.txt", StringSource.new(zip, "new content"))
     #
     def replace(
-      path      : String,
-      source    : Source,
-      flags = 0 : Int32
+      path    : String,
+      source  : Source,
+      flags   : Int32 = 0
     )
       assert_open
 
@@ -558,9 +558,9 @@ module Zip
     #     zip.replace(0, "new content")
     #
     def replace(
-      index     : UInt64,
-      body      : String,
-      flags = 0 : Int32
+      index : UInt64,
+      body  : String,
+      flags : Int32 = 0
     )
       replace(index, StringSource.new(self, body), flags)
     end
@@ -576,9 +576,9 @@ module Zip
     #     zip.replace("foo.txt", "new content")
     #
     def replace(
-      path        : String,
-      body        : String,
-      flags  = 0  : Int32
+      path  : String,
+      body  : String,
+      flags : Int32 = 0
     )
       replace(path, StringSource.new(self, body), flags)
     end
@@ -596,7 +596,7 @@ module Zip
     def rename(
       index     : UInt64,
       new_path  : String,
-      flags = 0 : Int32
+      flags     : Int32 = 0
     )
       assert_open
 
@@ -619,7 +619,7 @@ module Zip
     def rename(
       old_path  : String,
       new_path  : String,
-      flags = 0 : Int32
+      flags     : Int32 = 0
     )
       rename(name_locate_throws(old_path), new_path, flags)
     end
@@ -669,8 +669,8 @@ module Zip
     #     index = zip.name_locate("foo.txt")
     #
     def name_locate(
-      path      : String,
-      flags = 0 : Int32
+      path  : String,
+      flags : Int32 = 0
     ) : Int64
       assert_open
 
@@ -689,8 +689,8 @@ module Zip
     #     index = zip.name_locate_throws("foo.txt")
     #
     def name_locate_throws(
-      path      : String,
-      flags = 0 : Int32
+      path  : String,
+      flags : Int32 = 0
     ) : UInt64
       ofs = name_locate(path, flags)
       raise "unknown name: #{path}" if ofs == -1
@@ -731,9 +731,9 @@ module Zip
     #     file.close
     #
     def open(
-      path            : String,
-      flags = 0       : Int32,
-      password = nil  : String?
+      path      : String,
+      flags     : Int32 = 0,
+      password  : String? = nil
     ) : File
       assert_open
 
@@ -772,9 +772,9 @@ module Zip
     #     end
     #
     def open(
-      path            : String,
-      flags = 0       : Int32,
-      password = nil  : String?,
+      path      : String,
+      flags     : Int32 = 0,
+      password  : String? = nil,
       &block
     )
       assert_open
@@ -815,9 +815,9 @@ module Zip
     #     file.close
     #
     def open(
-      index           : UInt64,
-      flags = 0       : Int32,
-      password = nil  : String?
+      index     : UInt64,
+      flags     : Int32 = 0,
+      password  : String? = nil
     )
       assert_open
 
@@ -856,9 +856,9 @@ module Zip
     #     end
     #
     def open(
-      index           : UInt64,
-      flags = 0       : Int32,
-      password = nil  : String?,
+      index     : UInt64,
+      flags     : Int32 = 0,
+      password  : String? = nil,
       &block
     )
       assert_open
@@ -896,10 +896,10 @@ module Zip
     #     end
     #
     def read(
-      path            : String,
-      flags = 0       : Int32,
-      password = nil  : String?,
-      &block          : (Slice(UInt8), Int32) -> Nil \
+      path      : String,
+      flags     : Int32 = 0,
+      password  : String? = nil,
+      &block    : (Slice(UInt8), Int32) -> Nil \
     ) : UInt64
       open(path, flags, password) do |file|
         # create buffer
@@ -928,9 +928,9 @@ module Zip
     #     str = String.new(zip.read("foo.txt"))
     #
     def read(
-      path            : String,
-      flags = 0_i32   : Int32,
-      password = nil  : String?
+      path      : String,
+      flags     : Int32 = 0_i32,
+      password  : String? = nil
     ) : Slice(UInt8)
       io = MemoryIO.new(stat(path).size)
 
@@ -985,8 +985,8 @@ module Zip
     #
     #
     def get_file_comment(
-      index     : UInt64,
-      flags = 0 : Int32
+      index : UInt64,
+      flags : Int32 = 0
     ) : String?
       assert_open
 
@@ -1013,8 +1013,8 @@ module Zip
     #     zip.get_file_comment("foo.txt")
     #
     def get_file_comment(
-      path      : String,
-      flags = 0 : Int32
+      path  : String,
+      flags : Int32 = 0
     )
       get_file_comment(name_locate_throws(path), flags)
     end
@@ -1030,9 +1030,9 @@ module Zip
     #     zip.set_file_comment(0, "example comment")
     #
     def set_file_comment(
-      index     : UInt64,
-      comment   : String?,
-      flags = 0 : Int32
+      index   : UInt64,
+      comment : String?,
+      flags   : Int32 = 0
     )
       assert_open
 
@@ -1061,9 +1061,9 @@ module Zip
     #     zip.set_file_comment("foo.txt", "example comment")
     #
     def set_file_comment(
-      path      : String,
-      comment   : String?,
-      flags = 0 : Int32
+      path    : String,
+      comment : String?,
+      flags   : Int32 = 0
     )
       set_file_comment(name_locate_throws(path), comment, flags)
     end
@@ -1078,7 +1078,7 @@ module Zip
     #     # get number of entries
     #     count = zip.num_entries
     #
-    def num_entries(flags = 0 : Int32)
+    def num_entries(flags : Int32 = 0) : Int64
       assert_open
 
       # get count, check for error
@@ -1103,7 +1103,7 @@ module Zip
     #     file_names = [] of String
     #     zip.each { |name| file_names << name }
     #
-    def each(flags = 0 : Int32, &block : String ->)
+    def each(flags : Int32 = 0, &block : String ->)
       assert_open
 
       (0_u64 + num_entries(flags)).times do |i|
@@ -1125,7 +1125,7 @@ module Zip
     #       puts name
     #     end
     #
-    def each(flags = 0 : Int32)
+    def each(flags : Int32 = 0)
       assert_open
 
       # create and return iterator
@@ -1149,8 +1149,8 @@ module Zip
     #     puts "file size = #{st.size}"
     #
     def stat(
-      path      : String,
-      flags = 0 : Int32
+      path  : String,
+      flags : Int32 = 0
     ) : LibZip::Stat
       assert_open
 
@@ -1175,8 +1175,8 @@ module Zip
     #     puts "file size = #{st.size}"
     #
     def stat(
-      index     : LibC::Int,
-      flags = 0 : Int32
+      index : LibC::Int,
+      flags : Int32 = 0
     ) : LibZip::Stat
       assert_open
 
