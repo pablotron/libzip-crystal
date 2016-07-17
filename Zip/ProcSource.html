@@ -144,8 +144,8 @@
 
   <h2>Overview</h2>
 
-  <p>Use arbitrary proc as data source for an <code><a href="../Zip/Archive.html#add%28path%3AString%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method">Archive#add</a></code> or
-<code><a href="../Zip/Archive.html#replace%28path%3AString%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">Archive#replace</a></code>.  The <code><a href="../Zip/ProcSource.html#new%28zip%3AArchive%2Cproc%3AAction%2CSlice%28UInt8%29%2C%3A%3APointer%28Void%29-%3EInt64%2Cuser_data%3A%3A%3APointer%28Void%29%29-class-method">ProcSource#new</a></code> takes the following
+  <p>Use arbitrary proc as data source for an <code><a href="../Zip/Archive.html#add%28path%3AString%2Csource%3ASource%2Cflags%3AUInt32%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%29-instance-method">Archive#add</a></code> or
+<code><a href="../Zip/Archive.html#replace%28path%3AString%2Cbody%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">Archive#replace</a></code>.  The <code><a href="../Zip/ProcSource.html#new%28zip%3AArchive%2Cproc%3AAction%2CSlice%28UInt8%29%2C%3A%3APointer%28Void%29-%3EInt64%2Cuser_data%3A%3A%3APointer%28Void%29%29-class-method">ProcSource#new</a></code> takes the following
 arguments:</p>
 
 <ul><li><em>zip</em>: Destination <code><a href="../Zip/Archive.html">Archive</a></code>.</li><li><em>proc</em>: Proc used for file operations.  See below for arguments.</li><li><em>user_data</em>: <code>Void*</code> pointer for user data passed to proc.</li></ul>
@@ -272,12 +272,12 @@ arguments:</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#proc-instance-method" class="signature"><strong>#proc</strong></a>
+        <a href="#proc%3AZip%3A%3AAction%2CSlice%28UInt8%29%2CPointer%28Void%29-%3EInt64-instance-method" class="signature"><strong>#proc</strong> : Zip::Action, Slice(UInt8), Pointer(Void) -> Int64</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#user_data-instance-method" class="signature"><strong>#user_data</strong></a>
+        <a href="#user_data%3APointer%28Void%29-instance-method" class="signature"><strong>#user_data</strong> : Pointer(Void)</a>
         
       </li>
     
@@ -296,9 +296,11 @@ arguments:</p>
 
   <h3>Class methods inherited from class <code><a href="../Zip/Source.html">Zip::Source</a></code></h3>
   
+  
     <a href="../Zip/Source.html#new%28zip%3AArchive%2Csource%3ALibZip%3A%3AZipSource%7CNil%29-class-method" class="tooltip">
       <span>new(zip : Archive, source : LibZip::ZipSource | Nil)</span>
     new</a>
+    
   
 
 
@@ -322,7 +324,7 @@ arguments:</p>
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(zip:Archive,proc:Action,Slice(UInt8),::Pointer(Void)-&gt;Int64,user_data:::Pointer(Void))-class-method">
+    <div class="entry-detail" id="new&#40;zip:Archive,proc:Action,Slice&#40;UInt8&#41;,::Pointer&#40;Void&#41;-&gt;Int64,user_data:::Pointer&#40;Void&#41;&#41;-class-method">
       <div class="signature">
         
         def self.<strong>new</strong>(zip : <a href="../Zip/Archive.html">Archive</a>, proc : <a href="../Zip/Action.html">Action</a>, Slice(UInt8), ::Pointer(Void) -> Int64, user_data : ::Pointer(Void))
@@ -343,12 +345,12 @@ arguments:</p>
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="proc-instance-method">
+    <div class="entry-detail" id="proc:Zip::Action,Slice&#40;UInt8&#41;,Pointer&#40;Void&#41;-&gt;Int64-instance-method">
       <div class="signature">
         
-        def <strong>proc</strong>
+        def <strong>proc</strong> : <a href="../Zip/Action.html">Zip::Action</a>, Slice(UInt8), Pointer(Void) -> Int64
 
-        <a class="method-permalink" href="#proc-instance-method">#</a>
+        <a class="method-permalink" href="#proc%3AZip%3A%3AAction%2CSlice%28UInt8%29%2CPointer%28Void%29-%3EInt64-instance-method">#</a>
       </div>
       
       <br/>
@@ -357,12 +359,12 @@ arguments:</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="user_data-instance-method">
+    <div class="entry-detail" id="user_data:Pointer&#40;Void&#41;-instance-method">
       <div class="signature">
         
-        def <strong>user_data</strong>
+        def <strong>user_data</strong> : Pointer(Void)
 
-        <a class="method-permalink" href="#user_data-instance-method">#</a>
+        <a class="method-permalink" href="#user_data%3APointer%28Void%29-instance-method">#</a>
       </div>
       
       <br/>

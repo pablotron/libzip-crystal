@@ -144,7 +144,7 @@
 
   <h2>Overview</h2>
 
-  <p>Use string as a source for <code><a href="../Zip/Archive.html#add%28path%3AString%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method">Archive#add</a></code> or <code><a href="../Zip/Archive.html#replace%28path%3AString%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">Archive#replace</a></code>.</p>
+  <p>Use string as a source for <code><a href="../Zip/Archive.html#add%28path%3AString%2Csource%3ASource%2Cflags%3AUInt32%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%29-instance-method">Archive#add</a></code> or <code><a href="../Zip/Archive.html#replace%28path%3AString%2Cbody%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">Archive#replace</a></code>.</p>
 
 <h3>Example</h3>
 
@@ -201,9 +201,11 @@ zip.add(<span class="s">&quot;foo.txt&quot;</span>, src)</code></pre>
 
   <h3>Class methods inherited from class <code><a href="../Zip/Source.html">Zip::Source</a></code></h3>
   
+  
     <a href="../Zip/Source.html#new%28zip%3AArchive%2Csource%3ALibZip%3A%3AZipSource%7CNil%29-class-method" class="tooltip">
       <span>new(zip : Archive, source : LibZip::ZipSource | Nil)</span>
     new</a>
+    
   
 
 
@@ -227,7 +229,7 @@ zip.add(<span class="s">&quot;foo.txt&quot;</span>, src)</code></pre>
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(zip:Archive,s:String)-class-method">
+    <div class="entry-detail" id="new&#40;zip:Archive,s:String&#41;-class-method">
       <div class="signature">
         
         def self.<strong>new</strong>(zip : <a href="../Zip/Archive.html">Archive</a>, s : String)

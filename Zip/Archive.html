@@ -144,7 +144,7 @@
 
   <h2>Overview</h2>
 
-  <p>Main zip archive class.  Use the <code><a href="../Zip/Archive.html">Archive</a>.create</code> and <code><a href="../Zip/Archive.html">Archive</a>.open</code>
+  <p>Main zip archive class.  Use the <code><a href="../Zip/Archive.html#create%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%2C%26block%29-class-method">Archive.create</a></code> and <code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2C%26block%29-class-method">Archive.open</a></code>
 class methods to create a new archive or open an existing archive,
 respectively.</p>
 
@@ -155,8 +155,8 @@ respectively.</p>
   <span class="c"># add file &quot;/path/to/foo.txt&quot; to archive as &quot;bar.txt&quot;</span>
   zip.add_file(<span class="s">&quot;bar.txt&quot;</span>, <span class="s">&quot;/path/to/foo.txt&quot;</span>)
 
-  <span class="c"># add file &quot;baz.txt&quot; with contents &quot;hello world!&quot;</span>
-  zip.add(<span class="s">&quot;baz.txt&quot;</span>, <span class="s">&quot;hello world!&quot;</span>)
+  <span class="c"># add file &quot;baz.txt&quot; with contents &quot;hello world&#33;&quot;</span>
+  zip.add(<span class="s">&quot;baz.txt&quot;</span>, <span class="s">&quot;hello world&#33;&quot;</span>)
 <span class="k">end</span>
 
 <span class="c"># read &quot;bar.txt&quot; as string from &quot;foo.zip&quot;</span>
@@ -210,12 +210,12 @@ zip.close</code></pre>
   
   <dl>
     
-      <dt class="entry-const">
+      <dt class="entry-const" id="CREATE_FLAGS">
         <strong>CREATE_FLAGS</strong> = <code>(<span class="t">OpenFlag</span>.flags(<span class="t">CREATE</span>, <span class="t">EXCL</span>)).value</code>
       </dt>
       
       <dd class="entry-const-doc">
-        <p>Default flags for <code><a href="../Zip/Archive.html#create%28path%3AString%2Cflags%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method">Archive#create</a></code></p>
+        <p>Default flags for <code><a href="../Zip/Archive.html#create%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%2C%26block%29-class-method">Archive#create</a></code></p>
       </dd>
       
     
@@ -227,42 +227,42 @@ zip.close</code></pre>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#create%28path%3AString%2Cflags%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method" class="signature"><strong>.create</strong>(path : String, flags = <span class="t">CREATE_FLAGS</span> : Int32, &block)</a>
+        <a href="#create%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%2C%26block%29-class-method" class="signature"><strong>.create</strong>(path : String, flags : Int32 = <span class="t">CREATE_FLAGS</span>, &block)</a>
         
           <div class="summary"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from file <em>path</em>, pass the instance to the given block <em>block</em>, then close the archive when the block exits.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#create%28path%3AString%2Cflags%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%3AInt32%29-class-method" class="signature"><strong>.create</strong>(path : String, flags = <span class="t">CREATE_FLAGS</span> : Int32)</a>
+        <a href="#create%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%29-class-method" class="signature"><strong>.create</strong>(path : String, flags : Int32 = <span class="t">CREATE_FLAGS</span>)</a>
         
           <div class="summary"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from file <em>path</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method" class="signature"><strong>.open</strong>(path : String, flags = <span class="n">0</span> : Int32, &block)</a>
+        <a href="#open%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2C%26block%29-class-method" class="signature"><strong>.open</strong>(path : String, flags : Int32 = <span class="n">0</span>, &block)</a>
         
           <div class="summary"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from file <em>path</em>, pass instance to the given block <em>block</em>, then close the archive when the block exits.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#open%28fd%3AIO%3A%3AFileDescriptor%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method" class="signature"><strong>.open</strong>(fd : IO::FileDescriptor, flags = <span class="n">0</span> : Int32, &block)</a>
+        <a href="#open%28fd%3AIO%3A%3AFileDescriptor%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2C%26block%29-class-method" class="signature"><strong>.open</strong>(fd : IO::FileDescriptor, flags : Int32 = <span class="n">0</span>, &block)</a>
         
           <div class="summary"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from <code>IO::FileDescriptor</code> <em>fd</em>, pass instance to the given block <em>block</em>, then close the archive when the block exits.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-class-method" class="signature"><strong>.new</strong>(path : String, flags = <span class="n">0</span> : Int32)</a>
+        <a href="#new%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-class-method" class="signature"><strong>.new</strong>(path : String, flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Create a <code><a href="../Zip/Archive.html">Archive</a></code> instance from the file <em>path</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28fd%3AIO%3A%3AFileDescriptor%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-class-method" class="signature"><strong>.new</strong>(fd : IO::FileDescriptor, flags = <span class="n">0</span> : Int32)</a>
+        <a href="#new%28fd%3AIO%3A%3AFileDescriptor%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-class-method" class="signature"><strong>.new</strong>(fd : IO::FileDescriptor, flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Returns <code><a href="../Zip/Archive.html">Archive</a></code> instance from <code>IO::FileDescriptor</code> <em>fd</em>.</p></div>
         
@@ -283,42 +283,42 @@ zip.close</code></pre>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#add%28path%3AString%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method" class="signature"><strong>#add</strong>(path : String, source : Source, flags = <span class="n">0_u32</span> : UInt32)</a>
+        <a href="#add%28path%3AString%2Csource%3ASource%2Cflags%3AUInt32%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#add</strong>(path : String, source : Source, flags : UInt32 = <span class="n">0_u32</span>)</a>
         
           <div class="summary"><p>Add given <code><a href="../Zip/Source.html">Zip::Source</a></code> <em>source</em> to archive as <em>path</em> and return index of new entry.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#add%28path%3AString%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method" class="signature"><strong>#add</strong>(path : String, body : String, flags = <span class="n">0_u32</span> : UInt32)</a>
+        <a href="#add%28path%3AString%2Cbody%3AString%2Cflags%3AUInt32%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#add</strong>(path : String, body : String, flags : UInt32 = <span class="n">0_u32</span>)</a>
         
           <div class="summary"><p>Add archive entry <em>path</em> with content <em>body</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#add%28path%3AString%2Cslice%3ASlice%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method" class="signature"><strong>#add</strong>(path : String, slice : Slice, flags = <span class="n">0_u32</span> : UInt32)</a>
+        <a href="#add%28path%3AString%2Cslice%3ASlice%2Cflags%3AUInt32%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#add</strong>(path : String, slice : Slice, flags : UInt32 = <span class="n">0_u32</span>)</a>
         
           <div class="summary"><p>Add archive entry <em>path</em> with content <em>body</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#add_dir%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#add_dir</strong>(path : String, flags = <span class="n">0</span> : Int32)</a>
+        <a href="#add_dir%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#add_dir</strong>(path : String, flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Add directory to archive at path <em>path</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#add_file%28path%3AString%2Cstart%3D%3Cspanclass%3D%22n%22%3E0_u64%3C%2Fspan%3E%3AUInt64%2Clen%3D%3Cspanclass%3D%22n%22%3E-1_i64%3C%2Fspan%3E%3AInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method" class="signature"><strong>#add_file</strong>(path : String, start = <span class="n">0_u64</span> : UInt64, len = <span class="n">-1_i64</span> : Int64, flags = <span class="n">0_u32</span> : UInt32)</a>
+        <a href="#add_file%28path%3AString%2Cstart%3AUInt64%3D%3Cspanclass%3D%22n%22%3E0_u64%3C%2Fspan%3E%2Clen%3AInt64%3D%3Cspanclass%3D%22n%22%3E-1_i64%3C%2Fspan%3E%2Cflags%3AUInt32%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#add_file</strong>(path : String, start : UInt64 = <span class="n">0_u64</span>, len : Int64 = <span class="n">-1_i64</span>, flags : UInt32 = <span class="n">0_u32</span>)</a>
         
           <div class="summary"><p>Add file <em>path</em> to archive as <em>path</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#add_file%28dst_path%3AString%2Csrc_path%3AString%2Cstart%3D%3Cspanclass%3D%22n%22%3E0_u64%3C%2Fspan%3E%3AUInt64%2Clen%3D%3Cspanclass%3D%22n%22%3E-1_i64%3C%2Fspan%3E%3AInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method" class="signature"><strong>#add_file</strong>(dst_path : String, src_path : String, start = <span class="n">0_u64</span> : UInt64, len = <span class="n">-1_i64</span> : Int64, flags = <span class="n">0_u32</span> : UInt32)</a>
+        <a href="#add_file%28dst_path%3AString%2Csrc_path%3AString%2Cstart%3AUInt64%3D%3Cspanclass%3D%22n%22%3E0_u64%3C%2Fspan%3E%2Clen%3AInt64%3D%3Cspanclass%3D%22n%22%3E-1_i64%3C%2Fspan%3E%2Cflags%3AUInt32%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#add_file</strong>(dst_path : String, src_path : String, start : UInt64 = <span class="n">0_u64</span>, len : Int64 = <span class="n">-1_i64</span>, flags : UInt32 = <span class="n">0_u32</span>)</a>
         
           <div class="summary"><p>Add file <em>src_path</em> to archive as <em>dst_path</em>.</p></div>
         
@@ -332,14 +332,14 @@ zip.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#close%28discard%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%3ABool%29-instance-method" class="signature"><strong>#close</strong>(discard = <span class="n">false</span> : Bool)</a>
+        <a href="#close%28discard%3ABool%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#close</strong>(discard : Bool = <span class="n">false</span>)</a>
         
           <div class="summary"><p>Close this <code><a href="../Zip/Archive.html">Archive</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#comment%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AString%7CNil-instance-method" class="signature"><strong>#comment</strong>(flags = <span class="n">0</span> : Int32) : String | Nil</a>
+        <a href="#comment%28flags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3AString%7CNil-instance-method" class="signature"><strong>#comment</strong>(flags : Int32 = <span class="n">0</span>) : String | Nil</a>
         
           <div class="summary"><p>Returns comment for the entire archive, or nil if there is no comment set.</p></div>
         
@@ -381,14 +381,14 @@ zip.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#each%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%3AString-%3E%29-instance-method" class="signature"><strong>#each</strong>(flags = <span class="n">0</span> : Int32, &block : String -> )</a>
+        <a href="#each%28flags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2C%26block%3AString-%3E%29-instance-method" class="signature"><strong>#each</strong>(flags : Int32 = <span class="n">0</span>, &block : String -> )</a>
         
           <div class="summary"><p>Iterate over names of files in archive.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#each%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#each</strong>(flags = <span class="n">0</span> : Int32)</a>
+        <a href="#each%28flags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#each</strong>(flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Return iterator over names of files in archive.</p></div>
         
@@ -402,14 +402,14 @@ zip.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#get_file_comment%28index%3AUInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AString%7CNil-instance-method" class="signature"><strong>#get_file_comment</strong>(index : UInt64, flags = <span class="n">0</span> : Int32) : String | Nil</a>
+        <a href="#get_file_comment%28index%3AUInt64%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3AString%7CNil-instance-method" class="signature"><strong>#get_file_comment</strong>(index : UInt64, flags : Int32 = <span class="n">0</span>) : String | Nil</a>
         
           <div class="summary"><p>Returns comment of file at index <em>index</em> or nil if there is no comment set.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#get_file_comment%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#get_file_comment</strong>(path : String, flags = <span class="n">0</span> : Int32)</a>
+        <a href="#get_file_comment%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#get_file_comment</strong>(path : String, flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Returns comment of file at path <em>path</em>, or nil if there was no comment set.</p></div>
         
@@ -423,140 +423,140 @@ zip.close</code></pre>
       </li>
     
       <li class="entry-summary">
-        <a href="#name_locate%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AInt64-instance-method" class="signature"><strong>#name_locate</strong>(path : String, flags = <span class="n">0</span> : Int32) : Int64</a>
+        <a href="#name_locate%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3AInt64-instance-method" class="signature"><strong>#name_locate</strong>(path : String, flags : Int32 = <span class="n">0</span>) : Int64</a>
         
           <div class="summary"><p>Returns index of given <em>path</em>, or -1 if the given path could not be found.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#name_locate_throws%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AUInt64-instance-method" class="signature"><strong>#name_locate_throws</strong>(path : String, flags = <span class="n">0</span> : Int32) : UInt64</a>
+        <a href="#name_locate_throws%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3AUInt64-instance-method" class="signature"><strong>#name_locate_throws</strong>(path : String, flags : Int32 = <span class="n">0</span>) : UInt64</a>
         
           <div class="summary"><p>Returns index of given <em>path</em> or raises an exception if the given path could not be found.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#num_entries%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#num_entries</strong>(flags = <span class="n">0</span> : Int32)</a>
+        <a href="#num_entries%28flags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3AInt64-instance-method" class="signature"><strong>#num_entries</strong>(flags : Int32 = <span class="n">0</span>) : Int64</a>
         
           <div class="summary"><p>Get the number of files in this archive.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method" class="signature"><strong>#open</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil, &block)</a>
+        <a href="#open%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%29-instance-method" class="signature"><strong>#open</strong>(path : String, flags : Int32 = <span class="n">0</span>, password : String | Nil = <span class="n">nil</span>, &block)</a>
         
           <div class="summary"><p>Opens given <em>path</em> in <code><a href="../Zip/Archive.html">Archive</a></code> as a <code><a href="../Zip/File.html">File</a></code> instance, passes it to block <em>block</em>, and closes the file when the block exits.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#open%28index%3AUInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method" class="signature"><strong>#open</strong>(index : UInt64, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil, &block)</a>
+        <a href="#open%28index%3AUInt64%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%29-instance-method" class="signature"><strong>#open</strong>(index : UInt64, flags : Int32 = <span class="n">0</span>, password : String | Nil = <span class="n">nil</span>, &block)</a>
         
           <div class="summary"><p>Opens index <em>index</em> in <code><a href="../Zip/Archive.html">Archive</a></code> as a <code><a href="../Zip/File.html">File</a></code> instance, passes it to block <em>block</em>, and closes the file when the block exits.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#open%28index%3AUInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29-instance-method" class="signature"><strong>#open</strong>(index : UInt64, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil)</a>
+        <a href="#open%28index%3AUInt64%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#open</strong>(index : UInt64, flags : Int32 = <span class="n">0</span>, password : String | Nil = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Returns <code><a href="../Zip/File.html">File</a></code> instance of given index <em>index</em> in <code><a href="../Zip/Archive.html">Archive</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AFile-instance-method" class="signature"><strong>#open</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil) : File</a>
+        <a href="#open%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29%3AFile-instance-method" class="signature"><strong>#open</strong>(path : String, flags : Int32 = <span class="n">0</span>, password : String | Nil = <span class="n">nil</span>) : File</a>
         
           <div class="summary"><p>Open <em>path</em> in <code><a href="../Zip/Archive.html">Archive</a></code> and return it as <code><a href="../Zip/File.html">File</a></code> instance.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#open%3F-instance-method" class="signature"><strong>#open?</strong></a>
+        <a href="#open%3F%3ABool-instance-method" class="signature"><strong>#open?</strong> : Bool</a>
         
           <div class="summary"><p>Returns <em>true</em> if this <code><a href="../Zip/Archive.html">Archive</a></code> is open, or <em>false</em> otherwise.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#read%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3ASlice%28UInt8%29-instance-method" class="signature"><strong>#read</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil) : Slice(UInt8)</a>
+        <a href="#read%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29%3ASlice%28UInt8%29-instance-method" class="signature"><strong>#read</strong>(path : String, flags : Int32 = <span class="n">0</span>, password : String | Nil = <span class="n">nil</span>) : Slice(UInt8)</a>
         
           <div class="summary"><p>Read contents of file <em>path</em> and return it as a <code>Slice(UInt8)</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#read%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%3ASlice%28UInt8%29%2CInt32-%3ENil%29%3AUInt64-instance-method" class="signature"><strong>#read</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil, &block : Slice(UInt8), Int32 -> Nil) : UInt64</a>
+        <a href="#read%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%3ASlice%28UInt8%29%2CInt32-%3ENil%29%3AUInt64-instance-method" class="signature"><strong>#read</strong>(path : String, flags : Int32 = <span class="n">0</span>, password : String | Nil = <span class="n">nil</span>, &block : Slice(UInt8), Int32 -> Nil) : UInt64</a>
         
           <div class="summary"><p>Read input file in slices, pass each slice and it's length to block, and return number of bytes read.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#rename%28index%3AUInt64%2Cnew_path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#rename</strong>(index : UInt64, new_path : String, flags = <span class="n">0</span> : Int32)</a>
+        <a href="#rename%28index%3AUInt64%2Cnew_path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#rename</strong>(index : UInt64, new_path : String, flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Rename file at <em>index</em> to path <em>new_path</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#rename%28old_path%3AString%2Cnew_path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#rename</strong>(old_path : String, new_path : String, flags = <span class="n">0</span> : Int32)</a>
+        <a href="#rename%28old_path%3AString%2Cnew_path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#rename</strong>(old_path : String, new_path : String, flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Rename file named <em>old_path</em> to new path <em>new_path</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#replace%28path%3AString%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#replace</strong>(path : String, body : String, flags = <span class="n">0</span> : Int32)</a>
+        <a href="#replace%28path%3AString%2Cbody%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#replace</strong>(path : String, body : String, flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Replace entry at path <em>path</em> with contents <em>body</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#replace%28index%3AUInt64%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#replace</strong>(index : UInt64, source : Source, flags = <span class="n">0</span> : Int32)</a>
+        <a href="#replace%28index%3AUInt64%2Csource%3ASource%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#replace</strong>(index : UInt64, source : Source, flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Replace entry at index <em>index</em> with <code><a href="../Zip/Source.html">Source</a></code> <em>source</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#replace%28index%3AUInt64%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#replace</strong>(index : UInt64, body : String, flags = <span class="n">0</span> : Int32)</a>
+        <a href="#replace%28index%3AUInt64%2Cbody%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#replace</strong>(index : UInt64, body : String, flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Replace entry at index <em>index</em> with contents <em>body</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#replace%28path%3AString%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#replace</strong>(path : String, source : Source, flags = <span class="n">0</span> : Int32)</a>
+        <a href="#replace%28path%3AString%2Csource%3ASource%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#replace</strong>(path : String, source : Source, flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Replace entry at path <em>path</em> with <code><a href="../Zip/Source.html">Source</a></code> <em>source</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#set_file_comment%28path%3AString%2Ccomment%3AString%7CNil%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#set_file_comment</strong>(path : String, comment : String | Nil, flags = <span class="n">0</span> : Int32)</a>
+        <a href="#set_file_comment%28path%3AString%2Ccomment%3AString%7CNil%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#set_file_comment</strong>(path : String, comment : String | Nil, flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Set comment of file path <em>path</em> to string <em>comment</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#set_file_comment%28index%3AUInt64%2Ccomment%3AString%7CNil%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method" class="signature"><strong>#set_file_comment</strong>(index : UInt64, comment : String | Nil, flags = <span class="n">0</span> : Int32)</a>
+        <a href="#set_file_comment%28index%3AUInt64%2Ccomment%3AString%7CNil%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method" class="signature"><strong>#set_file_comment</strong>(index : UInt64, comment : String | Nil, flags : Int32 = <span class="n">0</span>)</a>
         
           <div class="summary"><p>Set comment of file at <em>index</em> to string <em>comment</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#stat%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3ALibZip%3A%3AStat-instance-method" class="signature"><strong>#stat</strong>(path : String, flags = <span class="n">0</span> : Int32) : LibZip::Stat</a>
+        <a href="#stat%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3ALibZip%3A%3AStat-instance-method" class="signature"><strong>#stat</strong>(path : String, flags : Int32 = <span class="n">0</span>) : LibZip::Stat</a>
         
           <div class="summary"><p>Return stat information about <code>path</code> as a <code>LibZip::Stat</code> structure.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#stat%28index%3ALibC%3A%3AInt%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3ALibZip%3A%3AStat-instance-method" class="signature"><strong>#stat</strong>(index : LibC::Int, flags = <span class="n">0</span> : Int32) : LibZip::Stat</a>
+        <a href="#stat%28index%3ALibC%3A%3AInt%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3ALibZip%3A%3AStat-instance-method" class="signature"><strong>#stat</strong>(index : LibC::Int, flags : Int32 = <span class="n">0</span>) : LibZip::Stat</a>
         
           <div class="summary"><p>Return stat information about file at index <em>index</em> as a <code>LibZip::Stat</code> structure.</p></div>
         
@@ -610,12 +610,12 @@ zip.close</code></pre>
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="create(path:String,flags=&lt;spanclass=&quot;t&quot;&gt;CREATE_FLAGS&lt;/span&gt;:Int32,&amp;block)-class-method">
+    <div class="entry-detail" id="create&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;t&quot;&gt;CREATE_FLAGS&lt;/span&gt;,&amp;block&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>create</strong>(path : String, flags = <span class="t">CREATE_FLAGS</span> : Int32, &block)
+        def self.<strong>create</strong>(path : String, flags : Int32 = <span class="t">CREATE_FLAGS</span>, &block)
 
-        <a class="method-permalink" href="#create%28path%3AString%2Cflags%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method">#</a>
+        <a class="method-permalink" href="#create%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%2C%26block%29-class-method">#</a>
       </div>
       
         <div class="doc"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from file <em>path</em>, pass the instance to
@@ -631,8 +631,8 @@ exits.</p>
   <span class="c"># add file &quot;/path/to/foo.txt&quot; to archive as &quot;bar.txt&quot;</span>
   zip.add_file(<span class="s">&quot;bar.txt&quot;</span>, <span class="s">&quot;/path/to/foo.txt&quot;</span>)
 
-  <span class="c"># add file &quot;baz.txt&quot; with contents &quot;hello world!&quot;</span>
-  zip.add(<span class="s">&quot;baz.txt&quot;</span>, <span class="s">&quot;hello world!&quot;</span>)
+  <span class="c"># add file &quot;baz.txt&quot; with contents &quot;hello world&#33;&quot;</span>
+  zip.add(<span class="s">&quot;baz.txt&quot;</span>, <span class="s">&quot;hello world&#33;&quot;</span>)
 <span class="k">end</span></code></pre></div>
       
       <br/>
@@ -641,12 +641,12 @@ exits.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="create(path:String,flags=&lt;spanclass=&quot;t&quot;&gt;CREATE_FLAGS&lt;/span&gt;:Int32)-class-method">
+    <div class="entry-detail" id="create&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;t&quot;&gt;CREATE_FLAGS&lt;/span&gt;&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>create</strong>(path : String, flags = <span class="t">CREATE_FLAGS</span> : Int32)
+        def self.<strong>create</strong>(path : String, flags : Int32 = <span class="t">CREATE_FLAGS</span>)
 
-        <a class="method-permalink" href="#create%28path%3AString%2Cflags%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%3AInt32%29-class-method">#</a>
+        <a class="method-permalink" href="#create%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%29-class-method">#</a>
       </div>
       
         <div class="doc"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from file <em>path</em>.</p>
@@ -666,7 +666,7 @@ zip.close</code></pre>
 
 <p>See Also:</p>
 
-<ul><li><code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method">#open(String, Int32)</a></code></li></ul></div>
+<ul><li><code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2C%26block%29-class-method">#open(String, Int32)</a></code></li></ul></div>
       
       <br/>
       <div>
@@ -674,12 +674,12 @@ zip.close</code></pre>
       </div>
     </div>
   
-    <div class="entry-detail" id="open(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,&amp;block)-class-method">
+    <div class="entry-detail" id="open&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;,&amp;block&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>open</strong>(path : String, flags = <span class="n">0</span> : Int32, &block)
+        def self.<strong>open</strong>(path : String, flags : Int32 = <span class="n">0</span>, &block)
 
-        <a class="method-permalink" href="#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method">#</a>
+        <a class="method-permalink" href="#open%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2C%26block%29-class-method">#</a>
       </div>
       
         <div class="doc"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from file <em>path</em>, pass instance to the
@@ -709,12 +709,12 @@ given block <em>block</em>, then close the archive when the block exits.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="open(fd:IO::FileDescriptor,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,&amp;block)-class-method">
+    <div class="entry-detail" id="open&#40;fd:IO::FileDescriptor,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;,&amp;block&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>open</strong>(fd : IO::FileDescriptor, flags = <span class="n">0</span> : Int32, &block)
+        def self.<strong>open</strong>(fd : IO::FileDescriptor, flags : Int32 = <span class="n">0</span>, &block)
 
-        <a class="method-permalink" href="#open%28fd%3AIO%3A%3AFileDescriptor%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method">#</a>
+        <a class="method-permalink" href="#open%28fd%3AIO%3A%3AFileDescriptor%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2C%26block%29-class-method">#</a>
       </div>
       
         <div class="doc"><p>Create <code><a href="../Zip/Archive.html">Archive</a></code> instance from <code>IO::FileDescriptor</code> <em>fd</em>, pass
@@ -745,12 +745,12 @@ the block exits.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="new(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-class-method">
+    <div class="entry-detail" id="new&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(path : String, flags = <span class="n">0</span> : Int32)
+        def self.<strong>new</strong>(path : String, flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#new%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-class-method">#</a>
       </div>
       
         <div class="doc"><p>Create a <code><a href="../Zip/Archive.html">Archive</a></code> instance from the file <em>path</em>.</p>
@@ -774,12 +774,12 @@ zip.close</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="new(fd:IO::FileDescriptor,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-class-method">
+    <div class="entry-detail" id="new&#40;fd:IO::FileDescriptor,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(fd : IO::FileDescriptor, flags = <span class="n">0</span> : Int32)
+        def self.<strong>new</strong>(fd : IO::FileDescriptor, flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#new%28fd%3AIO%3A%3AFileDescriptor%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28fd%3AIO%3A%3AFileDescriptor%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-class-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code><a href="../Zip/Archive.html">Archive</a></code> instance from <code>IO::FileDescriptor</code> <em>fd</em>.</p>
@@ -794,7 +794,7 @@ zip.close</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="new(zip:LibZip::ZipArchive,err:Int32)-class-method">
+    <div class="entry-detail" id="new&#40;zip:LibZip::ZipArchive,err:Int32&#41;-class-method">
       <div class="signature">
         
         def self.<strong>new</strong>(zip : LibZip::ZipArchive, err : Int32)
@@ -816,12 +816,12 @@ zip.close</code></pre></div>
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="add(path:String,source:Source,flags=&lt;spanclass=&quot;n&quot;&gt;0_u32&lt;/span&gt;:UInt32)-instance-method">
+    <div class="entry-detail" id="add&#40;path:String,source:Source,flags:UInt32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0_u32&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>add</strong>(path : String, source : <a href="../Zip/Source.html">Source</a>, flags = <span class="n">0_u32</span> : UInt32)
+        def <strong>add</strong>(path : String, source : <a href="../Zip/Source.html">Source</a>, flags : UInt32 = <span class="n">0_u32</span>)
 
-        <a class="method-permalink" href="#add%28path%3AString%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#add%28path%3AString%2Csource%3ASource%2Cflags%3AUInt32%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Add given <code><a href="../Zip/Source.html">Zip::Source</a></code> <em>source</em> to archive as <em>path</em> and return
@@ -844,12 +844,12 @@ zip.add(<span class="s">&quot;foo.txt&quot;</span>, src)</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="add(path:String,body:String,flags=&lt;spanclass=&quot;n&quot;&gt;0_u32&lt;/span&gt;:UInt32)-instance-method">
+    <div class="entry-detail" id="add&#40;path:String,body:String,flags:UInt32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0_u32&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>add</strong>(path : String, body : String, flags = <span class="n">0_u32</span> : UInt32)
+        def <strong>add</strong>(path : String, body : String, flags : UInt32 = <span class="n">0_u32</span>)
 
-        <a class="method-permalink" href="#add%28path%3AString%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#add%28path%3AString%2Cbody%3AString%2Cflags%3AUInt32%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Add archive entry <em>path</em> with content <em>body</em>.</p>
@@ -867,12 +867,12 @@ zip.add(<span class="s">&quot;foo.txt&quot;</span>, <span class="s">&quot;hello 
       </div>
     </div>
   
-    <div class="entry-detail" id="add(path:String,slice:Slice,flags=&lt;spanclass=&quot;n&quot;&gt;0_u32&lt;/span&gt;:UInt32)-instance-method">
+    <div class="entry-detail" id="add&#40;path:String,slice:Slice,flags:UInt32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0_u32&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>add</strong>(path : String, slice : Slice, flags = <span class="n">0_u32</span> : UInt32)
+        def <strong>add</strong>(path : String, slice : Slice, flags : UInt32 = <span class="n">0_u32</span>)
 
-        <a class="method-permalink" href="#add%28path%3AString%2Cslice%3ASlice%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#add%28path%3AString%2Cslice%3ASlice%2Cflags%3AUInt32%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Add archive entry <em>path</em> with content <em>body</em>.</p>
@@ -893,12 +893,12 @@ zip.add(<span class="s">&quot;foo.txt&quot;</span>, slice)</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="add_dir(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+    <div class="entry-detail" id="add_dir&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>add_dir</strong>(path : String, flags = <span class="n">0</span> : Int32)
+        def <strong>add_dir</strong>(path : String, flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#add_dir%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#add_dir%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Add directory to archive at path <em>path</em>.</p>
@@ -917,12 +917,12 @@ zip.add_dir(<span class="s">&quot;some-dir&quot;</span>)</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="add_file(path:String,start=&lt;spanclass=&quot;n&quot;&gt;0_u64&lt;/span&gt;:UInt64,len=&lt;spanclass=&quot;n&quot;&gt;-1_i64&lt;/span&gt;:Int64,flags=&lt;spanclass=&quot;n&quot;&gt;0_u32&lt;/span&gt;:UInt32)-instance-method">
+    <div class="entry-detail" id="add_file&#40;path:String,start:UInt64&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0_u64&lt;/span&gt;,len:Int64&#61;&lt;spanclass&#61;&quot;n&quot;&gt;-1_i64&lt;/span&gt;,flags:UInt32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0_u32&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>add_file</strong>(path : String, start = <span class="n">0_u64</span> : UInt64, len = <span class="n">-1_i64</span> : Int64, flags = <span class="n">0_u32</span> : UInt32)
+        def <strong>add_file</strong>(path : String, start : UInt64 = <span class="n">0_u64</span>, len : Int64 = <span class="n">-1_i64</span>, flags : UInt32 = <span class="n">0_u32</span>)
 
-        <a class="method-permalink" href="#add_file%28path%3AString%2Cstart%3D%3Cspanclass%3D%22n%22%3E0_u64%3C%2Fspan%3E%3AUInt64%2Clen%3D%3Cspanclass%3D%22n%22%3E-1_i64%3C%2Fspan%3E%3AInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#add_file%28path%3AString%2Cstart%3AUInt64%3D%3Cspanclass%3D%22n%22%3E0_u64%3C%2Fspan%3E%2Clen%3AInt64%3D%3Cspanclass%3D%22n%22%3E-1_i64%3C%2Fspan%3E%2Cflags%3AUInt32%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Add file <em>path</em> to archive as <em>path</em>.</p>
@@ -940,12 +940,12 @@ zip.add_file(<span class="s">&quot;/path/to/file.txt&quot;</span>)</code></pre><
       </div>
     </div>
   
-    <div class="entry-detail" id="add_file(dst_path:String,src_path:String,start=&lt;spanclass=&quot;n&quot;&gt;0_u64&lt;/span&gt;:UInt64,len=&lt;spanclass=&quot;n&quot;&gt;-1_i64&lt;/span&gt;:Int64,flags=&lt;spanclass=&quot;n&quot;&gt;0_u32&lt;/span&gt;:UInt32)-instance-method">
+    <div class="entry-detail" id="add_file&#40;dst_path:String,src_path:String,start:UInt64&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0_u64&lt;/span&gt;,len:Int64&#61;&lt;spanclass&#61;&quot;n&quot;&gt;-1_i64&lt;/span&gt;,flags:UInt32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0_u32&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>add_file</strong>(dst_path : String, src_path : String, start = <span class="n">0_u64</span> : UInt64, len = <span class="n">-1_i64</span> : Int64, flags = <span class="n">0_u32</span> : UInt32)
+        def <strong>add_file</strong>(dst_path : String, src_path : String, start : UInt64 = <span class="n">0_u64</span>, len : Int64 = <span class="n">-1_i64</span>, flags : UInt32 = <span class="n">0_u32</span>)
 
-        <a class="method-permalink" href="#add_file%28dst_path%3AString%2Csrc_path%3AString%2Cstart%3D%3Cspanclass%3D%22n%22%3E0_u64%3C%2Fspan%3E%3AUInt64%2Clen%3D%3Cspanclass%3D%22n%22%3E-1_i64%3C%2Fspan%3E%3AInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%3AUInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#add_file%28dst_path%3AString%2Csrc_path%3AString%2Cstart%3AUInt64%3D%3Cspanclass%3D%22n%22%3E0_u64%3C%2Fspan%3E%2Clen%3AInt64%3D%3Cspanclass%3D%22n%22%3E-1_i64%3C%2Fspan%3E%2Cflags%3AUInt32%3D%3Cspanclass%3D%22n%22%3E0_u32%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Add file <em>src_path</em> to archive as <em>dst_path</em>.</p>
@@ -986,12 +986,12 @@ zip.clear_error</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="close(discard=&lt;spanclass=&quot;n&quot;&gt;false&lt;/span&gt;:Bool)-instance-method">
+    <div class="entry-detail" id="close&#40;discard:Bool&#61;&lt;spanclass&#61;&quot;n&quot;&gt;false&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>close</strong>(discard = <span class="n">false</span> : Bool)
+        def <strong>close</strong>(discard : Bool = <span class="n">false</span>)
 
-        <a class="method-permalink" href="#close%28discard%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%3ABool%29-instance-method">#</a>
+        <a class="method-permalink" href="#close%28discard%3ABool%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Close this <code><a href="../Zip/Archive.html">Archive</a></code>.  If <em>discard</em> is true, then discard any
@@ -1011,12 +1011,12 @@ zip.close</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="comment(flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32):String|Nil-instance-method">
+    <div class="entry-detail" id="comment&#40;flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;:String|Nil-instance-method">
       <div class="signature">
         
-        def <strong>comment</strong>(flags = <span class="n">0</span> : Int32) : String | Nil
+        def <strong>comment</strong>(flags : Int32 = <span class="n">0</span>) : String | Nil
 
-        <a class="method-permalink" href="#comment%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AString%7CNil-instance-method">#</a>
+        <a class="method-permalink" href="#comment%28flags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3AString%7CNil-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns comment for the entire archive, or nil if there is no
@@ -1037,7 +1037,7 @@ comment set.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="comment=(s:String):String-instance-method">
+    <div class="entry-detail" id="comment&#61;&#40;s:String&#41;:String-instance-method">
       <div class="signature">
         
         def <strong>comment=</strong>(s : String) : String
@@ -1062,7 +1062,7 @@ zip.comment <span class="o">=</span> <span class="s">&quot;this is a test commen
       </div>
     </div>
   
-    <div class="entry-detail" id="default_password=(password:String|Nil)-instance-method">
+    <div class="entry-detail" id="default_password&#61;&#40;password:String|Nil&#41;-instance-method">
       <div class="signature">
         
         def <strong>default_password=</strong>(password : String | Nil)
@@ -1087,7 +1087,7 @@ zip.default_password <span class="o">=</span> <span class="s">&quot;foobar&quot;
       </div>
     </div>
   
-    <div class="entry-detail" id="delete(path:String)-instance-method">
+    <div class="entry-detail" id="delete&#40;path:String&#41;-instance-method">
       <div class="signature">
         
         def <strong>delete</strong>(path : String)
@@ -1111,7 +1111,7 @@ zip.delete(<span class="s">&quot;foo.txt&quot;</span>)</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="delete(index:UInt64)-instance-method">
+    <div class="entry-detail" id="delete&#40;index:UInt64&#41;-instance-method">
       <div class="signature">
         
         def <strong>delete</strong>(index : UInt64)
@@ -1144,7 +1144,7 @@ zip.delete(<span class="n">0</span>)</code></pre></div>
       </div>
       
         <div class="doc"><p>Discard any changes and close this <code><a href="../Zip/Archive.html">Archive</a></code>.  Equivalent to
-<code><a href="../Zip/Archive.html#close%28discard%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%3ABool%29-instance-method">#close(true)</a></code>.</p>
+<code><a href="../Zip/Archive.html#close%28discard%3ABool%3D%3Cspanclass%3D%22n%22%3Efalse%3C%2Fspan%3E%29-instance-method">#close(true)</a></code>.</p>
 
 <p>Raises an exception if this <code><a href="../Zip/Archive.html">Archive</a></code> is not open or if the
 archive could not be closed.</p>
@@ -1160,12 +1160,12 @@ zip.discard</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="each(flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,&amp;block:String-&gt;)-instance-method">
+    <div class="entry-detail" id="each&#40;flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;,&amp;block:String-&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>each</strong>(flags = <span class="n">0</span> : Int32, &block : String -> )
+        def <strong>each</strong>(flags : Int32 = <span class="n">0</span>, &block : String -> )
 
-        <a class="method-permalink" href="#each%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2C%26block%3AString-%3E%29-instance-method">#</a>
+        <a class="method-permalink" href="#each%28flags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2C%26block%3AString-%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Iterate over names of files in archive.</p>
@@ -1184,12 +1184,12 @@ zip.each { <span class="o">|</span>name<span class="o">|</span> file_names <span
       </div>
     </div>
   
-    <div class="entry-detail" id="each(flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+    <div class="entry-detail" id="each&#40;flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>each</strong>(flags = <span class="n">0</span> : Int32)
+        def <strong>each</strong>(flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#each%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#each%28flags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Return iterator over names of files in archive.</p>
@@ -1235,12 +1235,12 @@ puts zip.error</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="get_file_comment(index:UInt64,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32):String|Nil-instance-method">
+    <div class="entry-detail" id="get_file_comment&#40;index:UInt64,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;:String|Nil-instance-method">
       <div class="signature">
         
-        def <strong>get_file_comment</strong>(index : UInt64, flags = <span class="n">0</span> : Int32) : String | Nil
+        def <strong>get_file_comment</strong>(index : UInt64, flags : Int32 = <span class="n">0</span>) : String | Nil
 
-        <a class="method-permalink" href="#get_file_comment%28index%3AUInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AString%7CNil-instance-method">#</a>
+        <a class="method-permalink" href="#get_file_comment%28index%3AUInt64%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3AString%7CNil-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns comment of file at index <em>index</em> or nil if there is no
@@ -1262,12 +1262,12 @@ zip.get_file_comment(<span class="n">0</span>)</code></pre>
       </div>
     </div>
   
-    <div class="entry-detail" id="get_file_comment(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+    <div class="entry-detail" id="get_file_comment&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>get_file_comment</strong>(path : String, flags = <span class="n">0</span> : Int32)
+        def <strong>get_file_comment</strong>(path : String, flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#get_file_comment%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#get_file_comment%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns comment of file at path <em>path</em>, or nil if there was no
@@ -1287,7 +1287,7 @@ zip.get_file_comment(<span class="s">&quot;foo.txt&quot;</span>)</code></pre></d
       </div>
     </div>
   
-    <div class="entry-detail" id="get_name(index:UInt64,flags:Int32):String-instance-method">
+    <div class="entry-detail" id="get_name&#40;index:UInt64,flags:Int32&#41;:String-instance-method">
       <div class="signature">
         
         def <strong>get_name</strong>(index : UInt64, flags : Int32) : String
@@ -1311,12 +1311,12 @@ path <span class="o">=</span> zip.get_name(<span class="n">0</span>)</code></pre
       </div>
     </div>
   
-    <div class="entry-detail" id="name_locate(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32):Int64-instance-method">
+    <div class="entry-detail" id="name_locate&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;:Int64-instance-method">
       <div class="signature">
         
-        def <strong>name_locate</strong>(path : String, flags = <span class="n">0</span> : Int32) : Int64
+        def <strong>name_locate</strong>(path : String, flags : Int32 = <span class="n">0</span>) : Int64
 
-        <a class="method-permalink" href="#name_locate%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AInt64-instance-method">#</a>
+        <a class="method-permalink" href="#name_locate%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3AInt64-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns index of given <em>path</em>, or -1 if the given path could not
@@ -1335,12 +1335,12 @@ index <span class="o">=</span> zip.name_locate(<span class="s">&quot;foo.txt&quo
       </div>
     </div>
   
-    <div class="entry-detail" id="name_locate_throws(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32):UInt64-instance-method">
+    <div class="entry-detail" id="name_locate_throws&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;:UInt64-instance-method">
       <div class="signature">
         
-        def <strong>name_locate_throws</strong>(path : String, flags = <span class="n">0</span> : Int32) : UInt64
+        def <strong>name_locate_throws</strong>(path : String, flags : Int32 = <span class="n">0</span>) : UInt64
 
-        <a class="method-permalink" href="#name_locate_throws%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3AUInt64-instance-method">#</a>
+        <a class="method-permalink" href="#name_locate_throws%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3AUInt64-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns index of given <em>path</em> or raises an exception if the given
@@ -1360,12 +1360,12 @@ index <span class="o">=</span> zip.name_locate_throws(<span class="s">&quot;foo.
       </div>
     </div>
   
-    <div class="entry-detail" id="num_entries(flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+    <div class="entry-detail" id="num_entries&#40;flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;:Int64-instance-method">
       <div class="signature">
         
-        def <strong>num_entries</strong>(flags = <span class="n">0</span> : Int32)
+        def <strong>num_entries</strong>(flags : Int32 = <span class="n">0</span>) : Int64
 
-        <a class="method-permalink" href="#num_entries%28flags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#num_entries%28flags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3AInt64-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Get the number of files in this archive.</p>
@@ -1384,12 +1384,12 @@ count <span class="o">=</span> zip.num_entries</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="open(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,password=&lt;spanclass=&quot;n&quot;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-instance-method">
+    <div class="entry-detail" id="open&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;,password:String|Nil&#61;&lt;spanclass&#61;&quot;n&quot;&gt;nil&lt;/span&gt;,&amp;block&#41;-instance-method">
       <div class="signature">
         
-        def <strong>open</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil, &block)
+        def <strong>open</strong>(path : String, flags : Int32 = <span class="n">0</span>, password : String | Nil = <span class="n">nil</span>, &block)
 
-        <a class="method-permalink" href="#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#open%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Opens given <em>path</em> in <code><a href="../Zip/Archive.html">Archive</a></code> as a <code><a href="../Zip/File.html">File</a></code> instance, passes it to
@@ -1418,12 +1418,12 @@ zip.open(<span class="s">&quot;foo.txt&quot;</span>) <span class="k">do</span> <
       </div>
     </div>
   
-    <div class="entry-detail" id="open(index:UInt64,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,password=&lt;spanclass=&quot;n&quot;&gt;nil&lt;/span&gt;:String|Nil,&amp;block)-instance-method">
+    <div class="entry-detail" id="open&#40;index:UInt64,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;,password:String|Nil&#61;&lt;spanclass&#61;&quot;n&quot;&gt;nil&lt;/span&gt;,&amp;block&#41;-instance-method">
       <div class="signature">
         
-        def <strong>open</strong>(index : UInt64, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil, &block)
+        def <strong>open</strong>(index : UInt64, flags : Int32 = <span class="n">0</span>, password : String | Nil = <span class="n">nil</span>, &block)
 
-        <a class="method-permalink" href="#open%28index%3AUInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method">#</a>
+        <a class="method-permalink" href="#open%28index%3AUInt64%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Opens index <em>index</em> in <code><a href="../Zip/Archive.html">Archive</a></code> as a <code><a href="../Zip/File.html">File</a></code> instance, passes it
@@ -1452,12 +1452,12 @@ zip.open(<span class="n">0</span>) <span class="k">do</span> <span class="o">|</
       </div>
     </div>
   
-    <div class="entry-detail" id="open(index:UInt64,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,password=&lt;spanclass=&quot;n&quot;&gt;nil&lt;/span&gt;:String|Nil)-instance-method">
+    <div class="entry-detail" id="open&#40;index:UInt64,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;,password:String|Nil&#61;&lt;spanclass&#61;&quot;n&quot;&gt;nil&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>open</strong>(index : UInt64, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil)
+        def <strong>open</strong>(index : UInt64, flags : Int32 = <span class="n">0</span>, password : String | Nil = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#open%28index%3AUInt64%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29-instance-method">#</a>
+        <a class="method-permalink" href="#open%28index%3AUInt64%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <code><a href="../Zip/File.html">File</a></code> instance of given index <em>index</em> in <code><a href="../Zip/Archive.html">Archive</a></code>.</p>
@@ -1485,12 +1485,12 @@ file.close</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="open(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,password=&lt;spanclass=&quot;n&quot;&gt;nil&lt;/span&gt;:String|Nil):File-instance-method">
+    <div class="entry-detail" id="open&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;,password:String|Nil&#61;&lt;spanclass&#61;&quot;n&quot;&gt;nil&lt;/span&gt;&#41;:File-instance-method">
       <div class="signature">
         
-        def <strong>open</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil) : <a href="../Zip/File.html">File</a>
+        def <strong>open</strong>(path : String, flags : Int32 = <span class="n">0</span>, password : String | Nil = <span class="n">nil</span>) : <a href="../Zip/File.html">File</a>
 
-        <a class="method-permalink" href="#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3AFile-instance-method">#</a>
+        <a class="method-permalink" href="#open%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29%3AFile-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Open <em>path</em> in <code><a href="../Zip/Archive.html">Archive</a></code> and return it as <code><a href="../Zip/File.html">File</a></code> instance.</p>
@@ -1518,12 +1518,12 @@ file.close</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="open?-instance-method">
+    <div class="entry-detail" id="open?:Bool-instance-method">
       <div class="signature">
         
-        def <strong>open?</strong>
+        def <strong>open?</strong> : Bool
 
-        <a class="method-permalink" href="#open%3F-instance-method">#</a>
+        <a class="method-permalink" href="#open%3F%3ABool-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns <em>true</em> if this <code><a href="../Zip/Archive.html">Archive</a></code> is open, or <em>false</em> otherwise.</p>
@@ -1531,7 +1531,7 @@ file.close</code></pre></div>
 <h3>Example</h3>
 
 <pre><code><span class="c"># clear last error</span>
-puts <span class="s">&quot;zip is %s&quot;</span> <span class="o">%</span> [zip.open? ? <span class="s">&quot;open&quot;</span> : <span class="s">&quot;closed&quot;</span>]</code></pre></div>
+puts <span class="s">&quot;zip is &#37;s&quot;</span> <span class="o">%</span> [zip.open? ? <span class="s">&quot;open&quot;</span> : <span class="s">&quot;closed&quot;</span>]</code></pre></div>
       
       <br/>
       <div>
@@ -1539,12 +1539,12 @@ puts <span class="s">&quot;zip is %s&quot;</span> <span class="o">%</span> [zip.
       </div>
     </div>
   
-    <div class="entry-detail" id="read(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,password=&lt;spanclass=&quot;n&quot;&gt;nil&lt;/span&gt;:String|Nil):Slice(UInt8)-instance-method">
+    <div class="entry-detail" id="read&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;,password:String|Nil&#61;&lt;spanclass&#61;&quot;n&quot;&gt;nil&lt;/span&gt;&#41;:Slice&#40;UInt8&#41;-instance-method">
       <div class="signature">
         
-        def <strong>read</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil) : Slice(UInt8)
+        def <strong>read</strong>(path : String, flags : Int32 = <span class="n">0</span>, password : String | Nil = <span class="n">nil</span>) : Slice(UInt8)
 
-        <a class="method-permalink" href="#read%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%29%3ASlice%28UInt8%29-instance-method">#</a>
+        <a class="method-permalink" href="#read%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%29%3ASlice%28UInt8%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Read contents of file <em>path</em> and return it as a <code>Slice(UInt8)</code>.</p>
@@ -1563,12 +1563,12 @@ str <span class="o">=</span> <span class="t">String</span>.<span class="k">new</
       </div>
     </div>
   
-    <div class="entry-detail" id="read(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32,password=&lt;spanclass=&quot;n&quot;&gt;nil&lt;/span&gt;:String|Nil,&amp;block:Slice(UInt8),Int32-&gt;Nil):UInt64-instance-method">
+    <div class="entry-detail" id="read&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;,password:String|Nil&#61;&lt;spanclass&#61;&quot;n&quot;&gt;nil&lt;/span&gt;,&amp;block:Slice&#40;UInt8&#41;,Int32-&gt;Nil&#41;:UInt64-instance-method">
       <div class="signature">
         
-        def <strong>read</strong>(path : String, flags = <span class="n">0</span> : Int32, password = <span class="n">nil</span> : String | Nil, &block : Slice(UInt8), Int32 -> Nil) : UInt64
+        def <strong>read</strong>(path : String, flags : Int32 = <span class="n">0</span>, password : String | Nil = <span class="n">nil</span>, &block : Slice(UInt8), Int32 -> Nil) : UInt64
 
-        <a class="method-permalink" href="#read%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%3ASlice%28UInt8%29%2CInt32-%3ENil%29%3AUInt64-instance-method">#</a>
+        <a class="method-permalink" href="#read%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%3ASlice%28UInt8%29%2CInt32-%3ENil%29%3AUInt64-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Read input file in slices, pass each slice and it's length to
@@ -1593,12 +1593,12 @@ str <span class="o">=</span> <span class="t">String</span>.build <span class="k"
       </div>
     </div>
   
-    <div class="entry-detail" id="rename(index:UInt64,new_path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+    <div class="entry-detail" id="rename&#40;index:UInt64,new_path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>rename</strong>(index : UInt64, new_path : String, flags = <span class="n">0</span> : Int32)
+        def <strong>rename</strong>(index : UInt64, new_path : String, flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#rename%28index%3AUInt64%2Cnew_path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#rename%28index%3AUInt64%2Cnew_path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Rename file at <em>index</em> to path <em>new_path</em>.</p>
@@ -1617,12 +1617,12 @@ zip.rename(<span class="n">0</span>, <span class="s">&quot;new-file.txt&quot;</s
       </div>
     </div>
   
-    <div class="entry-detail" id="rename(old_path:String,new_path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+    <div class="entry-detail" id="rename&#40;old_path:String,new_path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>rename</strong>(old_path : String, new_path : String, flags = <span class="n">0</span> : Int32)
+        def <strong>rename</strong>(old_path : String, new_path : String, flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#rename%28old_path%3AString%2Cnew_path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#rename%28old_path%3AString%2Cnew_path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Rename file named <em>old_path</em> to new path <em>new_path</em>.</p>
@@ -1641,12 +1641,12 @@ zip.rename(<span class="s">&quot;foo.txt&quot;</span>, <span class="s">&quot;new
       </div>
     </div>
   
-    <div class="entry-detail" id="replace(path:String,body:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+    <div class="entry-detail" id="replace&#40;path:String,body:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>replace</strong>(path : String, body : String, flags = <span class="n">0</span> : Int32)
+        def <strong>replace</strong>(path : String, body : String, flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#replace%28path%3AString%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#replace%28path%3AString%2Cbody%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Replace entry at path <em>path</em> with contents <em>body</em>.</p>
@@ -1665,12 +1665,12 @@ zip.replace(<span class="s">&quot;foo.txt&quot;</span>, <span class="s">&quot;ne
       </div>
     </div>
   
-    <div class="entry-detail" id="replace(index:UInt64,source:Source,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+    <div class="entry-detail" id="replace&#40;index:UInt64,source:Source,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>replace</strong>(index : UInt64, source : <a href="../Zip/Source.html">Source</a>, flags = <span class="n">0</span> : Int32)
+        def <strong>replace</strong>(index : UInt64, source : <a href="../Zip/Source.html">Source</a>, flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#replace%28index%3AUInt64%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#replace%28index%3AUInt64%2Csource%3ASource%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Replace entry at index <em>index</em> with <code><a href="../Zip/Source.html">Source</a></code> <em>source</em>.</p>
@@ -1689,12 +1689,12 @@ zip.replace(<span class="n">0</span>, <span class="t">StringSource</span>.<span 
       </div>
     </div>
   
-    <div class="entry-detail" id="replace(index:UInt64,body:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+    <div class="entry-detail" id="replace&#40;index:UInt64,body:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>replace</strong>(index : UInt64, body : String, flags = <span class="n">0</span> : Int32)
+        def <strong>replace</strong>(index : UInt64, body : String, flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#replace%28index%3AUInt64%2Cbody%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#replace%28index%3AUInt64%2Cbody%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Replace entry at index <em>index</em> with contents <em>body</em>.</p>
@@ -1713,12 +1713,12 @@ zip.replace(<span class="n">0</span>, <span class="s">&quot;new content&quot;</s
       </div>
     </div>
   
-    <div class="entry-detail" id="replace(path:String,source:Source,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+    <div class="entry-detail" id="replace&#40;path:String,source:Source,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>replace</strong>(path : String, source : <a href="../Zip/Source.html">Source</a>, flags = <span class="n">0</span> : Int32)
+        def <strong>replace</strong>(path : String, source : <a href="../Zip/Source.html">Source</a>, flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#replace%28path%3AString%2Csource%3ASource%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#replace%28path%3AString%2Csource%3ASource%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Replace entry at path <em>path</em> with <code><a href="../Zip/Source.html">Source</a></code> <em>source</em>.</p>
@@ -1737,12 +1737,12 @@ zip.replace(<span class="s">&quot;foo.txt&quot;</span>, <span class="t">StringSo
       </div>
     </div>
   
-    <div class="entry-detail" id="set_file_comment(path:String,comment:String|Nil,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+    <div class="entry-detail" id="set_file_comment&#40;path:String,comment:String|Nil,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>set_file_comment</strong>(path : String, comment : String | Nil, flags = <span class="n">0</span> : Int32)
+        def <strong>set_file_comment</strong>(path : String, comment : String | Nil, flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#set_file_comment%28path%3AString%2Ccomment%3AString%7CNil%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#set_file_comment%28path%3AString%2Ccomment%3AString%7CNil%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Set comment of file path <em>path</em> to string <em>comment</em>.</p>
@@ -1761,12 +1761,12 @@ zip.set_file_comment(<span class="s">&quot;foo.txt&quot;</span>, <span class="s"
       </div>
     </div>
   
-    <div class="entry-detail" id="set_file_comment(index:UInt64,comment:String|Nil,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32)-instance-method">
+    <div class="entry-detail" id="set_file_comment&#40;index:UInt64,comment:String|Nil,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;-instance-method">
       <div class="signature">
         
-        def <strong>set_file_comment</strong>(index : UInt64, comment : String | Nil, flags = <span class="n">0</span> : Int32)
+        def <strong>set_file_comment</strong>(index : UInt64, comment : String | Nil, flags : Int32 = <span class="n">0</span>)
 
-        <a class="method-permalink" href="#set_file_comment%28index%3AUInt64%2Ccomment%3AString%7CNil%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#set_file_comment%28index%3AUInt64%2Ccomment%3AString%7CNil%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Set comment of file at <em>index</em> to string <em>comment</em>.</p>
@@ -1785,12 +1785,12 @@ zip.set_file_comment(<span class="n">0</span>, <span class="s">&quot;example com
       </div>
     </div>
   
-    <div class="entry-detail" id="stat(path:String,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32):LibZip::Stat-instance-method">
+    <div class="entry-detail" id="stat&#40;path:String,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;:LibZip::Stat-instance-method">
       <div class="signature">
         
-        def <strong>stat</strong>(path : String, flags = <span class="n">0</span> : Int32) : LibZip::Stat
+        def <strong>stat</strong>(path : String, flags : Int32 = <span class="n">0</span>) : LibZip::Stat
 
-        <a class="method-permalink" href="#stat%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3ALibZip%3A%3AStat-instance-method">#</a>
+        <a class="method-permalink" href="#stat%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3ALibZip%3A%3AStat-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Return stat information about <code>path</code> as a <code>LibZip::Stat</code>
@@ -1803,7 +1803,7 @@ not be statted.</p>
 
 <pre><code><span class="c"># get size of &quot;foo.txt&quot;</span>
 st <span class="o">=</span> zip.stat(<span class="s">&quot;foo.txt&quot;</span>)
-puts <span class="s">&quot;file size = </span><span class="i">#{</span></span>st.size<span class="s"><span class="i">}</span>&quot;</span></code></pre></div>
+puts <span class="s">&quot;file size &#61; </span><span class="i">#{</span></span>st.size<span class="s"><span class="i">}</span>&quot;</span></code></pre></div>
       
       <br/>
       <div>
@@ -1811,12 +1811,12 @@ puts <span class="s">&quot;file size = </span><span class="i">#{</span></span>st
       </div>
     </div>
   
-    <div class="entry-detail" id="stat(index:LibC::Int,flags=&lt;spanclass=&quot;n&quot;&gt;0&lt;/span&gt;:Int32):LibZip::Stat-instance-method">
+    <div class="entry-detail" id="stat&#40;index:LibC::Int,flags:Int32&#61;&lt;spanclass&#61;&quot;n&quot;&gt;0&lt;/span&gt;&#41;:LibZip::Stat-instance-method">
       <div class="signature">
         
-        def <strong>stat</strong>(index : LibC::Int, flags = <span class="n">0</span> : Int32) : LibZip::Stat
+        def <strong>stat</strong>(index : LibC::Int, flags : Int32 = <span class="n">0</span>) : LibZip::Stat
 
-        <a class="method-permalink" href="#stat%28index%3ALibC%3A%3AInt%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29%3ALibZip%3A%3AStat-instance-method">#</a>
+        <a class="method-permalink" href="#stat%28index%3ALibC%3A%3AInt%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29%3ALibZip%3A%3AStat-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Return stat information about file at index <em>index</em> as a
@@ -1829,7 +1829,7 @@ not be statted.</p>
 
 <pre><code><span class="c"># get size of first file in archive</span>
 st <span class="o">=</span> zip.stat(<span class="n">0</span>)
-puts <span class="s">&quot;file size = </span><span class="i">#{</span></span>st.size<span class="s"><span class="i">}</span>&quot;</span></code></pre></div>
+puts <span class="s">&quot;file size &#61; </span><span class="i">#{</span></span>st.size<span class="s"><span class="i">}</span>&quot;</span></code></pre></div>
       
       <br/>
       <div>

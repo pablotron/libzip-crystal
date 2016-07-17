@@ -143,7 +143,7 @@
   <h2>Overview</h2>
 
   <p>Flags for <code><a href="../Zip/Archive.html">Archive</a></code> class methods that open archives, such as
-<code><a href="../Zip/Archive.html#new%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%29-class-method">Zip::Archive#new</a></code>, <code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method">Zip::Archive#open</a></code>, and <code><a href="../Zip/Archive.html#create%28path%3AString%2Cflags%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%3AInt32%2C%26block%29-class-method">Zip::Archive#create</a></code>.</p>
+<code><a href="../Zip/Archive.html#new%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%29-class-method">Zip::Archive#new</a></code>, <code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%29-instance-method">Zip::Archive#open</a></code>, and <code><a href="../Zip/Archive.html#create%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22t%22%3ECREATE_FLAGS%3C%2Fspan%3E%2C%26block%29-class-method">Zip::Archive#create</a></code>.</p>
 
 <p>You can pass more than one flag by by ORing them together.  For
 example:</p>
@@ -180,7 +180,7 @@ flags <span class="o">=</span> <span class="t">Zip</span><span class="t">::</spa
   
   <dl>
     
-      <dt class="entry-const">
+      <dt class="entry-const" id="CREATE">
         <strong>CREATE</strong> = <code><span class="n">1</span></code>
       </dt>
       
@@ -189,7 +189,7 @@ flags <span class="o">=</span> <span class="t">Zip</span><span class="t">::</spa
       </dd>
       
     
-      <dt class="entry-const">
+      <dt class="entry-const" id="EXCL">
         <strong>EXCL</strong> = <code><span class="n">2</span></code>
       </dt>
       
@@ -198,7 +198,7 @@ flags <span class="o">=</span> <span class="t">Zip</span><span class="t">::</spa
       </dd>
       
     
-      <dt class="entry-const">
+      <dt class="entry-const" id="CHECKCONS">
         <strong>CHECKCONS</strong> = <code><span class="n">4</span></code>
       </dt>
       
@@ -208,7 +208,7 @@ and error if they fail.</p>
       </dd>
       
     
-      <dt class="entry-const">
+      <dt class="entry-const" id="TRUNCATE">
         <strong>TRUNCATE</strong> = <code><span class="n">8</span></code>
       </dt>
       

@@ -145,7 +145,7 @@
   <h2>Overview</h2>
 
   <p>Thin <code>IO</code> wrapper for reading files from archives.  Use
-<code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method">Archive#open</a></code> to get an instance.</p>
+<code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%29-instance-method">Archive#open</a></code> to get an instance.</p>
 
 <h3>Example</h3>
 
@@ -222,7 +222,7 @@ puts <span class="s">&quot;file contents: </span><span class="i">#{</span></span
       </li>
     
       <li class="entry-summary">
-        <a href="#open%3F-instance-method" class="signature"><strong>#open?</strong></a>
+        <a href="#open%3F%3ABool-instance-method" class="signature"><strong>#open?</strong> : Bool</a>
         
           <div class="summary"><p>Returns true if this <code><a href="../Zip/File.html">File</a></code> is open, and false otherwise.</p></div>
         
@@ -290,7 +290,7 @@ puts <span class="s">&quot;file contents: </span><span class="i">#{</span></span
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(zip:Archive,file:LibZip::ZipFile)-class-method">
+    <div class="entry-detail" id="new&#40;zip:Archive,file:LibZip::ZipFile&#41;-class-method">
       <div class="signature">
         
         def self.<strong>new</strong>(zip : <a href="../Zip/Archive.html">Archive</a>, file : LibZip::ZipFile)
@@ -298,7 +298,7 @@ puts <span class="s">&quot;file contents: </span><span class="i">#{</span></span
         <a class="method-permalink" href="#new%28zip%3AArchive%2Cfile%3ALibZip%3A%3AZipFile%29-class-method">#</a>
       </div>
       
-        <div class="doc"><p>Internal method to create a <code><a href="../Zip/File.html">File</a></code> instance.  Use <code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%3AInt32%2Cpassword%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%3AString%7CNil%2C%26block%29-instance-method">Archive#open</a></code>
+        <div class="doc"><p>Internal method to create a <code><a href="../Zip/File.html">File</a></code> instance.  Use <code><a href="../Zip/Archive.html#open%28path%3AString%2Cflags%3AInt32%3D%3Cspanclass%3D%22n%22%3E0%3C%2Fspan%3E%2Cpassword%3AString%7CNil%3D%3Cspanclass%3D%22n%22%3Enil%3C%2Fspan%3E%2C%26block%29-instance-method">Archive#open</a></code>
 instead.</p></div>
       
       <br/>
@@ -358,12 +358,12 @@ puts file.error</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="open?-instance-method">
+    <div class="entry-detail" id="open?:Bool-instance-method">
       <div class="signature">
         
-        def <strong>open?</strong>
+        def <strong>open?</strong> : Bool
 
-        <a class="method-permalink" href="#open%3F-instance-method">#</a>
+        <a class="method-permalink" href="#open%3F%3ABool-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Returns true if this <code><a href="../Zip/File.html">File</a></code> is open, and false otherwise.</p>
@@ -379,7 +379,7 @@ puts <span class="s">&quot;file is open&quot;</span> <span class="k">if</span> f
       </div>
     </div>
   
-    <div class="entry-detail" id="read(&amp;block:Slice(UInt8),Int32-&gt;Nil):UInt64-instance-method">
+    <div class="entry-detail" id="read&#40;&amp;block:Slice&#40;UInt8&#41;,Int32-&gt;Nil&#41;:UInt64-instance-method">
       <div class="signature">
         
         def <strong>read</strong>(&block : Slice(UInt8), Int32 -> Nil) : UInt64
@@ -411,7 +411,7 @@ str <span class="o">=</span> <span class="t">String</span>.build <span class="k"
       </div>
     </div>
   
-    <div class="entry-detail" id="read(slice:Slice(UInt8))-instance-method">
+    <div class="entry-detail" id="read&#40;slice:Slice&#40;UInt8&#41;&#41;-instance-method">
       <div class="signature">
         
         def <strong>read</strong>(slice : Slice(UInt8))
@@ -461,7 +461,7 @@ puts file.system_error</code></pre></div>
       </div>
     </div>
   
-    <div class="entry-detail" id="write(slice:Slice(UInt8))-instance-method">
+    <div class="entry-detail" id="write&#40;slice:Slice&#40;UInt8&#41;&#41;-instance-method">
       <div class="signature">
         
         def <strong>write</strong>(slice : Slice(UInt8))
