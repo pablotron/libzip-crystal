@@ -7,7 +7,7 @@ class TestProcSource < Zip::ProcSource
   def initialize(zip, data)
     # reset position and cache data slice
     @pos = 0
-    @data = data.to_slice as Slice(UInt8)
+    @data = data.to_slice.as Slice(UInt8)
 
     super(zip, ->(
       action    : Zip::Action,
@@ -15,7 +15,7 @@ class TestProcSource < Zip::ProcSource
       user_data : Void* \
     ) {
       # cast data pointer back to "self"
-      me = user_data as TestProcSource
+      me = user_data.as TestProcSource
 
       # switch on action, then coerce result to i64
       0_i64 + case action
@@ -54,7 +54,7 @@ class TestProcSource < Zip::ProcSource
         )
 
         # copy populated struct to slice
-        slice.copy_from(pointerof(st) as Pointer(UInt8), st_size)
+        slice.copy_from(pointerof(st).as(Pointer(UInt8)), st_size)
 
         # return sizeof stat
         st_size
@@ -62,7 +62,7 @@ class TestProcSource < Zip::ProcSource
         # for all other actions, do nothing
         0
       end
-    }, self as Pointer(Void))
+    }, self.as(Pointer(Void)))
   end
 end
 

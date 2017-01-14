@@ -256,7 +256,7 @@ module Zip
   #           slice     : Slice(UInt8),
   #           user_data : Void*) {
   #           # cast data pointer back to "self"
-  #           me = user_data as TestProcSource
+  #           me = user_data.as TestProcSource
   #
   #           # switch on action, then coerce result to i64
   #           0_i64 + case action
@@ -295,7 +295,7 @@ module Zip
   #             )
   #
   #             # copy populated struct to slice
-  #             slice.copy_from(pointerof(st) as Pointer(UInt8), st_size)
+  #             slice.copy_from(pointerof(st).as(Pointer(UInt8)), st_size)
   #
   #             # return sizeof stat
   #             st_size
@@ -303,7 +303,7 @@ module Zip
   #             # for all other actions, do nothing
   #             0
   #           end
-  #         }, self as Pointer(Void))
+  #         }, self.as(Pointer(Void)))
   #       end
   #     end
   #
@@ -323,7 +323,7 @@ module Zip
       @proc       : Action, Slice(UInt8), Void* -> Int64,
       @user_data  : Void*
     )
-      super(zip, LibZip.zip_source_function(zip.zip, wrap_proc, self as Void*))
+      super(zip, LibZip.zip_source_function(zip.zip, wrap_proc, self.as(Void*)))
     end
 
     private def wrap_proc
@@ -333,7 +333,7 @@ module Zip
         len           : UInt64,
         action_value  : Int32) do
         # get source, action, and slice
-        source = user_data as ProcSource
+        source = user_data.as ProcSource
         action = Action.new(action_value)
         slice = Slice(UInt8).new(data, len)
 
