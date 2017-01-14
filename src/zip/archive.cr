@@ -37,7 +37,7 @@ module Zip
   #
   class Archive
     include Enumerable(String)
-    include Iterable
+    include Iterable(String)
 
     protected getter zip
 
@@ -932,7 +932,7 @@ module Zip
       flags     : Int32 = 0_i32,
       password  : String? = nil
     ) : Slice(UInt8)
-      io = MemoryIO.new(stat(path).size)
+      io = IO::Memory.new(stat(path).size)
 
       open(path, flags) do |file|
         # create read buffer
